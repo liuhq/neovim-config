@@ -1,5 +1,6 @@
 return {
     'williamboman/mason.nvim',
+    cmd = 'Mason',
     keys = { { '<leader>am', '<cmd>Mason<cr>', desc = 'Mason' } },
     build = ':MasonUpdate',
     opts = {

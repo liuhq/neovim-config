@@ -65,12 +65,12 @@ return {
             lualine_x = {
                 ---@diagnostic disable: undefined-field
                 {
-                    require('noice').api.status.mode.get,
-                    cond = require('noice').api.status.mode.has,
+                    function() return require('noice').api.status.mode.get() end,
+                    cond = function() return require('noice').api.status.mode.has() end,
                 },
                 {
-                    require('noice').api.status.command.get,
-                    cond = require('noice').api.status.command.has,
+                    function() return require('noice').api.status.command.get() end,
+                    cond = function() return require('noice').api.status.command.has() end,
                 },
                 ---@diagnostic enable: undefined-field
                 {
