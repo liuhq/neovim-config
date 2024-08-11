@@ -40,6 +40,7 @@ keymap.set('v', '>', '>gv')
 -- quit
 keymap.set('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
 keymap.set('n', '<leader>qc', '<cmd>q<cr>', { desc = 'Quit Current' })
+keymap.set('n', '<leader>qw', '<cmd>wq<cr>', { desc = 'Quit & Write' })
 
 -- windows
 keymap.set('n', '<leader>wd', '<C-W>c', { desc = 'Delete Window', remap = true })
