@@ -215,6 +215,8 @@ vim.opt.statusline = table.concat({
     '%r%m',
     '%*',
     '%) ',
+    -- gitsigns
+    ' %{%get(b:, "gitsigns_status", "")%} ',
     '%)',
 
     '%=',

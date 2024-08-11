@@ -20,14 +20,9 @@ return {
         Info = '🅸',
     },
     git = {
-        -- added = ' ',
-        added = '',
-        -- modified = ' ',
-        modified = '',
-        -- removed = ' ',
-        removed = '',
-        ignored = '',
-        renamed = ''
+        added = '',
+        changed = '',
+        removed = '',
     },
     file_status = {
         modified = '[+]',
