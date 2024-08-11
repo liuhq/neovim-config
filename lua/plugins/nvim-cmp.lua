@@ -1,12 +1,10 @@
 return {
     'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
+    event = { 'InsertEnter', 'CmdlineEnter' },
     dependencies = {
-        'hrsh7th/cmp-buffer', -- buffer auto-completion
-        'hrsh7th/cmp-cmdline', -- cmdline auto-completion
+        'hrsh7th/cmp-cmdline',  -- cmdline auto-completion
         'hrsh7th/cmp-nvim-lsp', -- lsp auto-completion
-        'hrsh7th/cmp-path', -- path auto-completion
-        'hrsh7th/cmp-nvim-lsp-signature-help', -- sign help
+        'hrsh7th/cmp-path',     -- path auto-completion
         'L3MON4D3/LuaSnip',
         'saadparwaiz1/cmp_luasnip',
     },
@@ -21,11 +19,17 @@ return {
                 end,
             },
             mapping = cmp.mapping.preset.insert({
-                ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-                ['<C-u>'] = cmp.mapping.scroll_docs(4),
-                ['<C-space>'] = cmp.mapping.complete(),
-                ['<cr>'] = cmp.mapping.confirm({ select = true }),
-                ['<tab>'] = cmp.mapping(function(fallback)
+                ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+                ['<C-d>'] = cmp.mapping.scroll_docs(4),
+                ['<C-p>'] = cmp.mapping(function(_)
+                    if cmp.visible() then
+                        cmp.close()
+                    else
+                        cmp.complete()
+                    end
+                end, { 'i', 's' }),
+                ['<tab>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+                ['<C-j>'] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item()
                     elseif luasnip.expand_or_jumpable() then
@@ -33,8 +37,8 @@ return {
                     else
                         fallback()
                     end
-                end, { 'i', 's' }),
-                ['<S-tab>'] = cmp.mapping(function(fallback)
+                end, { 'i', 's', 'c' }),
+                ['<C-k>'] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()
                     elseif luasnip.jumpable(-1) then
@@ -42,14 +46,13 @@ return {
                     else
                         fallback()
                     end
-                end, { 'i', 's' }),
+                end, { 'i', 's', 'c' }),
             }),
             sources = {
-                { name = 'buffer' },
                 { name = 'nvim_lsp' },
                 { name = 'path' },
-                { name = 'nvim_lsp_signature_help' },
                 { name = 'luasnip' },
+                { name = "lazydev", group_index = 0 }
             },
         })
         -- `/` cmdline setup.

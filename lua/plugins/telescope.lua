@@ -53,6 +53,8 @@ return {
         -- jump --
         { '<leader>jj', '<cmd>Telescope jumplist<cr>', desc = 'Jumplist' },
         { '<leader>jl', '<cmd>Telescope loclist<cr>', desc = 'Location List' },
+        -- notify --
+        { '<leader>nh', '<cmd>Telescope notify<cr>', desc = 'Notify History Picker'},
         -- others --
         { '<leader>oa', '<cmd>Telescope autocommands previewer=false<cr>', desc = 'Autocommands' },
         { '<leader>ob', '<cmd>Telescope builtin include_extensions=true previewer=false<cr>', desc = 'Telescope Builtin' },
@@ -139,6 +141,5 @@ return {
         })
 
         telescope.setup(opts)
-        telescope.load_extension('persisted')
     end,
 }

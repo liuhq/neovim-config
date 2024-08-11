@@ -5,10 +5,9 @@ vim.g.maplocalleader = '\\'
 local keymap = vim.keymap
 
 -- without yank --
--- keymap.set({ "n", "v" }, "d", '"_d')
--- keymap.set({ "n", "v" }, "p", '"_p')
--- keymap.set({ "n", "v" }, "P", '"_P')
--- keymap.set({ "n", "v" }, "c", '"_c')
+keymap.set('v', 'd', '"_d', { remap = false, silent = true })
+keymap.set({ 'n', 'v' }, '<M-v>', '"0p', { remap = false, silent = true })
+keymap.set({ 'n', 'v' }, 'c', '"_c', { remap = false, silent = true })
 
 -- better up/down
 keymap.set({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { desc = 'Cursor Down', expr = true, silent = true })
@@ -16,13 +15,9 @@ keymap.set({ 'n', 'x' }, '<Down>', "v:count == 0 ? 'gj' : 'j'", { desc = 'Cursor
 keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { desc = 'Cursor Up', expr = true, silent = true })
 keymap.set({ 'n', 'x' }, '<Up>', "v:count == 0 ? 'gk' : 'k'", { desc = 'Cursor Up', expr = true, silent = true })
 
--- move Lines
-keymap.set('n', '<A-j>', '<cmd>m .+1<cr>==', { desc = 'Line Down' })
-keymap.set('n', '<A-k>', '<cmd>m .-2<cr>==', { desc = 'Line Up' })
-keymap.set('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Line Down' })
-keymap.set('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Line Up' })
-keymap.set('v', '<A-j>', ":m '>+1<cr>gv=gv", { desc = 'Line Down' })
-keymap.set('v', '<A-k>', ":m '<-2<cr>gv=gv", { desc = 'Line Up' })
+-- better jump to line start/end in visual mode
+keymap.set('v', 'H', '^', { desc = 'Cursor Start (Visual)', remap = true, silent = true })
+keymap.set('v', 'L', '$h', { desc = 'Cursor End (Visual)', remap = true, silent = true })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 keymap.set('n', 'n', "'Nn'[v:searchforward].'zv'", { expr = true, desc = 'Next Search Result' })
@@ -44,6 +39,7 @@ keymap.set('v', '>', '>gv')
 
 -- quit
 keymap.set('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
+keymap.set('n', '<leader>qc', '<cmd>q<cr>', { desc = 'Quit Current' })
 
 -- windows
 keymap.set('n', '<leader>wd', '<C-W>c', { desc = 'Delete Window', remap = true })
@@ -67,3 +63,6 @@ keymap.set('n', '<S-h>', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 keymap.set('n', '<S-l>', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 keymap.set('n', '<leader>bt', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
 keymap.set('n', '<leader>bd', '<cmd>bdelete<cr>', { desc = 'Delete Buffer' })
+
+keymap.set('n', '<leader>oB', function() vim.o.background = vim.o.background == 'light' and 'dark' or 'light' end,
+    { desc = 'Toggle Dark/Light' })

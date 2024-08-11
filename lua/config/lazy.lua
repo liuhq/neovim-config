@@ -1,8 +1,3 @@
--- hrsh7th/nvim-cmp
--- + cmp-nvim-lsp -- lsp auto-completion
--- + cmp-buffer -- buffer auto-completion
--- + cmp-path -- path auto-completion
--- + cmp-cmdline -- cmdline auto-completion
 -- onsails/lspkind.nvim
 -- folke/trouble.nvim
 -- lewis6991/gitsigns.nvim

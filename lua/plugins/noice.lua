@@ -3,10 +3,10 @@ return {
     event = 'VeryLazy',
     keys = {
         -- stylua: ignore start
-        { '<leader>nl', '<cmd>Noice last<cr>', desc = 'Noice Last Message', },
-        { '<leader>nh', '<cmd>Noice history<cr>', desc = 'Noice History', },
-        { '<leader>na', '<cmd>Noice all<cr>', desc = 'Noice All', },
-        { '<leader>nd', '<cmd>Noice dismiss<cr>', desc = 'Dismiss All', },
+        { '<leader>nl', '<cmd>Noice last<cr>',      desc = 'Noice Last Message', },
+        { '<leader>nh', '<cmd>Noice history<cr>',   desc = 'Noice History', },
+        { '<leader>na', '<cmd>Noice all<cr>',       desc = 'Noice All', },
+        { '<leader>nd', '<cmd>Noice dismiss<cr>',   desc = 'Dismiss All', },
         { '<leader>nt', '<cmd>Noice telescope<cr>', desc = 'Noice History (Telescope)', },
         -- stylua: ignore end
         {
