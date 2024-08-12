@@ -13,7 +13,7 @@ return {
         autosave = false,
         autoload = false,
     },
-    config = function(_, opts)
+    config = function (_, opts)
         require('persisted').setup(opts)
         require('telescope').load_extension('persisted')
 

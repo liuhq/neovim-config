@@ -23,7 +23,7 @@ local color_picker = {
 
 vim.api.nvim_create_autocmd('OptionSet', {
     pattern = 'background',
-    callback = function()
+    callback = function ()
         local bg = vim.o.background
         if bg == 'light' then
             vim.api.nvim_set_hl(0, 'StatusLineBg', { fg = color_picker.basefg, bg = color_picker.basebg })
@@ -46,7 +46,7 @@ vim.api.nvim_create_autocmd('OptionSet', {
             vim.api.nvim_set_hl(0, 'StatusLinePositionEdge', { fg = color_picker.posbg })
             vim.api.nvim_set_hl(0, 'StatusLinePosition', { fg = color_picker.posfg, bg = color_picker.posbg })
         end
-    end
+    end,
 })
 
 -- Highlight Group: start
@@ -67,38 +67,38 @@ local function set_color(color)
 end
 
 local mode_change = {
-    n = function()
+    n = function ()
         set_color(color_picker.modebg.n)
     end,
-    i = function()
+    i = function ()
         set_color(color_picker.modebg.i)
     end,
-    v = function()
+    v = function ()
         set_color(color_picker.modebg.v)
     end,
-    V = function()
+    V = function ()
         set_color(color_picker.modebg.V)
     end,
-    c = function()
+    c = function ()
         set_color(color_picker.modebg.c)
     end,
-    R = function()
+    R = function ()
         set_color(color_picker.modebg.R)
     end,
 }
 
 vim.api.nvim_create_autocmd('ModeChanged', {
-    callback = function(args)
+    callback = function (args)
         local mode = string.match(args.match, ':(.*)')
         if mode_change[mode] then
             mode_change[mode]()
         end
-    end
+    end,
 })
 -- Mode Color Change: end
 
 -- LSP: start
-_G.stl_comp.lsp = function()
+_G.stl_comp.lsp = function ()
     local count = {}
     local levels = {
         errors = vim.diagnostic.severity.ERROR,
@@ -134,7 +134,7 @@ end
 -- LSP: end
 
 -- Filename and Filepath: start
-_G.stl_comp.filepath = function()
+_G.stl_comp.filepath = function ()
     local fpath = vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.:h')
     if fpath == '' or fpath == '.' then
         return ' '
@@ -144,7 +144,7 @@ _G.stl_comp.filepath = function()
     return string.format(' %%<%s' .. slash, fpath)
 end
 
-_G.stl_comp.filename = function()
+_G.stl_comp.filename = function ()
     local fname = vim.fn.expand('%:t')
     if fname == '' then
         return ''
@@ -155,17 +155,17 @@ end
 
 -- Noice: start
 local noice = require('noice').api
-_G.stl_comp.noice_command = function()
+_G.stl_comp.noice_command = function ()
     ---@diagnostic disable-next-line: undefined-field, deprecated
     local command = noice.statusline.command.get()
     return command == nil and '' or command
 end
-_G.stl_comp.noice_mode = function()
+_G.stl_comp.noice_mode = function ()
     ---@diagnostic disable-next-line: undefined-field, deprecated
     local mode = noice.statusline.mode.get()
     return mode == nil and '' or mode
 end
-_G.stl_comp.noice_search = function()
+_G.stl_comp.noice_search = function ()
     ---@diagnostic disable-next-line: undefined-field, deprecated
     local search = noice.statusline.search.get()
     return search == nil and '' or search
@@ -174,8 +174,8 @@ end
 -- Noice: start
 
 -- Filetype: start
-_G.stl_comp.filetype = function()
-    return string.format(" %s ", vim.bo.filetype):upper()
+_G.stl_comp.filetype = function ()
+    return string.format(' %s ', vim.bo.filetype):upper()
 end
 -- Filetype: end
 
@@ -263,5 +263,5 @@ vim.opt.statusline = table.concat({
 return {
     dir = vim.fn.stdpath('config') .. '/lua/plugins/statusline',
     event = 'VeryLazy',
-    dependencies = { 'folke/noice.nvim' }
+    dependencies = { 'folke/noice.nvim' },
 }

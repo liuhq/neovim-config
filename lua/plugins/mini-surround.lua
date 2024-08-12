@@ -2,7 +2,7 @@ return {
     'echasnovski/mini.surround',
     version = false,
     event = 'BufReadPost',
-    config = function()
+    config = function ()
         local srd = require('mini.surround')
         srd.setup({
             -- Module mappings. Use `''` (empty string) to disable one.
@@ -21,5 +21,5 @@ return {
             -- Number of lines within which surrounding is searched
             n_lines = 20,
         })
-    end
+    end,
 }

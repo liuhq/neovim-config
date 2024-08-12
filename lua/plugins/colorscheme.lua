@@ -6,12 +6,12 @@ return {
         priority = 1000,
         opts = {
             flavour = 'mocha', -- latte, frappe, macchiato, mocha
-            background = { -- :h background
+            background = {     -- :h background
                 light = 'latte',
                 dark = 'mocha',
             },
             show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
-            term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
+            term_colors = true,        -- sets terminal colors (e.g. `g:terminal_color_0`)
             default_integrations = true,
             integrations = {
                 cmp = true,

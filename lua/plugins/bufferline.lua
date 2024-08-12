@@ -2,18 +2,18 @@ local icons = require('config.icons')
 
 return {
     'akinsho/bufferline.nvim',
-    version = "*",
+    version = '*',
     event = 'BufReadPost',
     keys = {
         { '<leader>bp', '<cmd>BufferLineTogglePin<cr>', desc = 'Pin Buffer' },
-        { '<leader>bo', '<cmd>BufferLineCloseOthers<cr>', desc = 'Delete Other Buffers' }
+        { '<leader>bo', '<cmd>BufferLineCloseOthers<cr>', desc = 'Delete Other Buffers' },
     },
-    config = function()
+    config = function ()
         require('bufferline').setup({
             options = {
                 mode = 'buffers',
                 themable = true,
-                numbers = function(opts)
+                numbers = function (opts)
                     ---@diagnostic disable-next-line: undefined-field
                     return opts.raise(opts.id)
                 end,
@@ -24,7 +24,7 @@ return {
                 left_trunc_marker = '',
                 right_trunc_marker = '',
                 diagnostics = 'nvim_lsp',
-                diagnostics_indicator = function(_, level)
+                diagnostics_indicator = function (_, level)
                     local s = level:match('error') and icons.diagnostics.Error or ''
                     return '' .. s
                 end,
@@ -37,7 +37,7 @@ return {
                 separator_style = 'thin',
                 always_show_bufferline = false,
             },
-            highlights = require('catppuccin.groups.integrations.bufferline').get()
+            highlights = require('catppuccin.groups.integrations.bufferline').get(),
         })
-    end
+    end,
 }

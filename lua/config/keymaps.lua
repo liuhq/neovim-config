@@ -65,5 +65,5 @@ keymap.set('n', '<S-l>', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 keymap.set('n', '<leader>bt', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
 keymap.set('n', '<leader>bd', '<cmd>bdelete<cr>', { desc = 'Delete Buffer' })
 
-keymap.set('n', '<leader>oB', function() vim.o.background = vim.o.background == 'light' and 'dark' or 'light' end,
+keymap.set('n', '<leader>oB', function () vim.o.background = vim.o.background == 'light' and 'dark' or 'light' end,
     { desc = 'Toggle Dark/Light' })

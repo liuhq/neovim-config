@@ -24,7 +24,7 @@ return {
         { '<leader>fC', '<cmd>Telescope oldfiles only_cwd=true<cr>', desc = 'Re[c]ent (cwd)' },
         { '<leader>fd', '<cmd>Telescope diagnostics bufnr=0<cr>', desc = 'Diagnostics' },
         { '<leader>fD', '<cmd>Telescope diagnostics<cr>', desc = 'Diagnostics (Workspace)' },
-        { '<leader>ff', '<cmd>Telescope find_files follow=true hidden=true no_ignore=true no_ignore_parent=true<cr>', desc = 'All Files', },
+        { '<leader>ff', '<cmd>Telescope find_files follow=true hidden=true no_ignore=true no_ignore_parent=true<cr>', desc = 'All Files' },
         { '<leader>fg', '<cmd>Telescope live_grep<cr>', desc = 'Grep' },
         { '<leader>fG', '<cmd>Telescope live_grep grep_open_files=true<cr>', desc = 'Grep (Opened Files)' },
         { '<leader>fr', '<cmd>Telescope registers<cr>', desc = 'Registers' },
@@ -32,29 +32,41 @@ return {
         { '<leader>fw', '<cmd>Telescope grep_string word_match=-w<cr>', desc = 'Word' },
         { '<leader>fw', '<cmd>Telescope grep_string<cr>', mode = 'v', desc = 'Selection' },
         -- git --
-        { '<leader>gg', function ()
-            local ok,_ = pcall(require('telescope.builtin').git_files,{ show_untracked = true })
-            if not ok then
-                return vim.notify('[git_files] Not a git directory', 4)
-            end
-        end, desc = 'Files' },
-        { '<leader>gc', function ()
-            local ok,_ = pcall(require('telescope.builtin').git_commits)
-            if not ok then
-                return vim.notify('[git_commits] Not a git directory', 4)
-            end
-        end, desc = 'Commits' },
-        { '<leader>gs', function ()
-            local ok,_ = pcall(require('telescope.builtin').git_status)
-            if not ok then
-                return vim.notify('[git_status] Not a git directory', 4)
-            end
-        end, desc = 'Status' },
+        {
+            '<leader>gg',
+            function ()
+                local ok, _ = pcall(require('telescope.builtin').git_files, { show_untracked = true })
+                if not ok then
+                    return vim.notify('[git_files] Not a git directory', 4)
+                end
+            end,
+            desc = 'Files'
+        },
+        {
+            '<leader>gc',
+            function ()
+                local ok, _ = pcall(require('telescope.builtin').git_commits)
+                if not ok then
+                    return vim.notify('[git_commits] Not a git directory', 4)
+                end
+            end,
+            desc = 'Commits'
+        },
+        {
+            '<leader>gs',
+            function ()
+                local ok, _ = pcall(require('telescope.builtin').git_status)
+                if not ok then
+                    return vim.notify('[git_status] Not a git directory', 4)
+                end
+            end,
+            desc = 'Status'
+        },
         -- jump --
         { '<leader>jj', '<cmd>Telescope jumplist<cr>', desc = 'Jumplist' },
         { '<leader>jl', '<cmd>Telescope loclist<cr>', desc = 'Location List' },
         -- notify --
-        { '<leader>nh', '<cmd>Telescope notify<cr>', desc = 'Notify History Picker'},
+        { '<leader>nh', '<cmd>Telescope notify<cr>', desc = 'Notify History Picker' },
         -- others --
         { '<leader>oa', '<cmd>Telescope autocommands previewer=false<cr>', desc = 'Autocommands' },
         { '<leader>ob', '<cmd>Telescope builtin include_extensions=true previewer=false<cr>', desc = 'Telescope Builtin' },
@@ -76,7 +88,7 @@ return {
             history = false,
             -- open files in the first window that is an actual file.
             -- use the current window if no other window is available.
-            get_selection_window = function()
+            get_selection_window = function ()
                 local wins = vim.api.nvim_list_wins()
                 table.insert(wins, 1, vim.api.nvim_get_current_win())
                 for _, win in ipairs(wins) do
@@ -114,7 +126,7 @@ return {
         -- },
         -- },
     },
-    config = function(_, opts)
+    config = function (_, opts)
         local telescope = require('telescope')
 
         -- Flash Telescope config
@@ -125,12 +137,12 @@ return {
                 search = {
                     mode = 'search',
                     exclude = {
-                        function(win)
+                        function (win)
                             return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= 'TelescopeResults'
                         end,
                     },
                 },
-                action = function(match)
+                action = function (match)
                     local picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
                     picker:set_selection(match.pos[1] - 1)
                 end,

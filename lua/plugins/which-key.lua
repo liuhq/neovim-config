@@ -4,13 +4,13 @@ return {
     keys = {
         {
             '<leader>?',
-            function()
+            function ()
                 require('which-key').show({ global = false })
             end,
             desc = 'Buffer Local Keymaps (which-key)',
         },
     },
-    init = function()
+    init = function ()
         vim.o.timeout = true
         vim.o.timeoutlen = 300
     end,
@@ -23,7 +23,7 @@ return {
             rules = false,
         },
     },
-    config = function(_, opts)
+    config = function (_, opts)
         local wk = require('which-key')
         wk.setup(opts)
         wk.add({

@@ -3,15 +3,15 @@ return {
     event = 'VeryLazy',
     keys = {
         -- stylua: ignore start
-        { '<leader>nl', '<cmd>Noice last<cr>',      desc = 'Noice Last Message', },
-        { '<leader>nh', '<cmd>Noice history<cr>',   desc = 'Noice History', },
-        { '<leader>na', '<cmd>Noice all<cr>',       desc = 'Noice All', },
-        { '<leader>nd', '<cmd>Noice dismiss<cr>',   desc = 'Dismiss All', },
-        { '<leader>nt', '<cmd>Noice telescope<cr>', desc = 'Noice History (Telescope)', },
+        { '<leader>nl', '<cmd>Noice last<cr>', desc = 'Noice Last Message' },
+        { '<leader>nh', '<cmd>Noice history<cr>', desc = 'Noice History' },
+        { '<leader>na', '<cmd>Noice all<cr>', desc = 'Noice All' },
+        { '<leader>nd', '<cmd>Noice dismiss<cr>', desc = 'Dismiss All' },
+        { '<leader>nt', '<cmd>Noice telescope<cr>', desc = 'Noice History (Telescope)' },
         -- stylua: ignore end
         {
             '<C-f>',
-            function()
+            function ()
                 if not require('noice.lsp').scroll(4) then
                     return '<C-f>'
                 end
@@ -23,7 +23,7 @@ return {
         },
         {
             '<C-b>',
-            function()
+            function ()
                 if not require('noice.lsp').scroll(-4) then
                     return '<C-b>'
                 end
@@ -95,7 +95,7 @@ return {
             },
         },
     },
-    config = function(_, opts)
+    config = function (_, opts)
         require('noice').setup(opts)
         require('telescope').load_extension('noice')
     end,

@@ -2,7 +2,7 @@ return {
     'echasnovski/mini.pairs',
     version = false,
     event = 'BufReadPost',
-    config = function()
+    config = function ()
         local pairs = require('mini.pairs')
         pairs.setup({
             modes = { insert = true, command = false, terminal = false },
@@ -27,8 +27,8 @@ return {
                 ['`'] = { action = 'closeopen', pair = '``', neigh_pattern = '[^\\].', register = { cr = false } },
 
                 ['<'] = { action = 'open', pair = '<>', neigh_pattern = '\r.', register = { cr = false } },
-                ['>'] = { action = 'close', pair = '<>', register = { cr = false } }
+                ['>'] = { action = 'close', pair = '<>', register = { cr = false } },
             },
         })
-    end
+    end,
 }
