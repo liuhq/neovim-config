@@ -36,7 +36,7 @@ return {
             { '<leader>a', group = 'Manager' },
             { '<leader>b', group = 'Buffer' },
             { '<leader>c', group = 'Code' },
-            { '<leader>d', group = 'Do' },
+            { '<leader>d', group = 'Debug' },
             { '<leader>e', group = 'Explorer' },
             { '<leader>f', group = 'Find/File' },
             { '<leader>g', group = 'Git' },

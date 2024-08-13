@@ -7,7 +7,7 @@ vim.api.nvim_create_user_command('CursorToLineStart', function ()
 end, {})
 
 return {
-    dir = vim.fn.stdpath('config') .. '/lua/plugins/editor/linestart-jump',
+    dir = vim.fn.stdpath('config') .. '/lua/plugins_native/linestart-jump',
     keys = {
         { '<Home>', '<cmd>CursorToLineStart<cr>', mode = { 'i', 'n' }, desc = 'Jump to Line Start' },
         { '0', '<cmd>CursorToLineStart<cr>', mode = 'n', desc = 'Jump to Line Start' },

@@ -4,6 +4,14 @@ vim.g.maplocalleader = '\\'
 
 local keymap = vim.keymap
 
+--[[
+--  Note:
+--      1. ! - run program
+--      2. @ - call the macro records
+--      3. */# - search backward/forward for the word under the cursor
+--      4. % - jump between surround
+--]]
+
 -- without yank --
 keymap.set('v', 'd', '"_d', { remap = false, silent = true })
 keymap.set({ 'n', 'v' }, '<M-v>', '"0p', { remap = false, silent = true })
@@ -67,3 +75,5 @@ keymap.set('n', '<leader>bd', '<cmd>bdelete<cr>', { desc = 'Delete Buffer' })
 
 keymap.set('n', '<leader>oB', function () vim.o.background = vim.o.background == 'light' and 'dark' or 'light' end,
     { desc = 'Toggle Dark/Light' })
+
+keymap.set('n', '<leader>ji', 'gi', { desc = 'Jump to Last Insert' })

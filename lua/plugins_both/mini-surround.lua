@@ -1,6 +1,5 @@
 return {
     'echasnovski/mini.surround',
-    version = false,
     event = 'BufReadPost',
     config = function ()
         local srd = require('mini.surround')

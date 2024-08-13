@@ -1,6 +1,5 @@
 return {
     'echasnovski/mini.pairs',
-    version = false,
     event = 'BufReadPost',
     config = function ()
         local pairs = require('mini.pairs')

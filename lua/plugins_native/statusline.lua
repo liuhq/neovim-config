@@ -261,7 +261,7 @@ vim.opt.statusline = table.concat({
 })
 
 return {
-    dir = vim.fn.stdpath('config') .. '/lua/plugins/statusline',
+    dir = vim.fn.stdpath('config') .. '/lua/plugins_native/statusline',
     event = 'VeryLazy',
     dependencies = { 'folke/noice.nvim' },
 }

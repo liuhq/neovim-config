@@ -6,7 +6,7 @@ return {
             function ()
                 return ':IncRename ' .. vim.fn.expand('<cword>')
             end,
-            desc = 'Re[n]ame INC',
+            desc = 'Re[n]ame (INC)',
             expr = true,
         },
     },

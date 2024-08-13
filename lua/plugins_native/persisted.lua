@@ -1,7 +1,6 @@
 return {
     'olimorris/persisted.nvim',
     lazy = true,
-    -- stylua: ignore
     keys = {
         { '<leader>qs', '<cmd>SessionSave<cr>', desc = 'Session Save' },
         { '<leader>qd', '<cmd>SessionDelete<cr>', desc = 'Delete Session' },

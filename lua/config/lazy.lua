@@ -9,15 +9,21 @@ vim.opt.rtp:prepend(lazypath)
 vim.keymap.set('n', '<leader>al', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 
 require('lazy').setup({
+    ---@type LazySpec
     spec = {
-        { import = 'plugins' },
+        { import = 'plugins_native', cond = function () return not vim.g.vscode end },
+        { import = 'plugins_vscode', cond = function () return vim.g.vscode end },
+        { import = 'plugins_both', cond = true },
     },
     defaults = {
         lazy = false,
         version = false,
     },
     install = { colorscheme = { 'catppuccin' } },
-    checker = { enabled = true },
+    checker = {
+        enabled = true,
+        frequency = 86400,
+    },
     ui = {
         size = { width = 0.8, height = 0.8 },
         wrap = true,
