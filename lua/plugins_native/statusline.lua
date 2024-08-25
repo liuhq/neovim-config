@@ -1,4 +1,4 @@
-local icons = require('config.icons')
+local icons = require('util').icons
 _G.stl_comp = {}
 
 local palette = require('catppuccin.palettes').get_palette('latte')
@@ -262,6 +262,6 @@ vim.opt.statusline = table.concat({
 
 return {
     dir = vim.fn.stdpath('config') .. '/lua/plugins_native/statusline',
-    event = 'VeryLazy',
+    event = 'BufReadPost',
     dependencies = { 'folke/noice.nvim' },
 }

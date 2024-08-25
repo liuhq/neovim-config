@@ -38,7 +38,8 @@ opt.pumheight = 10
 opt.relativenumber = true
 opt.scrolljump = 1
 opt.scrolloff = 5
-opt.sessionoptions = { 'buffers', 'curdir', 'folds', 'globals', 'help', 'tabpages', 'winpos', 'winsize', 'terminal' }
+opt.sessionoptions = { 'blank', 'buffers', 'curdir', 'folds', 'globals', 'help', 'localoptions', 'options', 'resize',
+    'tabpages', 'terminal', 'winpos', 'winsize' }
 opt.shiftround = true
 opt.shiftwidth = 4
 opt.shortmess:append({ W = true, I = true, c = true, C = true })

@@ -9,11 +9,6 @@ if not vim.g.vscode then
     vim.cmd.colorscheme('catppuccin')
 else
     -- VSCode extension
-    -- Config --
-    require('config_vscode/options')
-    require('config_vscode/autocmds')
-    require('config_vscode/keymaps')
+    require('config/vscode')
     require('config/lazy')
-    -- Colorscheme --
-    vim.cmd.colorscheme = ''
 end

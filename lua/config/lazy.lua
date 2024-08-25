@@ -6,7 +6,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.keymap.set('n', '<leader>al', '<cmd>Lazy<cr>', { desc = 'Lazy' })
+vim.keymap.set('n', '<leader>aa', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 
 require('lazy').setup({
     ---@type LazySpec

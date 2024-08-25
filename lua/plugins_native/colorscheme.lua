@@ -19,12 +19,6 @@ return {
                 dap_ui = true,
                 dashboard = true,
                 flash = true,
-                indent_blankline = {
-                    enabled = true,
-                    scope_color = '', -- catppuccin color (eg. `lavender`) Default: text
-                    colored_indent_levels = false,
-                },
-                lsp_trouble = true,
                 markdown = true,
                 mason = true,
                 mini = {
@@ -51,13 +45,11 @@ return {
                         background = true,
                     },
                 },
-                neotree = true,
                 noice = true,
                 notify = true,
                 treesitter = true,
                 telescope = {
                     enabled = true,
-                    -- style = "nvchad"
                 },
                 which_key = true,
             },

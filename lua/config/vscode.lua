@@ -1,3 +1,59 @@
+-- encoding --
+vim.g.encoding = 'UTF-8'
+vim.o.fileencoding = 'UTF-8'
+
+-- netrw disabled --
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- colorscheme --
+vim.cmd.colorscheme()
+
+-- notify
+vim.notify = require('vscode').notify
+
+--[[
+--  Options
+--]]
+local opt = vim.opt
+
+opt.autoindent = true
+opt.clipboard = 'unnamedplus'
+opt.completeopt = { 'menu', 'menuone', 'preview', 'noinsert', 'noselect' }
+opt.confirm = true
+opt.ignorecase = true
+opt.incsearch = true
+-- opt.showmode = false
+opt.splitbelow = true
+opt.splitright = true
+opt.virtualedit = 'block'
+
+--[[
+--  Autocmds
+--]]
+-- restore cursor position
+vim.api.nvim_create_autocmd('BufReadPost', {
+    callback = function ()
+        local line = vim.fn.line('\'"')
+        if line > 1 and line <= vim.fn.line('$') then
+            vim.cmd.normal('g\'"')
+        end
+    end,
+})
+
+-- highlight after copy
+vim.api.nvim_create_autocmd('TextYankPost', {
+    pattern = '*',
+    callback = function ()
+        vim.highlight.on_yank({
+            timeout = 100,
+        })
+    end,
+})
+
+--[[
+--  Keymaps
+--]]
 -- leader key --
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
@@ -14,7 +70,6 @@ local keymap = vim.keymap
 
 -- without yank --
 keymap.set('v', 'd', '"_d', { remap = false, silent = true })
-keymap.set({ 'n', 'v' }, '<M-v>', '"0p', { remap = false, silent = true })
 keymap.set({ 'n', 'v' }, 'c', '"_c', { remap = false, silent = true })
 
 -- better up/down
@@ -42,32 +97,5 @@ keymap.set({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and Clea
 keymap.set('v', '<', '<gv')
 keymap.set('v', '>', '>gv')
 
--- quit
-keymap.set('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
-keymap.set('n', '<leader>qc', '<cmd>q<cr>', { desc = 'Quit Current' })
-keymap.set('n', '<leader>qw', '<cmd>wq<cr>', { desc = 'Quit & Write' })
-
--- windows
-keymap.set('n', '<leader>wd', '<C-W>c', { desc = 'Delete Window', remap = true })
-keymap.set('n', '<leader>ws', '<C-W>s', { desc = 'Split Window Below', remap = true })
-keymap.set('n', '<leader>wv', '<C-W>v', { desc = 'Split Window Right', remap = true })
-
--- move to window using the <ctrl> hjkl keys
-keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window', remap = true, silent = true })
-keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Go to Lower Window', remap = true, silent = true })
-keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Go to Upper Window', remap = true, silent = true })
-keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window', remap = true, silent = true })
-
--- resize window using <ctrl> arrow keys
-keymap.set('n', '<C-Up>', '<cmd>resize +2<cr>', { desc = 'Increase Window Height' })
-keymap.set('n', '<C-Down>', '<cmd>resize -2<cr>', { desc = 'Decrease Window Height' })
-keymap.set('n', '<C-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
-keymap.set('n', '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
-
--- buffers
-keymap.set('n', '<S-h>', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
-keymap.set('n', '<S-l>', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
-keymap.set('n', '<leader>bt', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
-keymap.set('n', '<leader>bd', '<cmd>bdelete<cr>', { desc = 'Delete Buffer' })
-
+-- remap gi
 keymap.set('n', '<leader>ji', 'gi', { desc = 'Jump to Last Insert' })

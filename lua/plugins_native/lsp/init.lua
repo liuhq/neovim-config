@@ -1,9 +1,9 @@
+local icons = require('util').icons
+
 return {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-        'mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
         'cmp-nvim-lsp',
     },
     keys = {
@@ -13,20 +13,9 @@ return {
         { '<leader>xm', vim.diagnostic.setloclist, desc = 'Mark Diagnostic' },
     },
     config = function ()
-        local lspconfig = require('lspconfig')
-        local preset = require('config.preset_lsp')
-        local mason_lspconfig = require('mason-lspconfig')
-        local capabilities = require('cmp_nvim_lsp').default_capabilities()
-        local icons = require('config.icons')
-
-        mason_lspconfig.setup({ ensure_installed = vim.tbl_keys(preset) })
-        mason_lspconfig.setup_handlers({
-            function (server_name)
-                lspconfig[server_name].setup(vim.tbl_deep_extend('force', {
-                    capabilities = capabilities,
-                }, preset[server_name] or {}))
-            end,
-        })
+        require('plugins_native.lsp.config.vtsls').setup()
+        require('plugins_native.lsp.config.lua_ls').setup()
+        require('plugins_native.lsp.config.dprint').setup()
 
         vim.diagnostic.config({
             severity_sort = true,
