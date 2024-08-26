@@ -5,6 +5,9 @@ local M = {}
 M.enable_pkg = {
     -- bashls
     ['bash-language-server'] = true,
+    --- bash formatter: shfmt
+    ['shfmt'] = true,
+    -- ['clangd'] = true,
     -- cssls
     ['css-lsp'] = true,
     ['dprint'] = true,
@@ -14,8 +17,6 @@ M.enable_pkg = {
     ['json-lsp'] = true,
     -- lua_ls
     ['lua-language-server'] = true,
-    -- markdown_oxide
-    ['markdown-oxide'] = true,
     ['marksman'] = true,
     -- rust_analyzer
     ['rust-analyzer'] = true,

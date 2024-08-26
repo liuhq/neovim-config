@@ -52,8 +52,7 @@ return {
             function ()
                 vim.cmd('Mason')
                 local lsp_list = require('plugins_native.lsp.set').enable_pkg
-                local dap_list = require('plugins_native.dap.set').enable_pkg
-                local list = vim.list_extend(vim.tbl_keys(dap_list), vim.tbl_keys(lsp_list))
+                local list = vim.tbl_keys(lsp_list)
                 auto_install(list)
             end,
             desc = 'Mason AutoInstall',
