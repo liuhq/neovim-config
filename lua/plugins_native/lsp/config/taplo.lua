@@ -1,20 +1,20 @@
 local M = {}
 
-local server_name = 'marksman'
-local pkg_name = 'marksman'
+local server_name = 'taplo'
+local pkg_name = 'taplo'
 
 function M.setup()
     local lspconfig = require('lspconfig')
     local lsp_set = require('plugins_native.lsp.set')
-    local cmd_path = require('util').get_pkg_path(pkg_name, '/', 'marksman')
+    local cmd_path = require('util').get_pkg_path(pkg_name, '/', 'taplo')
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     ---@type lspconfig.Config
     local opts = {
         enabled = lsp_set.enable_pkg[pkg_name],
-        cmd = { cmd_path, 'server' },
-        filetypes = { 'markdown', 'markdown.mdx' },
-        root_dir = lspconfig.util.root_pattern('.git', '.marksman.toml'),
+        cmd = { cmd_path, 'lsp', 'stdio' },
+        filetypes = { 'toml' },
+        root_dir = lspconfig.util.root_pattern('*.toml', '.git'),
         single_file_support = true,
         capabilities = capabilities,
         on_attach = lsp_set.on_attach_base,

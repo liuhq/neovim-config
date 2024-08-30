@@ -5,11 +5,11 @@ local M = {}
 M.enable_pkg = {
     -- bashls
     ['bash-language-server'] = true,
-    --- bash formatter: shfmt
-    ['shfmt'] = true,
-    -- ['clangd'] = true,
+    ['clangd'] = true,
     -- cssls
     ['css-lsp'] = true,
+    -- dotls
+    ['dot-language-server'] = true,
     ['dprint'] = true,
     -- html
     ['html-lsp'] = true,
@@ -20,6 +20,10 @@ M.enable_pkg = {
     ['marksman'] = true,
     -- rust_analyzer
     ['rust-analyzer'] = true,
+    --- bash formatter: shfmt
+    ['shfmt'] = true,
+    -- tailwindcss
+    ['tailwindcss-language-server'] = true,
     ['taplo'] = true,
     ['vtsls'] = true,
 }

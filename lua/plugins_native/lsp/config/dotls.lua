@@ -1,20 +1,20 @@
 local M = {}
 
-local server_name = 'marksman'
-local pkg_name = 'marksman'
+local server_name = 'dotls'
+local pkg_name = 'dot-language-server'
 
 function M.setup()
     local lspconfig = require('lspconfig')
     local lsp_set = require('plugins_native.lsp.set')
-    local cmd_path = require('util').get_pkg_path(pkg_name, '/', 'marksman')
+    local cmd_path = require('util').get_pkg_path(pkg_name, '/node_modules/.bin/', 'dot-language-server')
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     ---@type lspconfig.Config
     local opts = {
         enabled = lsp_set.enable_pkg[pkg_name],
-        cmd = { cmd_path, 'server' },
-        filetypes = { 'markdown', 'markdown.mdx' },
-        root_dir = lspconfig.util.root_pattern('.git', '.marksman.toml'),
+        cmd = { cmd_path, '--stdio' },
+        filetypes = { 'dot' },
+        root_dir = lspconfig.util.find_git_ancestor,
         single_file_support = true,
         capabilities = capabilities,
         on_attach = lsp_set.on_attach_base,

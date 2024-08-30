@@ -14,12 +14,17 @@ return {
     },
     config = function ()
         require('plugins_native.lsp.config.bashls').setup()
+        require('plugins_native.lsp.config.clangd').setup()
         require('plugins_native.lsp.config.cssls').setup()
+        require('plugins_native.lsp.config.dotls').setup()
         require('plugins_native.lsp.config.dprint').setup()
         require('plugins_native.lsp.config.html').setup()
         require('plugins_native.lsp.config.jsonls').setup()
         require('plugins_native.lsp.config.lua_ls').setup()
         require('plugins_native.lsp.config.marksman').setup()
+        require('plugins_native.lsp.config.rust_analyzer').setup()
+        require('plugins_native.lsp.config.tailwindcss').setup()
+        require('plugins_native.lsp.config.taplo').setup()
         require('plugins_native.lsp.config.vtsls').setup()
 
         vim.diagnostic.config({

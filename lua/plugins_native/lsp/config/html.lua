@@ -3,7 +3,7 @@ local M = {}
 local server_name = 'html'
 local pkg_name = 'html-lsp'
 
-function M.setuo()
+function M.setup()
     local lspconfig = require('lspconfig')
     local lsp_set = require('plugins_native.lsp.set')
     local cmd_path = require('util').get_cmd_path('vscode-html-language-server')

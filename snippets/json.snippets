@@ -1,0 +1,103 @@
+snippet dpweb "dprint template - web"
+    {
+      "lineWidth": 120,
+      "indentWidth": 4,
+      "useTabs": false,
+      "newLineKind": "lf",
+      "typescript": {
+        "indentWidth": 4,
+        "useTabs": false,
+        "semiColons": "asi",
+        "quoteStyle": "preferSingle",
+        "jsx.quoteStyle": "preferDouble",
+        "quoteProps": "preserve",
+        "useBraces": "whenNotSingleLine",
+        "bracePosition": "sameLineUnlessHanging",
+        "singleBodyPosition": "sameLine",
+        "operatorPosition": "nextLine",
+        "arrowFunction.useParentheses": "force",
+        "memberExpression.linePerExpression": true
+      },
+      "json": {
+        "indentWidth": 2,
+        "useTabs": false,
+        "associations": [".prettierrc"]
+      },
+      "excludes": [
+        "**/*-lock.json",
+        "node_modules/"
+      ]
+      // dprint config add typescript
+      // dprint config add g-plane/markup_fmt
+      // dprint config add g-plane/malva
+      // dprint config add json
+      // dprint config add markdown
+    }
+
+snippet dpjs "dprint template - js"
+    {
+      "lineWidth": 120,
+      "indentWidth": 4,
+      "useTabs": false,
+      "newLineKind": "lf",
+      "typescript": {
+        "indentWidth": 4,
+        "useTabs": false,
+        "semiColons": "asi",
+        "quoteStyle": "preferSingle",
+        "jsx.quoteStyle": "preferDouble",
+        "quoteProps": "preserve",
+        "useBraces": "whenNotSingleLine",
+        "bracePosition": "sameLineUnlessHanging",
+        "singleBodyPosition": "sameLine",
+        "operatorPosition": "nextLine",
+        "arrowFunction.useParentheses": "force",
+        "memberExpression.linePerExpression": true
+      },
+      "json": {
+        "indentWidth": 2,
+        "useTabs": false,
+        "associations": [".prettierrc"]
+      },
+      "excludes": [
+        "**/*-lock.json",
+        "node_modules/"
+      ]
+      // dprint config add typescript
+      // dprint config add json
+      // dprint config add markdown
+    }
+
+snippet dppr "dprint template - prettier"
+    {
+      "prettier": {
+        ${0}
+      },
+      "excludes": [
+        "**/*-lock.json",
+        "node_modules/"
+      ]
+      // dprint config add prettier
+    }
+
+snippet dpex "dprint template - exec"
+    {
+      "exec": {
+        "cwd": "${1:configDir}",
+        "lineWidth": 120,
+        "indentWidth": 4,
+        "useTabs": false,
+        "newLineKind": "lf",
+        "commands": [
+          {
+            "command": "${2:command}",
+            "exts": "${3:exts}"
+          }${4:more}
+        ]
+      },
+      "excludes": [
+        "**/*-lock.json",
+        "node_modules/"
+      ]
+      ${0}// dprint config add exec
+    }
