@@ -34,7 +34,8 @@ return {
             mode = { 'n', 'i', 's' },
         },
     },
-    opts = {
+    config = function ()
+        require('noice').setup({
         lsp = {
             override = {
                 ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
@@ -94,9 +95,6 @@ return {
                 view = 'mini',
             },
         },
-    },
-    config = function (_, opts)
-        require('noice').setup(opts)
-        require('telescope').load_extension('noice')
+    })
     end,
 }

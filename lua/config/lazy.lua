@@ -11,9 +11,10 @@ vim.keymap.set('n', '<leader>aa', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 require('lazy').setup({
     ---@type LazySpec
     spec = {
-        { import = 'plugins_native', cond = function () return not vim.g.vscode end },
+        { import = 'plugins_base', cond = true },
+        { import = 'plugins_mini', cond = function () return not vim.g.vscode end },
+        { import = 'plugins_full', cond = function () return ( not vim.g.vscode ) and ( not vim.g.openmini ) end },
         { import = 'plugins_vscode', cond = function () return vim.g.vscode end },
-        { import = 'plugins_both', cond = true },
     },
     defaults = {
         lazy = false,

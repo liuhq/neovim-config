@@ -5,8 +5,8 @@ local pkg_name = 'lua-language-server'
 
 function M.setup()
     local lspconfig = require('lspconfig')
-    local lsp_set = require('plugins_native.lsp.set')
-    local cmd_path = require('util').get_pkg_path(pkg_name, '/bin/', 'lua-language-server')
+    local lsp_set = require('plugins_full.lsp.set')
+    local cmd_path = require('util').get_cmd_path('lua-language-server')
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     ---@type lspconfig.Config

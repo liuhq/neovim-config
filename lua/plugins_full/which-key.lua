@@ -29,10 +29,9 @@ return {
         wk.add({
             { 'g', group = 'Goto', mode = { 'n', 'v' } },
             { 'gs', group = 'Selection', mode = { 'n', 'v' } },
-            -- ['z'] = { name = '+fold' },
-            -- [']'] = { name = '+next' },
-            -- ['['] = { name = '+prev' },
-            -- ['<leader><tab>'] = { name = '+tabs' },
+            { 'z', group = 'Fold', mode = { 'n', 'v' } },
+            { '[', group = 'Prev', mode = { 'n', 'v' } },
+            { ']', group = 'Next', mode = { 'n', 'v' } },
             { '<leader>a', group = 'Manager' },
             { '<leader>b', group = 'Buffer' },
             { '<leader>c', group = 'Code' },

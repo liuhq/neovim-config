@@ -11,7 +11,8 @@ return {
         },
         { '<leader>ns', '<cmd>Notifications<cr>', desc = 'Log Notifications' },
     },
-    opts = {
+    config = function ()
+        require('notify').setup({
         stages = 'static',
         timeout = 3000,
         max_height = function ()
@@ -26,10 +27,7 @@ return {
         -- render = 'compact',
         fps = 60,
         top_down = true,
-    },
-    config = function (_, opts)
-        require('notify').setup(opts)
-        require('telescope').load_extension('notify')
+    })
 
         -- local notify = require('notify')
         -- notify.setup(opts)

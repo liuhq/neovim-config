@@ -51,7 +51,7 @@ return {
             '<leader>ai',
             function ()
                 vim.cmd('Mason')
-                local lsp_list = require('plugins_native.lsp.set').enable_pkg
+                local lsp_list = require('plugins_full.lsp.set').enable_pkg
                 local list = vim.tbl_keys(lsp_list)
                 auto_install(list)
             end,

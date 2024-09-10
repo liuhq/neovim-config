@@ -5,8 +5,8 @@ local pkg_name = 'dprint'
 
 function M.setup()
     local lspconfig = require('lspconfig')
-    local lsp_set = require('plugins_native.lsp.set')
-    local cmd_path = require('util').get_pkg_path(pkg_name, '/', 'dprint')
+    local lsp_set = require('plugins_full.lsp.set')
+    local cmd_path = require('util').get_cmd_path('dprint')
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     ---@type lspconfig.Config

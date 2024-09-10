@@ -11,7 +11,7 @@ return {
                 dark = 'mocha',
             },
             show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
-            term_colors = true,        -- sets terminal colors (e.g. `g:terminal_color_0`)
+            term_colors = false,        -- sets terminal colors (e.g. `g:terminal_color_0`)
             default_integrations = true,
             integrations = {
                 cmp = true,
