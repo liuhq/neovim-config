@@ -138,7 +138,5 @@ return {
         })
 
         telescope.setup(opts)
-        telescope.load_extension('notify')
-        telescope.load_extension('noice')
     end,
 }

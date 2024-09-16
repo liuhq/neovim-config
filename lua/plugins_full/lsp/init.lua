@@ -11,6 +11,7 @@ return {
         { ']d', vim.diagnostic.goto_next, desc = 'Next Diagnostic' },
         { '<leader>xi', vim.diagnostic.open_float, desc = 'Diagnostic Info' },
         { '<leader>xm', vim.diagnostic.setloclist, desc = 'Mark Diagnostic' },
+        { '<leader>al', '<cmd>LspInfo<cr>', desc = 'LSP Info' }
     },
     config = function ()
         require('plugins_full.lsp.config.bashls').setup()

@@ -8,18 +8,18 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.keymap.set('n', '<leader>aa', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 
-require('lazy').setup({
-    ---@type LazySpec
+---@type LazyConfig
+local lazy_opts = {
     spec = {
         { import = 'plugins_base', cond = true },
-        { import = 'plugins_mini', cond = function () return not vim.g.vscode end },
-        { import = 'plugins_full', cond = function () return ( not vim.g.vscode ) and ( not vim.g.openmini ) end },
+        { import = 'plugins_full', cond = function () return not vim.g.vscode end },
         { import = 'plugins_vscode', cond = function () return vim.g.vscode end },
     },
     defaults = {
         lazy = false,
         version = false,
     },
+    rocks = { enabled = false },
     install = { colorscheme = { 'catppuccin' } },
     checker = {
         enabled = true,
@@ -33,7 +33,7 @@ require('lazy').setup({
         -- The backdrop opacity. 0 is fully opaque, 100 is fully transparent.
         backdrop = 0,
         title = 'Lazy Dashboard',
-        title_pos = 'left', -- "center" | "left" | "right"
+        title_pos = 'left',     -- "center" | "left" | "right"
         pills = true,
     },
     performance = {
@@ -50,4 +50,6 @@ require('lazy').setup({
             },
         },
     },
-})
+}
+
+require('lazy').setup(lazy_opts)

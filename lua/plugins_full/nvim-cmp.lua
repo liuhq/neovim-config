@@ -5,7 +5,7 @@ return {
         'hrsh7th/cmp-cmdline',  -- cmdline auto-completion
         'hrsh7th/cmp-nvim-lsp', -- lsp auto-completion
         'hrsh7th/cmp-path',     -- path auto-completion
-        'L3MON4D3/LuaSnip',
+        { 'L3MON4D3/LuaSnip', build = 'make install_jsregexp' },
         'saadparwaiz1/cmp_luasnip',
     },
     config = function ()

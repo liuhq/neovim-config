@@ -13,7 +13,7 @@ function M.setup()
     local opts = {
         enabled = lsp_set.enable_pkg[pkg_name],
         cmd = { cmd_path, 'start' },
-        filetypes = { 'sh' },
+        filetypes = { 'sh', 'zsh' },
         root_dir = lspconfig.util.find_git_ancestor,
         single_file_support = true,
         capabilities = capabilities,

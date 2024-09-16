@@ -1,53 +1,26 @@
 local icons = require('util').icons
 _G.stl_comp = {}
 
-local palette = require('catppuccin.palettes').get_palette('latte')
+-- local palette = require('catppuccin.palettes').get_palette('latte')
+local palette = require('catppuccin.palettes').get_palette('mocha')
 local color_picker = {
-    basebg = palette.subtext1,
-    basefg = '#FFFFFF',
+    basebg = palette.base,
+    basefg = palette.text,
     modebg = {
-        n = palette.mauve,  -- Normal
-        i = palette.maroon, -- Insert
-        v = palette.blue,   -- Visual
-        V = palette.blue,   -- Visual
+        n = palette.blue,   -- Normal
+        i = palette.red,    -- Insert
+        v = palette.green,  -- Visual
+        V = palette.green,  -- Visual
         c = palette.teal,   -- Command
-        R = palette.red,    -- Replace
+        R = palette.yellow, -- Replace
     },
-    modefg = '#FFFFFF',
+    modefg = palette.base,
     filestatusfg = palette.yellow,
     nsearchfg = palette.sky,
     nmodefg = palette.rosewater,
-    posbg = '#313244',
-    posfg = '#FFFFFF',
+    posbg = palette.surface0,
+    posfg = palette.blue,
 }
-
-vim.api.nvim_create_autocmd('OptionSet', {
-    pattern = 'background',
-    callback = function ()
-        local bg = vim.o.background
-        if bg == 'light' then
-            vim.api.nvim_set_hl(0, 'StatusLineBg', { fg = color_picker.basefg, bg = color_picker.basebg })
-            vim.api.nvim_set_hl(0, 'StatusLineModeEdge', { fg = color_picker.modebg.n })
-            vim.api.nvim_set_hl(0, 'StatusLineMode',
-                { fg = color_picker.modefg, bg = color_picker.modebg.n, bold = true })
-            vim.api.nvim_set_hl(0, 'StatusLineFileStatus', { fg = color_picker.filestatusfg })
-            vim.api.nvim_set_hl(0, 'StatusLineNoiceSearch', { fg = color_picker.nsearchfg })
-            vim.api.nvim_set_hl(0, 'StatusLineNoiceMode', { fg = color_picker.nmodefg })
-            vim.api.nvim_set_hl(0, 'StatusLinePositionEdge', { fg = color_picker.posbg })
-            vim.api.nvim_set_hl(0, 'StatusLinePosition', { fg = color_picker.posfg, bg = color_picker.posbg })
-        else
-            vim.api.nvim_set_hl(0, 'StatusLineBg', { fg = color_picker.basefg, bg = color_picker.basebg })
-            vim.api.nvim_set_hl(0, 'StatusLineModeEdge', { fg = color_picker.modebg.n })
-            vim.api.nvim_set_hl(0, 'StatusLineMode',
-                { fg = color_picker.modefg, bg = color_picker.modebg.n, bold = true })
-            vim.api.nvim_set_hl(0, 'StatusLineFileStatus', { fg = color_picker.filestatusfg })
-            vim.api.nvim_set_hl(0, 'StatusLineNoiceSearch', { fg = color_picker.nsearchfg })
-            vim.api.nvim_set_hl(0, 'StatusLineNoiceMode', { fg = color_picker.nmodefg })
-            vim.api.nvim_set_hl(0, 'StatusLinePositionEdge', { fg = color_picker.posbg })
-            vim.api.nvim_set_hl(0, 'StatusLinePosition', { fg = color_picker.posfg, bg = color_picker.posbg })
-        end
-    end,
-})
 
 -- Highlight Group: start
 vim.api.nvim_set_hl(0, 'StatusLineBg', { fg = color_picker.basefg, bg = color_picker.basebg })
@@ -64,6 +37,7 @@ vim.api.nvim_set_hl(0, 'StatusLinePosition', { fg = color_picker.posfg, bg = col
 local function set_color(color)
     vim.api.nvim_set_hl(0, 'StatusLineMode', { fg = color_picker.modefg, bg = color, bold = true })
     vim.api.nvim_set_hl(0, 'StatusLineModeEdge', { fg = color })
+    vim.api.nvim_set_hl(0, 'StatusLinePosition', { fg = color, bg = color_picker.posbg })
 end
 
 local mode_change = {
@@ -184,7 +158,7 @@ vim.opt.statusline = table.concat({
     -- mode
     '%(',
     '%#StatusLineModeEdge#',
-    '▌',
+    ' ▌',
     '%*',
     '%#StatusLineMode#',
     ' %{v:lua.string.upper(mode())} ',
@@ -256,12 +230,12 @@ vim.opt.statusline = table.concat({
     '%)',
     '%*',
     '%#StatusLineModeEdge#',
-    '▐',
+    '▐ ',
     '%*',
 })
 
 return {
-    dir = vim.fn.stdpath('config') .. '/lua/plugins_mini/statusline',
+    dir = vim.fn.stdpath('config') .. '/lua/plugins_full/statusline',
     event = 'BufReadPost',
     dependencies = { 'folke/noice.nvim' },
 }

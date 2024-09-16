@@ -2,10 +2,6 @@
 vim.g.encoding = 'UTF-8'
 vim.o.fileencoding = 'UTF-8'
 
--- netrw disabled --
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- nvim options --
 local opt = vim.opt
 

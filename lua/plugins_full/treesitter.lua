@@ -1,8 +1,11 @@
 local ts_lang = {
+    'asm',
     'bash',
     'c',
+    'commonlisp',
     'cpp',
     'css',
+    'dot',
     'html',
     'javascript',
     'json',
@@ -10,6 +13,7 @@ local ts_lang = {
     'markdown',
     'markdown_inline',
     'racket',
+    'regex',
     'rust',
     'toml',
     'tsx',
@@ -23,7 +27,7 @@ return {
     build = ':TSUpdate',
     event = 'BufReadPost',
     lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
-    cmd = { 'TSUpdateSync', 'TSUpdate', 'TSInstall' },
+    cmd = { 'TSUpdateSync', 'TSUpdate', 'TSInstallFromGrammar', 'TSInstall' },
     opts = {
         ensure_installed = ts_lang,
         highlight = {
