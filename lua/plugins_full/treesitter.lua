@@ -1,15 +1,12 @@
 local ts_lang = {
-    'asm',
     'bash',
-    'c',
-    'commonlisp',
-    'cpp',
     'css',
+    'diff',
     'dot',
+    'gitcommit',
     'html',
     'javascript',
     'json',
-    'lua',
     'markdown',
     'markdown_inline',
     'racket',
@@ -18,15 +15,15 @@ local ts_lang = {
     'toml',
     'tsx',
     'typescript',
-    'xml',
 }
 
 return {
     'nvim-treesitter/nvim-treesitter',
     version = false, -- last release is way too old and doesn't work on Windows
+    -- enabled = false,
     build = ':TSUpdate',
     event = 'BufReadPost',
-    lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
+    -- lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
     cmd = { 'TSUpdateSync', 'TSUpdate', 'TSInstallFromGrammar', 'TSInstall' },
     opts = {
         ensure_installed = ts_lang,
@@ -37,48 +34,15 @@ return {
             end,
         },
         indent = { enable = true },
-        incremental_selection = {
-            enable = true,
-            keymaps = {
-                init_selection = 'gss',
-                node_incremental = 'gsi',
-                scope_incremental = 'gss',
-                node_decremental = 'gsd',
-            },
-        },
-        textobjects = {
-            enable = true,
-            select = {
-                enable = true,
-                lookahead = true,
-                keymaps = {
-                    ['ac'] = '@class.outer',
-                    ['ic'] = '@class.inner',
-                },
-            },
-            move = {
-                enable = true,
-                set_jumps = true,
-                goto_next_start = {
-                    [']]'] = '@function.outer',
-                    [']c'] = '@class.outer',
-                },
-                goto_next_end = {
-                    [']['] = '@function.outer',
-                    [']C'] = '@class.outer',
-                },
-                goto_previous_start = {
-                    ['[['] = '@function.outer',
-                    ['[c'] = '@class.outer',
-                },
-                goto_previous_end = {
-                    ['[]'] = '@function.outer',
-                    ['[C'] = '@class.outer',
-                },
-            },
-        },
+        incremental_selection = { enable = false },
+        textobjects = { enable = false },
     },
     config = function (_, opts)
+        require('nvim-treesitter.install').prefer_git = false
+        require('nvim-treesitter.install').compilers = { 'zig' }
         require('nvim-treesitter.configs').setup(opts)
+
+        vim.wo.foldmethod = 'expr'
+        vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
     end,
 }
