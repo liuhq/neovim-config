@@ -1,17 +1,14 @@
 local M = {}
 
-local server_name = 'tailwindcss'
-local pkg_name = 'tailwindcss-language-server'
-
-function M.setup()
+---@param on_attach_base fun(client:vim.lsp.Client, bufnr:integer)
+function M.setup(on_attach_base)
     local lspconfig = require('lspconfig')
-    local lsp_set = require('plugins_full.lsp.set')
-    local cmd_path = require('util').get_cmd_path('tailwindcss-language-server')
+    local cmd_path = vim.fn.exepath('tailwindcss-language-server')
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     ---@type lspconfig.Config
     local opts = {
-        enabled = lsp_set.enable_pkg[pkg_name],
+        enabled = true,
         cmd = { cmd_path, '--stdio' },
         filetypes = {
             'astro',
@@ -52,9 +49,9 @@ function M.setup()
                 classAttributes = { 'class', 'className', 'class:list', 'classList', 'ngClass' },
             },
         },
-        on_attach = lsp_set.on_attach_base,
+        on_attach = on_attach_base,
     }
-    lspconfig[server_name].setup(opts)
+    lspconfig['tailwindcss'].setup(opts)
 end
 
 return M

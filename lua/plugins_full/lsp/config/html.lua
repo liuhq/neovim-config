@@ -1,17 +1,14 @@
 local M = {}
 
-local server_name = 'html'
-local pkg_name = 'html-lsp'
-
-function M.setup()
+---@param on_attach_base fun(client:vim.lsp.Client, bufnr:integer)
+function M.setup(on_attach_base)
     local lspconfig = require('lspconfig')
-    local lsp_set = require('plugins_full.lsp.set')
-    local cmd_path = require('util').get_cmd_path('vscode-html-language-server')
+    local cmd_path = vim.fn.exepath('vscode-html-language-server')
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     ---@type lspconfig.Config
     local opts = {
-        enabled = lsp_set.enable_pkg[pkg_name],
+        enabled = true,
         cmd = { cmd_path, '--stdio' },
         filetypes = { 'html', 'templ' },
         root_dir = lspconfig.util.root_pattern('package.json', '.git'),
@@ -27,12 +24,12 @@ function M.setup()
         -- settings = {
         -- },
         on_attach = function (client, bufnr)
-            lsp_set.on_attach_base(client, bufnr)
+            on_attach_base(client, bufnr)
 
             client.capabilities.textDocument.completion.completionItem.snippetSupport = true
         end,
     }
-    lspconfig[server_name].setup(opts)
+    lspconfig['html'].setup(opts)
 end
 
 return M

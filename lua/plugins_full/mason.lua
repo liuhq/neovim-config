@@ -1,3 +1,29 @@
+-- COMMENT is lspconfig server name
+-- KEY is mason.nvim package name
+local enable_pkg = {
+    -- lsp: bashls and formatter: shfmt
+    'bash-language-server',
+    'shfmt',
+    'clangd',
+    -- cssls
+    'css-lsp',
+    -- dotls
+    'dot-language-server',
+    -- html
+    'html-lsp',
+    -- jsonls
+    'json-lsp',
+    -- lua_ls
+    'lua-language-server',
+    'marksman',
+    -- rust_analyzer
+    'rust-analyzer',
+    -- tailwindcss
+    'tailwindcss-language-server',
+    'taplo',
+    'vtsls',
+}
+
 ---Auto Mason Install
 ---@param list string[]
 local auto_install = function (list)
@@ -51,9 +77,7 @@ return {
             '<leader>ai',
             function ()
                 vim.cmd('Mason')
-                local lsp_list = require('plugins_full.lsp.set').enable_pkg
-                local list = vim.tbl_keys(lsp_list)
-                auto_install(list)
+                auto_install(enable_pkg)
             end,
             desc = 'Mason AutoInstall',
         },

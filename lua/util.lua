@@ -28,18 +28,6 @@ M.icons = {
     },
 }
 
----Get Mason Packages Command Path from packages
----@param pkg string name without path slash
----@param path? string start from slash (and end of slash)
----@param target? string command name
----@return string - command path
-function M.get_pkg_path(pkg, path, target)
-    local root = vim.fn.stdpath('data') .. '/mason/packages/'
-    path = path or ''
-    target = target or ''
-    return root .. pkg .. path .. target
-end
-
 ---Get Mason Packages Command Path from bin
 ---@param target string command name
 ---@return string - command path

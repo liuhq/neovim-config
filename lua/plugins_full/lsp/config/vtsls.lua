@@ -1,17 +1,14 @@
 local M = {}
 
-local server_name = 'vtsls'
-local pkg_name = 'vtsls'
-
-function M.setup()
+---@param on_attach_base fun(client:vim.lsp.Client, bufnr:integer)
+function M.setup(on_attach_base)
     local lspconfig = require('lspconfig')
-    local lsp_set = require('plugins_full.lsp.set')
-    local cmd_path = require('util').get_cmd_path('vtsls')
+    local cmd_path = vim.fn.exepath('vtsls')
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     ---@type lspconfig.Config
     local opts = {
-        enabled = lsp_set.enable_pkg[pkg_name],
+        enabled = true,
         cmd = { cmd_path, '--stdio' },
         filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
         root_dir = lspconfig.util.root_pattern('tsconfig.json', 'package.json', 'jsconfig.json', '.git'),
@@ -102,15 +99,10 @@ function M.setup()
                 },
             },
         },
-        on_attach = function (client, bufnr)
-            lsp_set.on_attach_base(client, bufnr)
-
-            client.server_capabilities.documentFormattingProvider = false
-            client.server_capabilities.documentRangeFormattingProvider = false
-        end,
+        on_attach = on_attach_base,
     }
 
-    lspconfig[server_name].setup(opts)
+    lspconfig['vtsls'].setup(opts)
 end
 
 return M

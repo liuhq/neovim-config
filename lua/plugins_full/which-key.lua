@@ -43,7 +43,7 @@ return {
             { '<leader>n', group = 'Notify' },
             { '<leader>o', group = 'Others' },
             { '<leader>q', group = 'Quit/Session' },
-            { '<leader>s', group = 'Surround' },
+            { '<leader>s', group = 'Search' },
             { '<leader>t', group = 'Tab' },
             { '<leader>w', group = 'Window/Workspace' },
             { '<leader>x', group = 'Diagnostics' },

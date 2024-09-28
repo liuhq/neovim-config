@@ -22,8 +22,9 @@ local lazy_opts = {
     rocks = { enabled = false },
     install = { colorscheme = { 'catppuccin' } },
     checker = {
-        enabled = true,
+        enabled = false,
         frequency = 86400,
+        notify = false,
     },
     ui = {
         size = { width = 0.8, height = 0.8 },

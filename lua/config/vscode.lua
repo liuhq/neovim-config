@@ -15,18 +15,17 @@ vim.notify = require('vscode').notify
 --[[
 --  Options
 --]]
-local opt = vim.opt
+local o = vim.o
 
-opt.autoindent = true
-opt.clipboard = 'unnamedplus'
-opt.completeopt = { 'menu', 'menuone', 'preview', 'noinsert', 'noselect' }
-opt.confirm = true
-opt.ignorecase = true
-opt.incsearch = true
--- opt.showmode = false
-opt.splitbelow = true
-opt.splitright = true
-opt.virtualedit = 'block'
+o.autoindent = true
+o.clipboard = 'unnamedplus'
+o.completeopt = 'menu,menuone,preview,noinsert,noselect'
+o.confirm = true
+o.ignorecase = true
+o.incsearch = true
+o.splitbelow = true
+o.splitright = true
+o.virtualedit = 'block'
 
 --[[
 --  Autocmds

@@ -2,12 +2,12 @@ local keymap = vim.keymap
 local vscode = require('vscode')
 
 -- hover
-keymap.set('n', '<S-k>', function() vscode.call('editor.action.showHover') end, { desc = 'Show Hover' })
+keymap.set('n', 'gh', function() vscode.call('editor.action.showHover') end, { desc = 'Show Hover' })
 
 -- code
 keymap.set('n', '<leader>ca', function() vscode.call('editor.action.quickFix') end, { desc = 'Code Action' })
-keymap.set('n', '<leader>cn', function() vscode.call('editor.action.rename') end, { desc = 'Rename' })
-keymap.set('n', '<leader>cr', function() vscode.call('editor.action.refactor') end, { desc = 'Refactor' })
+keymap.set('n', '<leader>cr', function() vscode.call('editor.action.rename') end, { desc = 'Rename' })
+keymap.set('n', '<leader>cR', function() vscode.call('editor.action.refactor') end, { desc = 'Refactor' })
 keymap.set('n', '<leader>cA', function() vscode.call('editor.action.sourceAction') end, { desc = 'Source Action' })
 keymap.set('n', '<leader>cf', function() vscode.call('editor.action.formatDocument') end, { desc = 'Format' })
 keymap.set('v', '<leader>cf', function() vscode.call('editor.action.formatSelection') end, { desc = 'Format Selection' })

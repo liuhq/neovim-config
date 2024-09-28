@@ -1,17 +1,14 @@
 local M = {}
 
-local server_name = 'clangd'
-local pkg_name = 'clangd'
-
-function M.setup()
+---@param on_attach_base fun(client:vim.lsp.Client, bufnr:integer)
+function M.setup(on_attach_base)
     local lspconfig = require('lspconfig')
-    local lsp_set = require('plugins_full.lsp.set')
-    local cmd_path = require('util').get_cmd_path('clangd')
+    local cmd_path = vim.fn.exepath('clangd')
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     ---@type lspconfig.Config
     local opts = {
-        enabled = lsp_set.enable_pkg[pkg_name],
+        enabled = true,
         cmd = { cmd_path },
         filetypes = {
             'c',
@@ -32,10 +29,10 @@ function M.setup()
         single_file_support = true,
         capabilities = capabilities,
         on_attach = function (client, bufnr)
-            lsp_set.on_attach_base(client, bufnr)
+            on_attach_base(client, bufnr)
         end,
     }
-    lspconfig[server_name].setup(opts)
+    lspconfig['clangd'].setup(opts)
 end
 
 return M

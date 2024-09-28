@@ -7,12 +7,23 @@ return {
         'hrsh7th/cmp-path',     -- path auto-completion
         { 'L3MON4D3/LuaSnip', build = 'make install_jsregexp' },
         'saadparwaiz1/cmp_luasnip',
+        'onsails/lspkind.nvim',
     },
     config = function ()
         local cmp = require('cmp')
         local luasnip = require('luasnip')
+        local lspkind = require('lspkind')
 
         cmp.setup({
+            formatting = {
+                format = lspkind.cmp_format({
+                    mode = 'symbol_text',
+                    preset = 'codicons',
+                    maxwidth = function () return math.floor(0.45 * vim.o.columns) end,
+                    ellipsis_char = '...',
+                    show_labelDetails = true,
+                }),
+            },
             snippet = {
                 expand = function (args)
                     luasnip.lsp_expand(args.body)

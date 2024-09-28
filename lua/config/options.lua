@@ -1,58 +1,54 @@
--- encoding --
+local o = vim.o
+
+o.clipboard = 'unnamedplus'
+o.cursorline = true
+o.number = true
+o.relativenumber = true
+o.numberwidth = 4
+
+o.autoindent = true
+o.smartindent = true
+o.expandtab = true
+o.shiftwidth = 4
+o.tabstop = 4
+o.softtabstop = 4
+
+o.confirm = true
+o.mouse = 'a'
+o.scrolljump = 1
+o.scrolloff = 5
+o.smoothscroll = true
+o.virtualedit = 'block'
+
+o.sessionoptions = 'blank,buffers,curdir,folds,globals,help,localoptions,options,resize,tabpages,terminal,winpos,winsize'
+o.smartcase = true
+o.incsearch = true
+o.splitbelow = true
+o.splitright = true
+
+o.wildmenu = true
+o.wildmode = 'list:longest,list:full'
+o.pumblend = 10
+o.pumheight = 10
+o.completeopt = 'menu,menuone,preview,noinsert,noselect'
+
+o.guicursor = 'n-o:block,v-c:hor18,i-ci-ve:ver10,r-cr-sm:block,a:blinkwait700-blinkoff400-blinkon250'
+o.laststatus = 3
+o.showmode = false
+o.termguicolors = true
+o.winminwidth = 5
+o.foldlevel = 99
+
+o.wrap = false
+o.whichwrap = '<,>,[,]'
+
 vim.g.encoding = 'UTF-8'
-vim.o.fileencoding = 'UTF-8'
+o.fileencoding = 'UTF-8'
+o.fileformat = 'unix'
+o.fileformats = 'unix,dos'
 
--- nvim options --
-local opt = vim.opt
+vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
 
-opt.autoindent = true
-opt.clipboard = 'unnamedplus'
-opt.completeopt = { 'menu', 'menuone', 'preview', 'noinsert', 'noselect' }
-opt.confirm = true
-opt.cursorline = true
-opt.expandtab = true
-opt.fileformat = 'unix'
-opt.fileformats = 'unix,dos'
-opt.fillchars = {
-    foldopen = '',
-    foldclose = '',
-    fold = ' ',
-    foldsep = ' ',
-    diff = '╱',
-    eob = ' ',
-}
-opt.foldlevel = 99
-opt.guicursor = 'n:block,v-c:hor18,o:hor25,i-ci-ve:ver10,r-cr-sm:block,a:blinkwait700-blinkoff400-blinkon250'
-opt.ignorecase = true
-opt.incsearch = true
-opt.laststatus = 3
-opt.mouse = 'a'
-opt.number = true
-opt.numberwidth = 4
-opt.pumblend = 10
-opt.pumheight = 10
-opt.relativenumber = true
-opt.scrolljump = 1
-opt.scrolloff = 5
-opt.sessionoptions = { 'blank', 'buffers', 'curdir', 'folds', 'globals', 'help', 'localoptions', 'options', 'resize',
-    'tabpages', 'terminal', 'winpos', 'winsize' }
-opt.shiftround = true
-opt.shiftwidth = 4
-opt.shortmess:append({ W = true, I = true, c = true, C = true })
-opt.showmode = false
-opt.smartcase = true
-opt.smartindent = true
-opt.smoothscroll = true
-opt.softtabstop = 4
-opt.splitbelow = true
-opt.splitright = true
-opt.tabstop = 4
-opt.termguicolors = true
-opt.undofile = true
-opt.undolevels = 10000
-opt.updatetime = 200
-opt.virtualedit = 'block'
-opt.wildmode = 'longest:full,full'
-opt.winminwidth = 5
-opt.wrap = false
-opt.whichwrap = '<,>,[,]'
+o.undofile = true
+o.undolevels = 10000
+o.updatetime = 200

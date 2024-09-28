@@ -100,8 +100,10 @@ return {
             files.refresh({ content = { sort = new_sorter } })
         end
 
+        local minifiles_group = vim.api.nvim_create_augroup('MiniFiles', { clear = false })
         vim.api.nvim_create_autocmd('User', {
             pattern = 'MiniFilesBufferCreate',
+            group = minifiles_group,
             callback = function (args)
                 local buf_id = args.data.buf_id
                 vim.keymap.set('n', 'g.', toggle_ignorefiles, { buffer = buf_id, desc = 'Hide from GitIgnore' })
@@ -118,6 +120,7 @@ return {
 
         vim.api.nvim_create_autocmd('User', {
             pattern = 'MiniFilesBufferCreate',
+            group = minifiles_group,
             callback = function (args)
                 vim.keymap.set('n', 'g~', files_set_cwd, { buffer = args.data.buf_id, desc = 'Change cwd' })
             end,
