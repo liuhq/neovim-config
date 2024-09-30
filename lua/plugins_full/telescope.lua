@@ -24,14 +24,6 @@ return {
         { '<leader>xD', '<cmd>Telescope diagnostics<cr>', desc = 'Diagnostics (Workspace)' },
         -- git --
         {
-            '<leader>gg',
-            function ()
-                local ok, _ = pcall(require('telescope.builtin').git_files, { show_untracked = true })
-                if not ok then return vim.notify('[git_files] Not a git directory', 4) end
-            end,
-            desc = 'Files',
-        },
-        {
             '<leader>gc',
             function ()
                 local ok, _ = pcall(require('telescope.builtin').git_commits)
@@ -66,9 +58,12 @@ return {
     },
     opts = {
         defaults = {
+            borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+            -- winblend = 10,
             wrap_results = false,
-            prompt_prefix = ' ',
-            selection_caret = ' ',
+            prompt_prefix = ' ',
+            selection_caret = '▐ ',
+            entry_prefix = '  ',
             initial_mode = 'insert', -- insert | normal
             history = false,
             -- open files in the first window that is an actual file.

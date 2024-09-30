@@ -16,7 +16,6 @@ return {
         -- remove add single quote on filetype scheme or lisp
         npairs.get_rules("'")[1].not_filetypes = { 'racket', 'scheme', 'lisp' }
         npairs.get_rules("'")[1]:with_pair(npairs_cond.not_after_text('['))
-        print(vim.inspect(npairs.get_rules("'")))
 
         -- auto-pair <> for generics
         npairs.add_rule(npairs_rule('<', '>', {

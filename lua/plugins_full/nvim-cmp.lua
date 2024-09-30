@@ -2,27 +2,39 @@ return {
     'hrsh7th/nvim-cmp',
     event = { 'InsertEnter', 'CmdlineEnter' },
     dependencies = {
-        'hrsh7th/cmp-cmdline',  -- cmdline auto-completion
-        'hrsh7th/cmp-nvim-lsp', -- lsp auto-completion
-        'hrsh7th/cmp-path',     -- path auto-completion
+        'hrsh7th/cmp-buffer',       -- buffer search auto-completion
+        'hrsh7th/cmp-cmdline',      -- cmdline auto-completion
+        'hrsh7th/cmp-nvim-lsp',     -- lsp auto-completion
+        'hrsh7th/cmp-path',         -- path auto-completion
         { 'L3MON4D3/LuaSnip', build = 'make install_jsregexp' },
-        'saadparwaiz1/cmp_luasnip',
-        'onsails/lspkind.nvim',
+        'saadparwaiz1/cmp_luasnip', -- snippets auto-completion
+        'hrsh7th/cmp-emoji',        -- emoji auto-completion
     },
     config = function ()
         local cmp = require('cmp')
         local luasnip = require('luasnip')
-        local lspkind = require('lspkind')
 
         cmp.setup({
+            window = {
+                completion = {
+                    col_offset = 1,
+                    side_padding = 0,
+                },
+                documentation = {
+                    border = 'solid',
+                    -- winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu',
+                },
+            },
             formatting = {
-                format = lspkind.cmp_format({
-                    mode = 'symbol_text',
-                    preset = 'codicons',
-                    maxwidth = function () return math.floor(0.45 * vim.o.columns) end,
-                    ellipsis_char = '...',
-                    show_labelDetails = true,
-                }),
+                expandable_indicator = true,
+                format = function (entry, vim_item)
+                    if entry.source.name == 'emoji' then
+                        vim_item.kind = 'emoji'
+                        return vim_item
+                    end
+                    vim_item.kind = string.lower(vim_item.kind)
+                    return vim_item
+                end,
             },
             snippet = {
                 expand = function (args)
@@ -58,14 +70,26 @@ return {
                         fallback()
                     end
                 end, { 'i', 's', 'c' }),
+                ['<C-h>'] = cmp.mapping(function ()
+                    if cmp.visible_docs() then
+                        cmp.close_docs()
+                    else
+                        cmp.open_docs()
+                    end
+                end, { 'i', 's', 'c' }),
             }),
             sources = {
-                { name = 'nvim_lsp' },
-                { name = 'path' },
+                {
+                    name = 'nvim_lsp',
+                    entry_filter = function (entry, _)
+                        return require('cmp.types').lsp.CompletionItemKind[entry:get_kind()] ~= 'Text'
+                    end,
+                },
                 { name = 'luasnip' },
-                { name = 'lazydev', group_index = 0 },
+                { name = 'path' },
             },
         })
+
         -- `/` cmdline setup.
         cmp.setup.cmdline('/', {
             mapping = cmp.mapping.preset.cmdline(),
@@ -87,6 +111,24 @@ return {
                 },
             }),
         })
+
+        cmp.setup.filetype({ 'markdown' }, {
+            sources = {
+                {
+                    name = 'nvim_lsp',
+                    entry_filter = function (entry, _)
+                        return require('cmp.types').lsp.CompletionItemKind[entry:get_kind()] ~= 'Text'
+                    end,
+                },
+                { name = 'buffer' },
+                { name = 'path' },
+                {
+                    name = 'emoji',
+                    keyword_length = 3,
+                },
+            },
+        })
+
         -- LuaSnip snippets
         require('luasnip.loaders.from_snipmate').lazy_load()
     end,

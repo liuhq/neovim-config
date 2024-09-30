@@ -1,7 +1,8 @@
 local M = {}
 
 ---@param on_attach_base fun(client:vim.lsp.Client, bufnr:integer)
-function M.setup(on_attach_base)
+---@param handlers table<string, lsp.Handler>
+function M.setup(on_attach_base, handlers)
     local lspconfig = require('lspconfig')
     local cmd_path = vim.fn.exepath('vscode-html-language-server')
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -28,6 +29,7 @@ function M.setup(on_attach_base)
 
             client.capabilities.textDocument.completion.completionItem.snippetSupport = true
         end,
+        handlers = handlers
     }
     lspconfig['html'].setup(opts)
 end

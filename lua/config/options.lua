@@ -28,7 +28,7 @@ o.splitright = true
 
 o.wildmenu = true
 o.wildmode = 'list:longest,list:full'
-o.pumblend = 10
+o.pumblend = 12
 o.pumheight = 10
 o.completeopt = 'menu,menuone,preview,noinsert,noselect'
 

@@ -2,7 +2,7 @@ local icons = require('util').icons
 
 ---@param client vim.lsp.Client
 ---@param bufnr integer
-local on_attach_base = function(client, bufnr)
+local on_attach_base = function (client, bufnr)
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = bufnr, desc = 'Definition' })
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr, desc = 'Declaration' })
@@ -37,6 +37,22 @@ local on_attach_base = function(client, bufnr)
     end
 end
 
+local border = {
+    { ' ', 'NormalFloat' },
+    { ' ', 'NormalFloat' },
+    { ' ', 'NormalFloat' },
+    { ' ', 'NormalFloat' },
+    { ' ', 'NormalFloat' },
+    { ' ', 'NormalFloat' },
+    { ' ', 'NormalFloat' },
+    { ' ', 'NormalFloat' },
+}
+
+local handlers = {
+    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+    ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+}
+
 return {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
@@ -48,24 +64,36 @@ return {
         { ']d', vim.diagnostic.goto_next, desc = 'Next Diagnostic' },
         { '<leader>xi', vim.diagnostic.open_float, desc = 'Diagnostic Info' },
         { '<leader>xm', vim.diagnostic.setloclist, desc = 'Mark Diagnostic' },
-        { '<leader>al', '<cmd>LspInfo<cr>', desc = 'LSP Info' }
+        { '<leader>al', '<cmd>LspInfo<cr>', desc = 'LSP Info' },
+        {
+            '<leader>xh',
+            function ()
+                vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+            end,
+            desc = 'Toggle Virtual Text',
+        },
     },
     config = function ()
-        require('plugins_full.lsp.config.bashls').setup(on_attach_base)
-        require('plugins_full.lsp.config.clangd').setup(on_attach_base)
-        require('plugins_full.lsp.config.cssls').setup(on_attach_base)
-        require('plugins_full.lsp.config.dotls').setup(on_attach_base)
-        require('plugins_full.lsp.config.html').setup(on_attach_base)
-        require('plugins_full.lsp.config.jsonls').setup(on_attach_base)
-        require('plugins_full.lsp.config.lua_ls').setup(on_attach_base)
-        require('plugins_full.lsp.config.marksman').setup(on_attach_base)
-        require('plugins_full.lsp.config.rust_analyzer').setup(on_attach_base)
-        require('plugins_full.lsp.config.tailwindcss').setup(on_attach_base)
-        require('plugins_full.lsp.config.taplo').setup(on_attach_base)
-        require('plugins_full.lsp.config.vtsls').setup(on_attach_base)
+        require('plugins_full.lsp.config.bashls').setup(on_attach_base, handlers)
+        require('plugins_full.lsp.config.clangd').setup(on_attach_base, handlers)
+        require('plugins_full.lsp.config.cssls').setup(on_attach_base, handlers)
+        require('plugins_full.lsp.config.dotls').setup(on_attach_base, handlers)
+        require('plugins_full.lsp.config.html').setup(on_attach_base, handlers)
+        require('plugins_full.lsp.config.jsonls').setup(on_attach_base, handlers)
+        require('plugins_full.lsp.config.lua_ls').setup(on_attach_base, handlers)
+        require('plugins_full.lsp.config.marksman').setup(on_attach_base, handlers)
+        require('plugins_full.lsp.config.rust_analyzer').setup(on_attach_base, handlers)
+        require('plugins_full.lsp.config.tailwindcss').setup(on_attach_base, handlers)
+        require('plugins_full.lsp.config.taplo').setup(on_attach_base, handlers)
+        require('plugins_full.lsp.config.vtsls').setup(on_attach_base, handlers)
 
         vim.diagnostic.config({
             severity_sort = true,
+            float = {
+                scope = 'line',
+                ---@diagnostic disable-next-line: assign-type-mismatch
+                border = border,
+            },
             signs = {
                 text = {
                     [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
@@ -84,6 +112,15 @@ return {
             },
         })
 
-        require('lspconfig.ui.windows').default_options.border = 'single'
+        require('lspconfig.ui.windows').default_options.border = {
+            { '┌', 'NormalFloat' },
+            { '─', 'NormalFloat' },
+            { '┐', 'NormalFloat' },
+            { '│', 'NormalFloat' },
+            { '┘', 'NormalFloat' },
+            { '─', 'NormalFloat' },
+            { '└', 'NormalFloat' },
+            { '│', 'NormalFloat' },
+        }
     end,
 }

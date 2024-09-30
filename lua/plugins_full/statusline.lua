@@ -27,8 +27,8 @@ vim.api.nvim_set_hl(0, 'StatusLineBg', { fg = color_picker.basefg, bg = color_pi
 vim.api.nvim_set_hl(0, 'StatusLineModeEdge', { fg = color_picker.modebg.n })
 vim.api.nvim_set_hl(0, 'StatusLineMode', { fg = color_picker.modefg, bg = color_picker.modebg.n, bold = true })
 vim.api.nvim_set_hl(0, 'StatusLineFileStatus', { fg = color_picker.filestatusfg })
-vim.api.nvim_set_hl(0, 'StatusLineNoiceSearch', { fg = color_picker.nsearchfg })
-vim.api.nvim_set_hl(0, 'StatusLineNoiceMode', { fg = color_picker.nmodefg })
+-- vim.api.nvim_set_hl(0, 'StatusLineNoiceSearch', { fg = color_picker.nsearchfg })
+-- vim.api.nvim_set_hl(0, 'StatusLineNoiceMode', { fg = color_picker.nmodefg })
 vim.api.nvim_set_hl(0, 'StatusLinePositionEdge', { fg = color_picker.posbg })
 vim.api.nvim_set_hl(0, 'StatusLinePosition', { fg = color_picker.posfg, bg = color_picker.posbg })
 -- Highlight Group: end
@@ -128,24 +128,24 @@ end
 -- Filename and Filepath: end
 
 -- Noice: start
-local noice = require('noice').api
-_G.stl_comp.noice_command = function ()
-    ---@diagnostic disable-next-line: undefined-field, deprecated
-    local command = noice.statusline.command.get()
-    return command == nil and '' or command
-end
-_G.stl_comp.noice_mode = function ()
-    ---@diagnostic disable-next-line: undefined-field, deprecated
-    local mode = noice.statusline.mode.get()
-    return mode == nil and '' or mode
-end
-_G.stl_comp.noice_search = function ()
-    ---@diagnostic disable-next-line: undefined-field, deprecated
-    local search = noice.statusline.search.get()
-    return search == nil and '' or search
-end
+-- local noice = require('noice').api
+-- _G.stl_comp.noice_command = function ()
+--     ---@diagnostic disable-next-line: undefined-field, deprecated
+--     local command = noice.statusline.command.get()
+--     return command == nil and '' or command
+-- end
+-- _G.stl_comp.noice_mode = function ()
+--     ---@diagnostic disable-next-line: undefined-field, deprecated
+--     local mode = noice.statusline.mode.get()
+--     return mode == nil and '' or mode
+-- end
+-- _G.stl_comp.noice_search = function ()
+--     ---@diagnostic disable-next-line: undefined-field, deprecated
+--     local search = noice.statusline.search.get()
+--     return search == nil and '' or search
+-- end
 
--- Noice: start
+-- Noice: end
 
 -- Filetype: start
 _G.stl_comp.filetype = function ()
@@ -169,13 +169,13 @@ vim.opt.statusline = table.concat({
     '%)',
     -- lsp
     ' %{%v:lua.stl_comp.lsp()%} ',
-    -- noice search
-    ' %(',
-    '%#StatusLineNoiceSearch#',
-    ' ',
-    '%*',
-    '%{%v:lua.stl_comp.noice_search()%}',
-    '%) ',
+    -- -- noice search
+    -- ' %(',
+    -- '%#StatusLineNoiceSearch#',
+    -- ' ',
+    -- '%*',
+    -- '%{%v:lua.stl_comp.noice_search()%}',
+    -- '%) ',
 
     '%=',
 
@@ -196,16 +196,16 @@ vim.opt.statusline = table.concat({
     '%=',
 
     -- noice
-    '%(',
-    '%(',
-    '%#StatusLineNoiceMode#',
-    ' ',
-    '%*',
-    '%{%v:lua.stl_comp.noice_mode()%}',
-    ' - ',
-    '%)',
-    '%{%v:lua.stl_comp.noice_command()%}',
-    '%) ',
+    -- '%(',
+    -- '%(',
+    -- '%#StatusLineNoiceMode#',
+    -- ' ',
+    -- '%*',
+    -- '%{%v:lua.stl_comp.noice_mode()%}',
+    -- ' - ',
+    -- '%)',
+    -- '%{%v:lua.stl_comp.noice_command()%}',
+    -- '%) ',
 
     -- file positions
     '%#StatusLinePositionEdge#',
@@ -237,5 +237,5 @@ vim.opt.statusline = table.concat({
 return {
     dir = vim.fn.stdpath('config') .. '/lua/plugins_full/statusline',
     event = 'BufReadPost',
-    dependencies = { 'folke/noice.nvim' },
+    -- dependencies = { 'folke/noice.nvim' },
 }
