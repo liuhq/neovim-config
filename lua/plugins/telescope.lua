@@ -8,7 +8,7 @@ return {
         { '<leader><space>', '<cmd>Telescope find_files<cr>', desc = 'Files' },
         -- code --
         { '<leader>cs', '<cmd>Telescope spell_suggest<cr>', desc = 'Spell Suggest' },
-        { '<leader>cq', '<cmd>Telescope quickfix<cr>', desc = 'Quickfix list' },
+        { '<leader>l', '<cmd>Telescope quickfix<cr>', desc = 'Quickfix list' },
         -- find & file --
         { '<leader>bb', '<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>', desc = 'Buffers' },
         { '<leader>fr', '<cmd>Telescope oldfiles<cr>', desc = 'Recent' },
@@ -103,6 +103,9 @@ return {
                     return 0
                 end,
                 mappings = {
+                    --- Note:
+                    ---   <C-q> open all result files
+                    ---   <M-q> open selected result files
                     i = {
                         ['<C-j>'] = actions.move_selection_next,
                         ['<C-k>'] = actions.move_selection_previous,
@@ -122,7 +125,6 @@ return {
                         ['<C-t>'] = actions.select_tab,
                         ['<CR>'] = actions.select_default,
                         ['<C-c>'] = actions.close,
-                        ['<C-q>'] = actions.send_selected_to_loclist,
                         ['<C-p>'] = require('telescope.actions.layout').toggle_preview,
                         ['<C-n>'] = false,
                     },
@@ -130,9 +132,12 @@ return {
                         ['<j>'] = actions.move_selection_next,
                         ['<k>'] = actions.move_selection_previous,
                         ['o'] = actions.select_drop,
+                        ['<C-o>'] = actions.drop_all, -- select_all
                         ['<q>'] = actions.send_selected_to_loclist,
                         ['<space>'] = actions.select_default,
                         ['<esc>'] = actions.close,
+                        ['m'] = actions.toggle_selection,
+                        ['<C-a>'] = actions.toggle_all,
 
                         ['<C-u>'] = actions.preview_scrolling_up,
                         ['<C-d>'] = actions.preview_scrolling_down,

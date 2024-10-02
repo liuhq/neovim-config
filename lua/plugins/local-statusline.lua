@@ -1,4 +1,4 @@
-local icons = require('lua.util').icons
+local icons = require('util').icons
 _G.stl_comp = {}
 
 local palette = require('catppuccin.palettes').get_palette('mocha')

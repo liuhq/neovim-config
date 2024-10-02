@@ -1,4 +1,4 @@
-local icons = require('lua.util').icons
+local icons = require('util').icons
 
 return {
     'akinsho/bufferline.nvim',
@@ -23,6 +23,14 @@ return {
                 modified_icon = icons.file_status.modified,
                 left_trunc_marker = '',
                 right_trunc_marker = '',
+                name_formatter = function (buf)
+                    ---@diagnostic disable-next-line: undefined-field
+                    if vim.bo[buf.bufnr].filetype == 'qf' then
+                        return 'Quickfix List'
+                    end
+                    ---@diagnostic disable-next-line: undefined-field
+                    return buf.name
+                end,
                 diagnostics = 'nvim_lsp',
                 diagnostics_indicator = function (_, level)
                     local s = level:match('error') and icons.diagnostics.Error or ''

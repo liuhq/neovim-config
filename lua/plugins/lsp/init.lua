@@ -1,4 +1,4 @@
-local icons = require('lua.util').icons
+local icons = require('util').icons
 
 ---@param client vim.lsp.Client
 ---@param bufnr integer
