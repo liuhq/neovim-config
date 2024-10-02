@@ -2,29 +2,29 @@ local M = {}
 
 M.icons = {
     dap = {
-        Stopped = { '󰁕 ', 'DiagnosticWarn', 'DapStoppedLine' },
-        Breakpoint = { ' ' },
-        BreakpointCondition = { ' ' },
-        BreakpointRejected = { ' ', 'DiagnosticError' },
-        LogPoint = { '.>' },
+        Stopped = '󰁕 ',
+        Breakpoint = ' ',
+        BreakpointCondition = ' ',
+        BreakpointRejected = ' ',
+        LogPoint = '.>',
     },
     diagnostics = {
-        Sign = '',
-        Error = '🅴',
-        Warn = '🆆',
-        Hint = '🅷',
-        Info = '🅸',
+        Sign = '▪',
+        Error = '',
+        Warn = '',
+        Info = '',
+        Hint = '',
     },
     git = {
-        added = '',
-        changed = '',
-        removed = '',
+        added = '󰐕',
+        changed = '󰧞',
+        removed = '󰍴',
     },
     file_status = {
-        modified = '[+]',
-        readonly = '[R]',
-        unnamed = '[~]',
-        newfile = '[N]',
+        modified = '󰏪',
+        readonly = '󰌾',
+        unnamed = '󰜥',
+        newfile = '󰈔',
     },
 }
 

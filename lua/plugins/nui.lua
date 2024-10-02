@@ -1,28 +1,29 @@
 return {
     'MunifTanjim/nui.nvim',
-    lazy = true,
+    event = 'VeryLazy',
     config = function ()
+        local event = require('nui.utils.autocmd').event
+        local Input = require('nui.input')
+        local Menu = require('nui.menu')
+        local UIInput = Input:extend('UIInput')
+        local UISelect = Menu:extend('UISelect')
+
         local function get_prompt_text(prompt, default_prompt)
             local prompt_text = prompt or default_prompt
             if prompt_text:sub(-1) == ':' then
-                prompt_text = '[' .. prompt_text:sub(1, -2) .. ']'
+                prompt_text = '▶ ' .. prompt_text:sub(1, -2)
             end
             return prompt_text
         end
 
-        local Input = require('nui.input')
-        local event = require('nui.utils.autocmd').event
-
-        local UIInput = Input:extend('UIInput')
-
         function UIInput:init(opts, on_done)
-            local border_top_text = get_prompt_text(opts.prompt, '[Input]')
+            local border_top_text = get_prompt_text(opts.prompt, 'Input')
             local default_value = tostring(opts.default or '')
 
             UIInput.super.init(self, {
                 relative = 'cursor',
                 position = {
-                    row = 1,
+                    row = -2,
                     col = 0,
                 },
                 size = {
@@ -30,14 +31,14 @@ return {
                     width = math.max(20, vim.api.nvim_strwidth(default_value)),
                 },
                 border = {
-                    style = 'rounded',
+                    style = 'solid',
                     text = {
                         top = border_top_text,
                         top_align = 'left',
                     },
                 },
                 win_options = {
-                    winhighlight = 'NormalFloat:Normal,FloatBorder:Normal',
+                    -- winhighlight = 'NormalFloat:Normal,FloatBorder:Normal',
                 },
             }, {
                 default_value = default_value,
@@ -60,14 +61,15 @@ return {
             end, { noremap = true, nowait = true })
         end
 
-        local input_ui
-
+        ---@diagnostic disable-next-line: duplicate-set-field
         vim.ui.input = function (opts, on_confirm)
             assert(type(on_confirm) == 'function', 'missing on_confirm function')
 
+            local input_ui = nil
+
             if input_ui then
                 -- ensure single ui.input operation
-                vim.api.nvim_err_writeln('busy: another input is pending!')
+                vim.notify('busy: another input is pending!', vim.log.levels.ERROR)
                 return
             end
 
@@ -85,13 +87,8 @@ return {
             input_ui:mount()
         end
 
-        local Menu = require('nui.menu')
-        local event = require('nui.utils.autocmd').event
-
-        local UISelect = Menu:extend('UISelect')
-
         function UISelect:init(items, opts, on_done)
-            local border_top_text = get_prompt_text(opts.prompt, '[Select Item]')
+            local border_top_text = get_prompt_text(opts.prompt, 'Select Item')
             local kind = opts.kind or 'unknown'
             local format_item = opts.format_item or function (item)
                 return tostring(item.__raw_item or item)
@@ -101,14 +98,14 @@ return {
                 relative = 'editor',
                 position = '50%',
                 border = {
-                    style = 'rounded',
+                    style = 'solid',
                     text = {
                         top = border_top_text,
                         top_align = 'left',
                     },
                 },
                 win_options = {
-                    winhighlight = 'NormalFloat:Normal,FloatBorder:Normal',
+                    -- winhighlight = 'NormalFloat:Normal,FloatBorder:Normal',
                 },
                 zindex = 999,
             }
@@ -117,7 +114,7 @@ return {
                 -- change position for codeaction selection
                 popup_options.relative = 'cursor'
                 popup_options.position = {
-                    row = 1,
+                    row = 2,
                     col = 0,
                 }
             end
@@ -165,14 +162,15 @@ return {
             end, { once = true })
         end
 
-        local select_ui = nil
-
+        ---@diagnostic disable-next-line: duplicate-set-field
         vim.ui.select = function (items, opts, on_choice)
             assert(type(on_choice) == 'function', 'missing on_choice function')
 
+            local select_ui = nil
+
             if select_ui then
                 -- ensure single ui.select operation
-                vim.api.nvim_err_writeln('busy: another select is pending!')
+                vim.notify('busy: another select is pending!', vim.log.levels.ERROR)
                 return
             end
 

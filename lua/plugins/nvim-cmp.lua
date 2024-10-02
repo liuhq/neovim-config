@@ -8,7 +8,6 @@ return {
         'hrsh7th/cmp-path',         -- path auto-completion
         { 'L3MON4D3/LuaSnip', build = 'make install_jsregexp' },
         'saadparwaiz1/cmp_luasnip', -- snippets auto-completion
-        'hrsh7th/cmp-emoji',        -- emoji auto-completion
     },
     config = function ()
         local cmp = require('cmp')
@@ -110,23 +109,6 @@ return {
                     },
                 },
             }),
-        })
-
-        cmp.setup.filetype({ 'markdown' }, {
-            sources = {
-                {
-                    name = 'nvim_lsp',
-                    entry_filter = function (entry, _)
-                        return require('cmp.types').lsp.CompletionItemKind[entry:get_kind()] ~= 'Text'
-                    end,
-                },
-                { name = 'buffer' },
-                { name = 'path' },
-                {
-                    name = 'emoji',
-                    keyword_length = 3,
-                },
-            },
         })
 
         -- LuaSnip snippets

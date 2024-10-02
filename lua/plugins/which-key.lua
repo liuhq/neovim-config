@@ -22,6 +22,12 @@ return {
         icons = {
             rules = false,
         },
+        win = {
+            border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+            --winblend = 20,
+        },
+        -- sort = { "local", "order", "group", "alphanum", "mod" },
+        sort = { "order", "group", "alphanum", "mod" },
     },
     config = function (_, opts)
         local wk = require('which-key')
@@ -35,18 +41,19 @@ return {
             { '<leader>a', group = 'Manager' },
             { '<leader>b', group = 'Buffer' },
             { '<leader>c', group = 'Code' },
-            { '<leader>d', group = 'Dap' },
             { '<leader>e', group = 'Explorer' },
-            { '<leader>f', group = 'Find/File' },
+            { '<leader>f', group = 'File' },
             { '<leader>g', group = 'Git' },
             { '<leader>j', group = 'Jump' },
-            { '<leader>n', group = 'Notify' },
+            { '<leader>m', group = 'Render' },
+            { '<leader>n', group = 'Notification' },
             { '<leader>o', group = 'Others' },
             { '<leader>q', group = 'Quit/Session' },
             { '<leader>s', group = 'Search' },
-            { '<leader>t', group = 'Tab' },
-            { '<leader>w', group = 'Window/Workspace' },
+            { '<leader>v', group = 'Dap' },
+            { '<leader>w', group = 'Window' },
             { '<leader>x', group = 'Diagnostics' },
+            { '<leader>z', group = 'Workspace' },
         })
     end,
 }

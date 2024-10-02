@@ -1,4 +1,4 @@
-local icons = require('util').icons
+local icons = require('lua.util').icons
 
 return {
     'akinsho/bufferline.nvim',

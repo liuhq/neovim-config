@@ -18,7 +18,7 @@ return {
                 starter.sections.recent_files(4, false, true),
                 starter.sections.sessions(4, true),
                 { name = 'New File', action = 'enew', section = 'Will do ...' },
-                { name = 'Open File', action = 'Telescope find_files cwd=~', section = 'Will do ...' },
+                { name = 'Recent File', action = 'Telescope oldfiles', section = 'Will do ...' },
                 { name = 'Edit Config', action = 'Telescope find_files cwd=' .. vim.fn.stdpath('config'), section = 'Will do ...' },
                 { name = 'Quit Neovim', action = 'qall', section = 'Will do ...' },
             },

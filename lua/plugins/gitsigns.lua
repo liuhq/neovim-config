@@ -1,8 +1,11 @@
-local icons = require('util').icons
+local icons = require('lua.util').icons
 
 return {
     'lewis6991/gitsigns.nvim',
     event = 'BufReadPost',
+    keys = {
+        { '<leader>gl', '<cmd>Gitsigns toggle_signs<cr>', desc = 'Git Signs in Column' }
+    },
     opts = {
         signs = {
             add = { text = '┃' },
@@ -77,7 +80,7 @@ return {
             vim.keymap.set('n', '<leader>gp', gs.preview_hunk, { buffer = bufnr, desc = 'Preview Hunk' })
             vim.keymap.set('n', '<leader>gb', function () gs.blame_line({ full = true }) end,
                 { buffer = bufnr, desc = 'Blame Line' })
-            vim.keymap.set('n', '<leader>gb', gs.toggle_current_line_blame, { buffer = bufnr, desc = 'Toggle Blame' })
+            vim.keymap.set('n', '<leader>ga', gs.toggle_current_line_blame, { buffer = bufnr, desc = 'Toggle Blame' })
             vim.keymap.set('n', '<leader>gd', gs.diffthis, { buffer = bufnr, desc = 'Diff Latest (HEAD)' })
             vim.keymap.set('n', '<leader>gD', function () gs.diffthis('~') end,
                 { buffer = bufnr, desc = 'Diff Last (HEAD~1)' })

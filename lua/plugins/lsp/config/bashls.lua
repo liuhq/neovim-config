@@ -19,7 +19,7 @@ function M.setup(on_attach_base, handlers)
             bashIde = {
                 globPattern = '*@(.sh|.inc|.bash|.command)',
                 shfmt = {
-                    path = require('util').get_cmd_path('shfmt'),
+                    path = vim.fn.exepath('shfmt'),
                     binaryNextLine = true,
                     ignoreEditorconfig = false,
                 },

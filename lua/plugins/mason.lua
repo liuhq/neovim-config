@@ -4,6 +4,7 @@ local enable_pkg = {
     -- lsp: bashls and formatter: shfmt
     'bash-language-server',
     'shfmt',
+
     'clangd',
     -- cssls
     'css-lsp',
@@ -22,6 +23,10 @@ local enable_pkg = {
     'tailwindcss-language-server',
     'taplo',
     'vtsls',
+
+    --- DAP
+    'codelldb',
+    'js-debug-adapter',
 }
 
 ---Auto Mason Install
@@ -29,13 +34,12 @@ local enable_pkg = {
 local auto_install = function (list)
     local mr = require('mason-registry')
     local mp = require('mason-core.package')
-    local ntf = require('notify')
     local installend_pkg = mr.get_installed_package_names()
 
     mr:on(
         'package:uninstall:success',
         vim.schedule_wrap(function (pkg_spec)
-            ntf(pkg_spec.name .. ' uninstalled successfully', vim.log.levels.INFO, { title = 'Mason AutoInstall' })
+            vim.notify(pkg_spec.name .. ' uninstalled successfully', vim.log.levels.INFO, { group = 'Mason AutoInstall' })
         end)
     )
 
@@ -44,7 +48,7 @@ local auto_install = function (list)
         local pkg_name, version = mp.Parse(server_name)
 
         if not mr.has_package(pkg_name) then
-            ntf(pkg_name .. ' is not a valid LSP package name', vim.log.levels.ERROR, { title = 'Mason AutoInstall' })
+            vim.notify(pkg_name .. ' is not a valid LSP package name', vim.log.levels.ERROR, { group = 'Mason AutoInstall' })
             return
         end
         local pkg = mr.get_package(pkg_name)
@@ -65,7 +69,7 @@ local auto_install = function (list)
         end
     end
 
-    ntf('run', vim.log.levels.INFO, { title = 'Mason AutoInstall' })
+    vim.notify('run', vim.log.levels.INFO, { group = 'Mason AutoInstall' })
 end
 
 return {

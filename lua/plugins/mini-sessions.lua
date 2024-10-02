@@ -6,9 +6,10 @@ return {
         {
             '<leader>qs',
             function ()
-                vim.ui.input({ prompt = 'Save Session' }, function (input)
-                    input = input or 'Session.vim'
-                    require('mini.sessions').write(input, { force = true })
+                vim.ui.input({ prompt = 'Save Session:' }, function (input)
+                    if input then
+                        require('mini.sessions').write(input, { force = true })
+                    end
                 end)
             end,
             desc = 'Save Session',
@@ -17,9 +18,8 @@ return {
         {
             '<leader>as',
             function ()
-                local ntf = require('notify')
                 local name = require('mini.sessions').get_latest()
-                ntf(vim.inspect(name), vim.log.levels.INFO, { title = 'Latest Session' })
+                vim.notify(vim.inspect(name), vim.log.levels.INFO, { group = 'Latest Session' })
             end,
             desc = 'Latest Session',
         },
@@ -27,11 +27,11 @@ return {
     config = function ()
         local ses = require('mini.sessions')
         ses.setup({
-            autoread = false,
+            autoread = true,
             autowrite = false,
             directory = vim.fn.stdpath('data') .. '/session',
-            file = 'Session.vim',
-            force = { read = false, write = true, delete = false },
+            file = 'session.vim',
+            force = { read = false, write = true, delete = true },
             verbose = { read = true, write = true, delete = true },
         })
     end,

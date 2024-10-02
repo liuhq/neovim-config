@@ -1,4 +1,4 @@
-local icons = require('util').icons
+local icons = require('lua.util').icons
 
 ---@param client vim.lsp.Client
 ---@param bufnr integer
@@ -11,15 +11,15 @@ local on_attach_base = function (client, bufnr)
     vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { buffer = bufnr, desc = 'Type Definition' })
     vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { buffer = bufnr, desc = 'LSP Help' })
     vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, { buffer = bufnr, desc = 'Signature Help' })
-    vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,
+    vim.keymap.set('n', '<leader>za', vim.lsp.buf.add_workspace_folder,
         { buffer = bufnr, desc = 'Add Workspace Folder' })
-    vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder,
+    vim.keymap.set('n', '<leader>zr', vim.lsp.buf.remove_workspace_folder,
         { buffer = bufnr, desc = 'Remove Workspace Folder' })
-    vim.keymap.set('n', '<leader>wl', function ()
+    vim.keymap.set('n', '<leader>zl', function ()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, { buffer = bufnr, desc = 'List Workspace Folders' })
     ---- inc-rename instead
-    vim.keymap.set('n', '<leader>cR', vim.lsp.buf.rename, { buffer = bufnr, desc = 'Re[n]ame (LSP)' })
+    vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { buffer = bufnr, desc = 'Rename' })
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { buffer = bufnr, desc = 'Code Action' })
     vim.keymap.set('n', '<leader>cF', function ()
         vim.lsp.buf.format({ async = true })
@@ -56,9 +56,7 @@ local handlers = {
 return {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
-    dependencies = {
-        'cmp-nvim-lsp',
-    },
+    dependencies = { 'cmp-nvim-lsp', 'nvim-navic' },
     keys = {
         { '[d', vim.diagnostic.goto_prev, desc = 'Prev Diagnostic' },
         { ']d', vim.diagnostic.goto_next, desc = 'Next Diagnostic' },
@@ -74,18 +72,18 @@ return {
         },
     },
     config = function ()
-        require('plugins_full.lsp.config.bashls').setup(on_attach_base, handlers)
-        require('plugins_full.lsp.config.clangd').setup(on_attach_base, handlers)
-        require('plugins_full.lsp.config.cssls').setup(on_attach_base, handlers)
-        require('plugins_full.lsp.config.dotls').setup(on_attach_base, handlers)
-        require('plugins_full.lsp.config.html').setup(on_attach_base, handlers)
-        require('plugins_full.lsp.config.jsonls').setup(on_attach_base, handlers)
-        require('plugins_full.lsp.config.lua_ls').setup(on_attach_base, handlers)
-        require('plugins_full.lsp.config.marksman').setup(on_attach_base, handlers)
-        require('plugins_full.lsp.config.rust_analyzer').setup(on_attach_base, handlers)
-        require('plugins_full.lsp.config.tailwindcss').setup(on_attach_base, handlers)
-        require('plugins_full.lsp.config.taplo').setup(on_attach_base, handlers)
-        require('plugins_full.lsp.config.vtsls').setup(on_attach_base, handlers)
+        require('plugins.lsp.config.bashls').setup(on_attach_base, handlers)
+        require('plugins.lsp.config.clangd').setup(on_attach_base, handlers)
+        require('plugins.lsp.config.cssls').setup(on_attach_base, handlers)
+        require('plugins.lsp.config.dotls').setup(on_attach_base, handlers)
+        require('plugins.lsp.config.html').setup(on_attach_base, handlers)
+        require('plugins.lsp.config.jsonls').setup(on_attach_base, handlers)
+        require('plugins.lsp.config.lua_ls').setup(on_attach_base, handlers)
+        require('plugins.lsp.config.marksman').setup(on_attach_base, handlers)
+        require('plugins.lsp.config.rust_analyzer').setup(on_attach_base, handlers)
+        require('plugins.lsp.config.tailwindcss').setup(on_attach_base, handlers)
+        require('plugins.lsp.config.taplo').setup(on_attach_base, handlers)
+        require('plugins.lsp.config.vtsls').setup(on_attach_base, handlers)
 
         vim.diagnostic.config({
             severity_sort = true,
