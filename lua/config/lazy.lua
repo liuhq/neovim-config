@@ -10,11 +10,7 @@ vim.keymap.set('n', '<leader>aa', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 
 ---@type LazyConfig
 local lazy_opts = {
-    spec = {
-        { import = 'plugins_base', cond = true },
-        { import = 'plugins_full', cond = function () return not vim.g.vscode end },
-        { import = 'plugins_vscode', cond = function () return vim.g.vscode end },
-    },
+    spec = { { import = 'plugins' } },
     defaults = {
         lazy = false,
         version = false,
@@ -34,7 +30,7 @@ local lazy_opts = {
         -- The backdrop opacity. 0 is fully opaque, 100 is fully transparent.
         backdrop = 0,
         title = 'Lazy Dashboard',
-        title_pos = 'left',     -- "center" | "left" | "right"
+        title_pos = 'left', -- "center" | "left" | "right"
         pills = true,
     },
     performance = {

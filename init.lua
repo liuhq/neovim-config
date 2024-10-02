@@ -7,15 +7,8 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-if not vim.g.vscode then
-    -- ordinary Neovim
-    require('config/options')
-    require('config/autocmds')
-    require('config/keymaps')
-    require('config/lazy')
-    vim.cmd.colorscheme('catppuccin')
-else
-    -- VSCode extension
-    require('config/vscode')
-    require('config/lazy')
-end
+require('config/options')
+require('config/autocmds')
+require('config/keymaps')
+require('config/lazy')
+vim.cmd.colorscheme('catppuccin')
