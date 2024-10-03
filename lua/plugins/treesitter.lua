@@ -68,7 +68,7 @@ return {
         },
         config = function (_, opts)
             require('nvim-treesitter.install').prefer_git = false
-            require('nvim-treesitter.install').compilers = { 'zig' }
+            require('nvim-treesitter.install').compilers = { 'gcc', 'zig' }
             require('nvim-treesitter.configs').setup(opts)
 
             vim.wo.foldmethod = 'expr'
