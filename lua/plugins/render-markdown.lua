@@ -9,6 +9,7 @@ return {
         require('render-markdown').setup({
             enabled = false,
             render_modes = { 'n', 'c' },
+            anti_conceal = { enabled = false },
             file_types = { 'markdown' },
             injections = {
                 gitcommit = {
