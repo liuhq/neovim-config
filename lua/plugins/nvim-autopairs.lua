@@ -17,6 +17,11 @@ return {
         npairs.get_rules("'")[1].not_filetypes = { 'racket', 'scheme', 'lisp' }
         npairs.get_rules("'")[1]:with_pair(npairs_cond.not_after_text('['))
 
+        -- markdown
+        npairs.add_rule(npairs_rule('*', '*', { 'markdown' }):with_pair(npairs_cond.not_after_text('**')))
+        npairs.add_rule(npairs_rule('_', '_', { 'markdown' }):with_pair(npairs_cond.not_after_text('__')))
+        npairs.add_rule(npairs_rule('~', '~', { 'markdown' }))
+
         -- auto-pair <> for generics
         npairs.add_rule(npairs_rule('<', '>', {
             '-racket',

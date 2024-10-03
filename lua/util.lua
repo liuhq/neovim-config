@@ -3,10 +3,9 @@ local M = {}
 M.icons = {
     dap = {
         Stopped = '󰁕 ',
-        Breakpoint = ' ',
-        BreakpointCondition = ' ',
-        BreakpointRejected = ' ',
-        LogPoint = '.>',
+        Breakpoint = ' ',
+        BreakpointCondition = ' ',
+        LogPoint = ' ',
     },
     diagnostics = {
         Sign = '▪',

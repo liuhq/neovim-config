@@ -22,78 +22,70 @@ return {
         local api = vim.api
 
         ------------------------------------------
-        --- C & Rust via codelldb
+        --- C & Rust via codelldb & gdb
         ------------------------------------------
-        ---@diagnostic disable-next-line: undefined-field
-        if vim.uv.os_uname().sysname == 'Windows_NT' then
-            --- via codelldb
-            dap.adapters.codelldb = {
-                type = 'server',
-                port = '${port}',
-                executable = {
-                    command = vim.fn.exepath('codelldb'),
-                    args = { '--port', '${port}' },
-                    -- On windows you may have to uncomment this:
-                    detached = false,
-                },
-            }
-            dap.configurations.c = {
-                {
-                    name = 'Launch file',
-                    type = 'codelldb',
-                    request = 'launch',
-                    program = function ()
-                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                    end,
-                    cwd = '${workspaceFolder}',
-                    stopOnEntry = false,
-                },
-            }
-            dap.configurations.rust = dap.configurations.c
-        else
-            --- via codelldb
-            dap.adapters.gdb = {
-                type = 'executable',
-                command = 'gdb',
-                args = { '--interpreter=dap', '--eval-command', 'set print pretty on' },
-            }
-            dap.configurations.c = {
-                {
-                    name = 'Launch',
-                    type = 'gdb',
-                    request = 'launch',
-                    program = function ()
-                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                    end,
-                    cwd = '${workspaceFolder}',
-                    stopAtBeginningOfMainSubprogram = false,
-                },
-                {
-                    name = 'Select and attach to process',
-                    type = 'gdb',
-                    request = 'attach',
-                    program = function ()
-                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                    end,
-                    pid = function ()
-                        local name = vim.fn.input('Executable name (filter): ')
-                        return require('dap.utils').pick_process({ filter = name })
-                    end,
-                    cwd = '${workspaceFolder}',
-                },
-                {
-                    name = 'Attach to gdbserver :1234',
-                    type = 'gdb',
-                    request = 'attach',
-                    target = 'localhost:1234',
-                    program = function ()
-                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                    end,
-                    cwd = '${workspaceFolder}',
-                },
-            }
-        end
+        dap.adapters.codelldb = {
+            type = 'server',
+            port = '${port}',
+            executable = {
+                command = vim.fn.exepath('codelldb'),
+                args = { '--port', '${port}' },
+                -- On windows you may have to uncomment this:
+                detached = false,
+            },
+        }
+        dap.adapters.gdb = {
+            type = 'executable',
+            command = 'gdb',
+            args = { '--interpreter=dap', '--eval-command', 'set print pretty on' },
+        }
 
+        dap.configurations.c = {
+            {
+                name = '[codelldb] Launch',
+                type = 'codelldb',
+                request = 'launch',
+                program = function ()
+                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                end,
+                cwd = '${workspaceFolder}',
+                stopOnEntry = false,
+            },
+            {
+                name = '[gdb] Launch',
+                type = 'gdb',
+                request = 'launch',
+                program = function ()
+                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                end,
+                cwd = '${workspaceFolder}',
+                stopAtBeginningOfMainSubprogram = false,
+            },
+            {
+                name = '[gdb] Select and attach to process',
+                type = 'gdb',
+                request = 'attach',
+                program = function ()
+                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                end,
+                pid = function ()
+                    local name = vim.fn.input('Executable name (filter): ')
+                    return require('dap.utils').pick_process({ filter = name })
+                end,
+                cwd = '${workspaceFolder}',
+            },
+            {
+                name = '[gdb] Attach to gdbserver :1234',
+                type = 'gdb',
+                request = 'attach',
+                target = 'localhost:1234',
+                program = function ()
+                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                end,
+                cwd = '${workspaceFolder}',
+            },
+        }
+        dap.configurations.rust = dap.configurations.c
 
         ------------------------------------------
         --- JS
@@ -150,7 +142,8 @@ return {
         --- sign style
         local sign = vim.fn.sign_define
         sign('DapBreakpoint', { text = icons.dap.Breakpoint, texthl = 'DapBreakpoint', linehl = '', numhl = '' })
-        sign('DapBreakpointCondition', { text = icons.dap.BreakpointCondition, texthl = 'DapBreakpointCondition', linehl = '', numhl = '' })
+        sign('DapBreakpointCondition',
+            { text = icons.dap.BreakpointCondition, texthl = 'DapBreakpointCondition', linehl = '', numhl = '' })
         sign('DapLogPoint', { text = icons.dap.LogPoint, texthl = 'DapLogPoint', linehl = '', numhl = '' })
     end,
 }

@@ -74,7 +74,7 @@ return {
                 results = { ' ' },
                 preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
             },
-            layout_config = { preview_width = 0.64, },
+            layout_config = { preview_width = 0.64 },
         })
 
         local opts = {
@@ -87,7 +87,15 @@ return {
                 initial_mode = 'insert', -- insert | normal
                 history = false,
                 layout_config = {
-                    preview_width = 0.64,
+                    center = {
+                        preview_width = 0.64,
+                    },
+                    horizontal = {
+                        preview_width = 0.64,
+                    },
+                    vertical = {
+                        preview_width = 0.64,
+                    },
                 },
                 -- open files in the first window that is an actual file.
                 -- use the current window if no other window is available.

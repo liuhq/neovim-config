@@ -27,10 +27,10 @@ return {
             formatting = {
                 expandable_indicator = true,
                 format = function (entry, vim_item)
-                    if entry.source.name == 'emoji' then
-                        vim_item.kind = 'emoji'
-                        return vim_item
-                    end
+                    -- if entry.source.name == 'emoji' then
+                    --     vim_item.kind = 'emoji'
+                    --     return vim_item
+                    -- end
                     vim_item.kind = string.lower(vim_item.kind)
                     return vim_item
                 end,
