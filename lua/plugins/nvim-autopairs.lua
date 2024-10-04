@@ -77,6 +77,7 @@ return {
 
                     -- Disable for racket
                     racket = false,
+                    nu = false,
                 },
             })
         )
