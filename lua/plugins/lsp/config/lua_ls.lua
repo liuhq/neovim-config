@@ -12,15 +12,18 @@ function M.setup(on_attach_base, handlers)
         enabled = true,
         cmd = { cmd_path },
         filetypes = { 'lua' },
-        root_dir = lspconfig.util.root_pattern('.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml',
+        root_dir = lspconfig.util.root_pattern('.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml',
+            'stylua.toml',
             'selene.toml', 'selene.yml', '.git'),
         single_file_support = true,
         capabilities = capabilities,
         on_init = function (client, _)
-            local path = client.workspace_folders[1].name
-            ---@diagnostic disable-next-line: undefined-field
-            if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
-                return
+            if client.workspace_folders then
+                local path = client.workspace_folders[1].name
+                ---@diagnostic disable-next-line: undefined-field
+                if vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc') then
+                    return
+                end
             end
 
             client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
@@ -57,7 +60,7 @@ function M.setup(on_attach_base, handlers)
             Lua = {},
         },
         on_attach = on_attach_base,
-        handlers = handlers
+        handlers = handlers,
     }
 
     lspconfig['lua_ls'].setup(opts)
