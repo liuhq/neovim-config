@@ -7,7 +7,7 @@ local search_count_extmark_id = nil
 M.show_search_index = function ()
     vim.schedule(function ()
         local searchCount = vim.fn.searchcount()
-        if searchCount.total == 0 then
+        if (not searchCount) or (not searchCount.total) or searchCount.total == 0 then
             M.clear_search_index()
             return
         end
