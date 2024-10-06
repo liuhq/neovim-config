@@ -41,24 +41,28 @@ local searchindex_gp = vim.api.nvim_create_augroup('SearchIndex', { clear = true
 vim.api.nvim_create_autocmd('CmdlineEnter', {
     group = searchindex_gp,
     pattern = { '/', '?' },
-    callback = function ()
-        vim.on_key(function (key, _)
-            key = vim.fn.keytrans(key)
-            if key == '<Esc>' then
-                cmd_esc = true
-            end
-        end, vim.api.nvim_get_namespaces()['search'])
+    callback = function (e)
+        if e.match == '/' or e.match == '?' then
+            vim.on_key(function (key, _)
+                key = vim.fn.keytrans(key)
+                if key == '<Esc>' then
+                    cmd_esc = true
+                end
+            end, vim.api.nvim_get_namespaces()['search'])
+        end
     end,
 })
 vim.api.nvim_create_autocmd('CmdlineLeave', {
     group = searchindex_gp,
     pattern = { '/', '?' },
-    callback = function ()
-        if vim.fn.searchcount().total ~= 0 and (not cmd_esc) then
-            M.show_search_index()
+    callback = function (e)
+        if e.match == '/' or e.match == '?' then
+            if vim.fn.searchcount().total ~= 0 and (not cmd_esc) then
+                M.show_search_index()
+            end
+            cmd_esc = false
+            vim.on_key(nil, vim.api.nvim_get_namespaces()['search'])
         end
-        cmd_esc = false
-        vim.on_key(nil, vim.api.nvim_get_namespaces()['search'])
     end,
 })
 
