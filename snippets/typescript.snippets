@@ -1,0 +1,47 @@
+snippet af "Arrow Function"
+    ${1} => ${2}
+
+snippet caf "Const Arrow Function"
+    const ${1} = ${2} => ${3}
+
+snippet dsa "Destructuring Array"
+    const [${0}] = ${1}
+
+snippet dso "Destructuring Object"
+    const {${0}} = ${1}
+
+snippet clg "Console Log"
+    console.log(${0})
+
+snippet imp "Import from"
+    import ${0} from "${1}"
+
+snippet if "If Control Flow"
+    if (${1}) {
+        ${0}
+    }
+
+snippet ife "If-Else Control Flow"
+    if (${1}) {
+        ${2}
+    } else {
+        ${0}
+    }
+
+snippet forof "For-Of Iterable Objects"
+    for (const ${2:el} of ${1:iter}) {
+        ${0}
+    }
+
+snippet forink "For-In Control Flow"
+    for (const ${2:key} in ${1:obj}) {
+        ${0}
+    }
+
+snippet forinkv "For-In Control Flow"
+    for (const [${2:k}, ${3:v}] in Object.entries(${1:obj})) {
+        ${0}
+    }
+
+snippet new "New Instance"
+    const ${0} = new ${1}(${2})
