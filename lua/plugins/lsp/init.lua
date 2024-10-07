@@ -66,6 +66,11 @@ return {
         {
             '<leader>xh',
             function ()
+                vim.notify(vim.diagnostic.is_enabled({ bufnr = 0 })
+                    and 'Diagnostic: disabled'
+                    or 'Diagnostic: enabled',
+                    vim.log.levels.INFO,
+                    { group = 'Diagnostic Show', skip_history = true })
                 vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = 0 }), { bufnr = 0 })
             end,
             desc = 'Toggle Virtual Text',
