@@ -19,6 +19,22 @@ vim.api.nvim_create_autocmd('VimLeave', {
     end,
 })
 
+-- the cursor will redraw its shape when neovim is suspended or resumed
+vim.api.nvim_create_autocmd('VimSuspend', {
+    group = cursor_group,
+    callback = function ()
+        vim.o.guicursor = ''
+        vim.fn.chansend(vim.v.stderr, '\x1b[ q')
+        vim.cmd("silent !echo -ne '\\e[0 q'")
+    end,
+})
+vim.api.nvim_create_autocmd('VimResume', {
+    group = cursor_group,
+    callback = function ()
+        vim.o.guicursor = 'n-o:block,v-c:hor18,i-ci-ve:ver10,r-cr-sm:block,a:blinkwait700-blinkoff400-blinkon250'
+    end,
+})
+
 -- highlight after copy
 vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
