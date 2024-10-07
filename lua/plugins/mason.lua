@@ -12,6 +12,7 @@ local enable_pkg = {
     'dot-language-server',
     -- html
     'html-lsp',
+    'emmet-language-server',
     -- jsonls
     'json-lsp',
     -- lua_ls

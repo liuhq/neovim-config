@@ -77,6 +77,7 @@ return {
         require('plugins.lsp.config.cssls').setup(on_attach_base, handlers)
         require('plugins.lsp.config.dotls').setup(on_attach_base, handlers)
         require('plugins.lsp.config.html').setup(on_attach_base, handlers)
+        require('plugins.lsp.config.emmet_language_server').setup(on_attach_base, handlers)
         require('plugins.lsp.config.jsonls').setup(on_attach_base, handlers)
         require('plugins.lsp.config.lua_ls').setup(on_attach_base, handlers)
         require('plugins.lsp.config.marksman').setup(on_attach_base, handlers)
