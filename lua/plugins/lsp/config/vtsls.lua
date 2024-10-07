@@ -60,9 +60,9 @@ function M.setup(on_attach_base, handlers)
                     insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces = true,
                     semicolons = 'remove',
                 },
-                preferences = {
-                    quoteStyle = 'single',
-                },
+                -- preferences = {
+                --     quoteStyle = 'single',
+                -- },
                 updateImportsOnFileMove = {
                     enabled = 'always',
                 },
@@ -88,9 +88,9 @@ function M.setup(on_attach_base, handlers)
                     insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces = true,
                     semicolons = 'remove',
                 },
-                preferences = {
-                    quoteStyle = 'single',
-                },
+                -- preferences = {
+                --     quoteStyle = 'single',
+                -- },
                 updateImportsOnFileMove = {
                     enabled = 'always',
                 },
