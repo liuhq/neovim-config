@@ -6,6 +6,7 @@ local ts_lang = {
     'gitcommit',
     'html',
     'javascript',
+    'jsdoc',
     'json',
     'markdown',
     'markdown_inline',
