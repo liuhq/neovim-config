@@ -42,9 +42,7 @@ return {
             content = {
                 ---@param fs_entry fs_entry
                 filter = function (fs_entry)
-                    return fs_entry.name ~= '.git'
-                        and fs_entry.name ~= '.DS_Store'
-                        and fs_entry.name ~= 'node_modules'
+                    return fs_entry.name ~= '.git' and fs_entry.name ~= '.DS_Store'
                 end,
             },
             mappings = {
@@ -57,8 +55,7 @@ return {
                 use_as_default_explorer = true,
             },
             windows = {
-                -- Maybe I don't need this
-                preview = false,
+                preview = true,
                 width_preview = 75,
             },
         })
@@ -114,7 +111,7 @@ return {
         })
 
         -- Set current working directory
-        local files_set_cwd = function ()
+        local files_set_cwd = function (path)
             -- Works only if cursor is on the valid file system entry
             local cur_entry_path = files.get_fs_entry().path
             local cur_directory = vim.fs.dirname(cur_entry_path)
