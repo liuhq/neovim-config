@@ -11,8 +11,16 @@ vim.keymap.set('n', '<leader>aa', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 ---@type LazyConfig
 local lazy_opts = {
     spec = {
-        { import = 'plugins', cond = function () return not vim.g.vscode end },
-        { import = 'plugins_vscode', cond = function () return vim.g.vscode end }
+        {
+            import = 'plugins',
+            cond = function ()
+                return (not vim.g.vscode) and
+                    ---@diagnostic disable-next-line: undefined-field
+                    (vim.uv.os_uname().sysname ~= 'Windows_NT')
+            end
+        },
+        { import = 'plugins_win', cond = function () return not vim.g.vscode end },
+        { import = 'plugins_vscode', cond = function () return vim.g.vscode end },
     },
     defaults = {
         lazy = false,

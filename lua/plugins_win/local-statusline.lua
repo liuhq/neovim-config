@@ -249,6 +249,6 @@ vim.opt.statusline = table.concat({
 })
 
 return {
-    dir = vim.fn.stdpath('config') .. '/lua/plugins/local-statusline',
+    dir = vim.fn.stdpath('config') .. '/lua/plugins_win/local-statusline',
     event = 'BufReadPost',
 }
