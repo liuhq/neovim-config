@@ -10,7 +10,10 @@ vim.keymap.set('n', '<leader>aa', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 
 ---@type LazyConfig
 local lazy_opts = {
-    spec = { { import = 'plugins' } },
+    spec = {
+        { import = 'plugins', cond = function () return not vim.g.vscode end },
+        { import = 'plugins_vscode', cond = function () return vim.g.vscode end }
+    },
     defaults = {
         lazy = false,
         version = false,

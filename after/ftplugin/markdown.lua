@@ -1,3 +1,7 @@
+if vim.g.vscode then
+    return
+end
+
 local bo = vim.bo
 
 bo.shiftwidth = 2
