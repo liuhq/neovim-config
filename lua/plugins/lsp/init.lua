@@ -90,13 +90,6 @@ return {
         require('plugins.lsp.config.taplo').setup(on_attach_base, handlers)
         require('plugins.lsp.config.vtsls').setup(on_attach_base, handlers)
 
-        --- only use nushell on Windows now
-        ---@diagnostic disable-next-line: undefined-field
-        if vim.uv.os_uname().sysname == 'Windows_NT' then
-            vim.notify('nu require')
-            require('plugins.lsp.config.nushell').setup(on_attach_base, handlers)
-        end
-
         vim.diagnostic.config({
             severity_sort = true,
             float = {

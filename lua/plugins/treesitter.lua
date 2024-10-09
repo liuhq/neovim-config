@@ -10,7 +10,6 @@ local ts_lang = {
     'json',
     'markdown',
     'markdown_inline',
-    'nu',
     'racket',
     'regex',
     'rust',
@@ -26,10 +25,6 @@ return {
         build = ':TSUpdate',
         event = 'VeryLazy',
         lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
-        dependencies = {
-            -- NOTE: additional parser
-            { 'nushell/tree-sitter-nu', build = ':TSUpdate nu' },
-        },
         init = function (plugin)
             -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
             -- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
