@@ -17,15 +17,19 @@ vim.notify = require('vscode').notify
 --]]
 local o = vim.o
 
-o.autoindent = true
 o.clipboard = 'unnamedplus'
 o.completeopt = 'menu,menuone,preview,noinsert,noselect'
 o.confirm = true
+o.fileformat = 'unix'
+o.fileformats = 'unix,dos'
 o.ignorecase = true
 o.incsearch = true
+o.smartcase = true
 o.splitbelow = true
 o.splitright = true
 o.virtualedit = 'block'
+
+vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
 
 --[[
 --  Autocmds
@@ -45,7 +49,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
     callback = function ()
         vim.highlight.on_yank({
-            timeout = 100,
+            timeout = 250,
         })
     end,
 })
