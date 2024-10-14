@@ -54,6 +54,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
+-- fix cursor ghost character
+o.updatetime = 500
+vim.api.nvim_create_autocmd('CursorHold', {
+  pattern = '*',
+  callback = function()
+    vim.cmd('silent! mode')
+  end,
+})
+
 --[[
 --  Keymaps
 --]]
