@@ -54,15 +54,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
--- fix cursor ghost character
-o.updatetime = 500
-vim.api.nvim_create_autocmd('CursorHold', {
-  pattern = '*',
-  callback = function()
-    vim.cmd('silent! mode')
-  end,
-})
-
 --[[
 --  Keymaps
 --]]
@@ -102,8 +93,8 @@ keymap.set('n', 'N', "'nN'[v:searchforward].'zv'", { expr = true, desc = 'Prev S
 keymap.set('x', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev Search Result' })
 keymap.set('o', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev Search Result' })
 
--- clear search with <esc>
-keymap.set({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and Clear hlsearch' })
+-- clear search with <esc> & fix cursor ghost character
+keymap.set({ 'i', 'n' }, '<esc>', '<cmd>silent! mode<cr><cmd>noh<cr><esc>', { desc = 'Escape and Clear hlsearch' })
 
 -- better indenting
 keymap.set('v', '<', '<gv')
