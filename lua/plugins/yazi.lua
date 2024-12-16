@@ -38,6 +38,9 @@ return {
             change_working_directory = '<c-g>',
         },
         floating_window_scaling_factor = 1,
-        yazi_floating_window_border = "single"
+        yazi_floating_window_border = "single",
+        future_features = {
+            ya_emit_reveal = true
+        }
     },
 }
