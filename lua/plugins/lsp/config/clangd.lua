@@ -19,20 +19,12 @@ function M.setup(on_attach_base, handlers)
             'cuda',
             'proto',
         },
-        root_dir = lspconfig.util.root_pattern(
-            '.clangd',
-            '.clang-tidy',
-            '.clang-format',
-            'compile_commands.json',
-            'compile_flags.txt',
-            'configure.ac',
-            '.git'),
         single_file_support = true,
         capabilities = capabilities,
         on_attach = function (client, bufnr)
             on_attach_base(client, bufnr)
         end,
-        handlers = handlers
+        handlers = handlers,
     }
     lspconfig['clangd'].setup(opts)
 end

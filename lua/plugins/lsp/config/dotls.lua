@@ -12,11 +12,10 @@ function M.setup(on_attach_base, handlers)
         enabled = true,
         cmd = { cmd_path, '--stdio' },
         filetypes = { 'dot' },
-        root_dir = lspconfig.util.find_git_ancestor,
         single_file_support = true,
         capabilities = capabilities,
         on_attach = on_attach_base,
-        handlers = handlers
+        handlers = handlers,
     }
     lspconfig['dotls'].setup(opts)
 end

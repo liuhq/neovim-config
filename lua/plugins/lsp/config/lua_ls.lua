@@ -12,9 +12,6 @@ function M.setup(on_attach_base, handlers)
         enabled = true,
         cmd = { cmd_path },
         filetypes = { 'lua' },
-        root_dir = lspconfig.util.root_pattern('.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml',
-            'stylua.toml',
-            'selene.toml', 'selene.yml', '.git'),
         single_file_support = true,
         capabilities = capabilities,
         on_init = function (client, _)
@@ -37,6 +34,8 @@ function M.setup(on_attach_base, handlers)
                 },
             })
         end,
+        on_attach = on_attach_base,
+        handlers = handlers,
         settings = {
             format = {
                 enable = true,
@@ -59,8 +58,6 @@ function M.setup(on_attach_base, handlers)
             },
             Lua = {},
         },
-        on_attach = on_attach_base,
-        handlers = handlers,
     }
 
     lspconfig['lua_ls'].setup(opts)

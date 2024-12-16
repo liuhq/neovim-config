@@ -12,17 +12,17 @@ function M.setup(on_attach_base, handlers)
         enabled = true,
         cmd = { cmd_path, '--stdio' },
         filetypes = { 'json', 'jsonc' },
-        root_dir = lspconfig.util.find_git_ancestor,
         single_file_support = true,
         capabilities = capabilities,
-        -- settings = {
-        -- },
+        init_options = {
+            provideFormatter = true,
+        },
         on_attach = function (client, bufnr)
             on_attach_base(client, bufnr)
 
             client.capabilities.textDocument.completion.completionItem.snippetSupport = true
         end,
-        handlers = handlers
+        handlers = handlers,
     }
     lspconfig['jsonls'].setup(opts)
 end

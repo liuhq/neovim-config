@@ -12,9 +12,10 @@ function M.setup(on_attach_base, handlers)
         enabled = true,
         cmd = { cmd_path, '--stdio' },
         filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
-        root_dir = lspconfig.util.root_pattern('tsconfig.json', 'package.json', 'jsconfig.json', '.git'),
         single_file_support = true,
         capabilities = capabilities,
+        on_attach = on_attach_base,
+        handlers = handlers,
         settings = {
             vtsls = {
                 autoUseWorkspaceTsdk = true,
@@ -60,9 +61,6 @@ function M.setup(on_attach_base, handlers)
                     insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces = true,
                     semicolons = 'remove',
                 },
-                -- preferences = {
-                --     quoteStyle = 'single',
-                -- },
                 updateImportsOnFileMove = {
                     enabled = 'always',
                 },
@@ -88,9 +86,6 @@ function M.setup(on_attach_base, handlers)
                     insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces = true,
                     semicolons = 'remove',
                 },
-                -- preferences = {
-                --     quoteStyle = 'single',
-                -- },
                 updateImportsOnFileMove = {
                     enabled = 'always',
                 },
@@ -100,8 +95,6 @@ function M.setup(on_attach_base, handlers)
                 },
             },
         },
-        on_attach = on_attach_base,
-        handlers = handlers
     }
 
     lspconfig['vtsls'].setup(opts)

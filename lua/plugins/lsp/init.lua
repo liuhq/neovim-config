@@ -1,4 +1,5 @@
 local icons = require('util').icons
+local get_files_in_dir = require('util').get_files_in_dir
 
 ---@param client vim.lsp.Client
 ---@param bufnr integer
@@ -77,18 +78,14 @@ return {
         },
     },
     config = function ()
-        require('plugins.lsp.config.bashls').setup(on_attach_base, handlers)
-        require('plugins.lsp.config.clangd').setup(on_attach_base, handlers)
-        require('plugins.lsp.config.cssls').setup(on_attach_base, handlers)
-        require('plugins.lsp.config.dotls').setup(on_attach_base, handlers)
-        require('plugins.lsp.config.html').setup(on_attach_base, handlers)
-        require('plugins.lsp.config.jsonls').setup(on_attach_base, handlers)
-        require('plugins.lsp.config.lua_ls').setup(on_attach_base, handlers)
-        require('plugins.lsp.config.marksman').setup(on_attach_base, handlers)
-        require('plugins.lsp.config.rust_analyzer').setup(on_attach_base, handlers)
-        require('plugins.lsp.config.tailwindcss').setup(on_attach_base, handlers)
-        require('plugins.lsp.config.taplo').setup(on_attach_base, handlers)
-        require('plugins.lsp.config.vtsls').setup(on_attach_base, handlers)
+        local lsp_configs = vim.fn.stdpath('config') .. '/lua/plugins/lsp/config'
+        local files = get_files_in_dir(lsp_configs)
+        for _, lsp_file in ipairs(files) do
+            --- disable a lsp by add a prefix '_' for file name
+            if lsp_file:sub(1, 1) ~= '_' then
+                require('plugins.lsp.config.' .. lsp_file).setup(on_attach_base, handlers)
+            end
+        end
 
         vim.diagnostic.config({
             severity_sort = true,

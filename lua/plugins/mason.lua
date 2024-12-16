@@ -6,6 +6,8 @@ local enable_pkg = {
     'shfmt',
 
     'clangd',
+    -- csharp_ls
+    'csharp-language-server',
     -- cssls
     'css-lsp',
     -- dotls

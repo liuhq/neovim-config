@@ -12,11 +12,10 @@ function M.setup(on_attach_base, handlers)
         enabled = true,
         cmd = { cmd_path, 'server' },
         filetypes = { 'markdown', 'markdown.mdx' },
-        root_dir = lspconfig.util.root_pattern('.git', '.marksman.toml'),
         single_file_support = true,
         capabilities = capabilities,
         on_attach = on_attach_base,
-        handlers = handlers
+        handlers = handlers,
     }
     lspconfig['marksman'].setup(opts)
 end

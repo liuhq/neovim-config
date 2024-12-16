@@ -12,17 +12,28 @@ function M.setup(on_attach_base, handlers)
         enabled = true,
         cmd = { cmd_path, '--stdio' },
         filetypes = { 'css', 'scss', 'less' },
-        root_dir = lspconfig.util.root_pattern('package.json', '.git'),
         single_file_support = true,
         capabilities = capabilities,
-        -- settings = {
-        -- },
+        init_options = {
+            provideFormatter = true,
+        },
         on_attach = function (client, bufnr)
             on_attach_base(client, bufnr)
 
             client.capabilities.textDocument.completion.completionItem.snippetSupport = true
         end,
-        handlers = handlers
+        handlers = handlers,
+        settings = {
+            css = {
+                validate = true,
+            },
+            less = {
+                validate = true,
+            },
+            scss = {
+                validate = true,
+            },
+        },
     }
     lspconfig['cssls'].setup(opts)
 end

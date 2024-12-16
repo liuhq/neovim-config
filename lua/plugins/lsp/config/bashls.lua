@@ -12,9 +12,10 @@ function M.setup(on_attach_base, handlers)
         enabled = true,
         cmd = { cmd_path, 'start' },
         filetypes = { 'sh', 'zsh' },
-        root_dir = lspconfig.util.find_git_ancestor,
         single_file_support = true,
         capabilities = capabilities,
+        on_attach = on_attach_base,
+        handlers = handlers,
         settings = {
             bashIde = {
                 globPattern = '*@(.sh|.inc|.bash|.command)',
@@ -24,11 +25,9 @@ function M.setup(on_attach_base, handlers)
                     ignoreEditorconfig = false,
                 },
                 shellcheckPath = 'shellcheck',
-                shellcheckArguments = ''
+                shellcheckArguments = '',
             },
         },
-        on_attach = on_attach_base,
-        handlers = handlers
     }
     lspconfig['bashls'].setup(opts)
 end
