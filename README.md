@@ -7,6 +7,7 @@
 - [`git`](https://git-scm.com/) and [`nodejs`](https://nodejs.org/)
 - [`zig`](https://ziglang.org/) (be used as C compiler) for treesitter on Windows
 - [`fd`](https://github.com/sharkdp/fd) and [`ripgrep`](https://github.com/BurntSushi/ripgrep)
+- [`yazi`](https://yazi-rs.github.io/) for file browsing and managing
 
 ## Plugins list
 
@@ -20,7 +21,8 @@ Editor
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) : treesitter support
 - [conform.nvim](https://github.com/stevearc/conform.nvim) : formatter config
 - [nvim-dap](https://github.com/mfussenegger/nvim-dap): DAP config
-- [mini.files](https://github.com/echasnovski/mini.files) : file browser
+- ~~[mini.files](https://github.com/echasnovski/mini.files) : file browser~~
+- [yazi.nvim](https://github.com/mikavilpas/yazi.nvim) : file browser
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) : picker
 - [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) : markdown render
 
