@@ -68,6 +68,7 @@ vim.api.nvim_create_autocmd('CmdlineLeave', {
 
 return {
     dir = vim.fn.stdpath('config') .. '/lua/plugins/local-searchindex',
+    virtual = true,
     keys = {
         {
             '<esc>',

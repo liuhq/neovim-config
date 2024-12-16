@@ -77,7 +77,8 @@ return {
 
                     -- Disable for racket
                     racket = false,
-                    nu = false,
+                    bash = false,
+                    zsh = false,
                 },
             })
         )
