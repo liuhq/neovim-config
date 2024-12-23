@@ -73,17 +73,13 @@ return {
         on_attach = function (bufnr)
             local gs = require('gitsigns')
 
-            vim.keymap.set('n', '<leader>gn', function () gs.nav_hunk('next') end,
-                { buffer = bufnr, desc = 'Jump to Next Hunk' })
-            vim.keymap.set('n', '<leader>gN', function () gs.nav_hunk('prev') end,
-                { buffer = bufnr, desc = 'Jump to Prev Hunk' })
+            vim.keymap.set('n', '<leader>gn', function () gs.nav_hunk('next') end, { buffer = bufnr, desc = 'Jump to Next Hunk' })
+            vim.keymap.set('n', '<leader>gN', function () gs.nav_hunk('prev') end, { buffer = bufnr, desc = 'Jump to Prev Hunk' })
             vim.keymap.set('n', '<leader>gp', gs.preview_hunk, { buffer = bufnr, desc = 'Preview Hunk' })
-            vim.keymap.set('n', '<leader>gb', function () gs.blame_line({ full = true }) end,
-                { buffer = bufnr, desc = 'Blame Line' })
+            vim.keymap.set('n', '<leader>gb', function () gs.blame_line({ full = true }) end, { buffer = bufnr, desc = 'Blame Line' })
             vim.keymap.set('n', '<leader>ga', gs.toggle_current_line_blame, { buffer = bufnr, desc = 'Toggle Blame' })
             vim.keymap.set('n', '<leader>gd', gs.diffthis, { buffer = bufnr, desc = 'Diff Latest (HEAD)' })
-            vim.keymap.set('n', '<leader>gD', function () gs.diffthis('~') end,
-                { buffer = bufnr, desc = 'Diff Last (HEAD~1)' })
+            vim.keymap.set('n', '<leader>gD', function () gs.diffthis('~') end, { buffer = bufnr, desc = 'Diff Last (HEAD~1)' })
             vim.keymap.set('n', '<leader>gr', gs.toggle_deleted, { buffer = bufnr, desc = 'Show Deleted' })
         end,
     },

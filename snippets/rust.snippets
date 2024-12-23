@@ -1,0 +1,23 @@
+snippet cf "Closure Function"
+    |${1}| {${2}}
+
+snippet - "Function Return Type"
+    -> ${0}
+
+snippet # "Macro []"
+    #[${0}]
+
+snippet #derive "Derive Macro"
+    #[derive(${0})]
+
+snippet #cfg "Conditional Compile Macro"
+    #[cfg(${0})]
+
+snippet mdefault "Match Default"
+    _ => {${0}}
+
+snippet mbranch "Match Branch"
+    ${1} => {${0}}
+
+snippet mbguard "Match Branch with Guard"
+    ${1} if ${2} => {${0}}
