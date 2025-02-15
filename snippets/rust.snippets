@@ -21,3 +21,15 @@ snippet mbranch "Match Branch"
 
 snippet mbguard "Match Branch with Guard"
     ${1} if ${2} => {${0}}
+
+snippet sfn "Associate Function"
+    fn ${1}(self${2}) ${3} {${0}}
+
+snippet rsfn "Ref Associate Function"
+    fn ${1}(&self${2}) ${3} {${0}}
+
+snippet msfn "Mut Associate Function"
+    fn ${1}(mut self${2}) ${3} {${0}}
+
+snippet rmsfn "Ref Mut Associate Function"
+    fn ${1}(&mut self${2}) ${3} {${0}}
