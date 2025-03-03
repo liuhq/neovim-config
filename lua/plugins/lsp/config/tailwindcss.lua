@@ -12,6 +12,7 @@ function M.setup(on_attach_base, handlers)
         enabled = true,
         cmd = { cmd_path, '--stdio' },
         filetypes = {
+            -- html
             'aspnetcorerazor',
             'astro',
             'astro-markdown',
@@ -20,11 +21,11 @@ function M.setup(on_attach_base, handlers)
             'django-html',
             'htmldjango',
             'edge',
-            'eelixir',
+            'eelixir', -- vim ft
             'elixir',
             'ejs',
             'erb',
-            'eruby',
+            'eruby', -- vim ft
             'gohtml',
             'gohtmltmpl',
             'haml',
@@ -46,6 +47,7 @@ function M.setup(on_attach_base, handlers)
             'razor',
             'slim',
             'twig',
+            -- css
             'css',
             'less',
             'postcss',
@@ -53,12 +55,14 @@ function M.setup(on_attach_base, handlers)
             'scss',
             'stylus',
             'sugarss',
+            -- js
             'javascript',
             'javascriptreact',
             'reason',
             'rescript',
             'typescript',
             'typescriptreact',
+            -- mixed
             'vue',
             'svelte',
             'templ',
@@ -69,7 +73,13 @@ function M.setup(on_attach_base, handlers)
         handlers = handlers,
         settings = {
             tailwindCSS = {
-                classAttributes = { 'class', 'className', 'class:list', 'classList', 'ngClass' },
+                classAttributes = {
+                    'class',
+                    'className',
+                    'class:list',
+                    'classList',
+                    'ngClass',
+                },
             },
         },
     }

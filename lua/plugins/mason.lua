@@ -30,6 +30,7 @@ local enable_pkg = {
 
     --- Formatter
     'dprint',
+    'prettier',
 }
 
 ---Auto Mason Install

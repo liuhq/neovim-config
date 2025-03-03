@@ -71,7 +71,27 @@ snippet dpjs "dprint template - js"
 snippet dppr "dprint template - prettier"
     {
       "prettier": {
-        ${0}
+        "arrowParens": "avoid",
+        "bracketSameLine": false,
+        "bracketSpacing": true,
+        "embeddedLanguageFormatting": "auto",
+        "endOfLine": "lf",
+        "experimentalTernaries": false,
+        "htmlWhitespaceSensitivity": "css",
+        "jsxSingleQuote": false,
+        "objectWrap": "preserve",
+        "printWidth": 80,
+        "proseWrap": "preserve",
+        "quoteProps": "as-needed",
+        "semi": false,
+        "singleAttributePerLine": true,
+        "singleQuote": true,
+        "tabWidth": 4,
+        "trailingComma": "all",
+        "useTabs": false,
+        "json.tabWidth": 2,
+        "html.tabWidth": 2,
+        "css.tabWidth": 2
       },
       "excludes": [
         "**/*-lock.json",
@@ -100,4 +120,42 @@ snippet dpex "dprint template - exec"
         "node_modules/"
       ]
       ${0}// dprint config add exec
+    }
+
+snippet prettier "prettier template"
+    {
+      "$$schema": "https://json.schemastore.org/prettierrc",
+      "arrowParens": "avoid",
+      "bracketSameLine": false,
+      "bracketSpacing": true,
+      "embeddedLanguageFormatting": "auto",
+      "endOfLine": "lf",
+      "experimentalTernaries": false,
+      "htmlWhitespaceSensitivity": "css",
+      "jsxSingleQuote": false,
+      "objectWrap": "preserve",
+      "printWidth": 80,
+      "proseWrap": "preserve",
+      "quoteProps": "as-needed",
+      "semi": false,
+      "singleAttributePerLine": true,
+      "singleQuote": true,
+      "tabWidth": 4,
+      "trailingComma": "all",
+      "useTabs": false,
+      "overrides": [
+        {
+          "files": ".prettierrc",
+          "options": {
+            "parser": "json"
+            "tabWidth": 2
+          }
+        },
+        {
+          "files": ["**/*.html", "**/*.css", "**/*.json"],
+          "options": {
+            "tabWidth": 2
+          }
+        }
+      ]
     }
