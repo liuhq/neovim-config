@@ -29,6 +29,7 @@ return {
             html = { 'prettier', 'dprint', stop_after_first = true },
             css = { 'prettier', 'dprint', stop_after_first = true },
             json = { 'prettier', 'dprint', stop_after_first = true },
+            jsonc = { 'prettier', 'dprint', stop_after_first = true },
             yaml = { 'dprint' },
         },
         default_format_opts = {
