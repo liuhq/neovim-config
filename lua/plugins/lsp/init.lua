@@ -108,7 +108,7 @@ return {
             },
             virtual_text = {
                 prefix = icons.diagnostics.Sign,
-                virt_text_pos = 'right_align',
+                virt_text_pos = 'eol',
             },
         })
 

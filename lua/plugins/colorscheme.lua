@@ -110,6 +110,7 @@ return {
                     enabled = true,
                     custom_bg = 'NONE',
                 },
+                neotree = true,
                 noice = true,
                 notify = true,
                 nvim_surround = true,

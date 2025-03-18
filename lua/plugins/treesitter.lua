@@ -1,7 +1,6 @@
 local ts_lang = {
     'bash',
     'c',
-    'c_sharp',
     'cpp',
     'css',
     'diff',
