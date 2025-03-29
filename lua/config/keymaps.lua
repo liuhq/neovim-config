@@ -21,9 +21,11 @@ keymap.set({ 'n', 'v' }, 'c', '"_c', { remap = false, silent = true })
 keymap.set({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { desc = 'Cursor Down', expr = true, silent = true })
 keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { desc = 'Cursor Up', expr = true, silent = true })
 
--- better jump to line start/end in visual mode
-keymap.set('v', 'H', '^', { desc = 'Cursor Start (Visual)', remap = true, silent = true })
-keymap.set('v', 'L', '$h', { desc = 'Cursor End (Visual)', remap = true, silent = true })
+-- better jump to line start/end
+keymap.set('n', 'H', '^', { desc = 'Cursor Start', remap = true, silent = true })
+keymap.set('n', 'L', '$', { desc = 'Cursor End', remap = true, silent = true })
+keymap.set('v', 'H', '^', { desc = 'Cursor Start', remap = true, silent = true })
+keymap.set('v', 'L', '$h', { desc = 'Cursor End', remap = true, silent = true })
 
 -- save file
 keymap.set({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save File' })
@@ -58,8 +60,8 @@ keymap.set('n', '<C-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Wi
 keymap.set('n', '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
 
 -- buffers
-keymap.set('n', '<S-h>', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
-keymap.set('n', '<S-l>', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
+keymap.set('n', '{', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
+keymap.set('n', '}', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 keymap.set('n', '<leader>bt', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
 keymap.set('n', '<leader>d', '<cmd>bdelete<cr>', { desc = 'Delete Buffer' })
 

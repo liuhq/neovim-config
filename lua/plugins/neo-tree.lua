@@ -14,6 +14,11 @@ return {
             desc = 'Open Neotree (Current file)',
         },
         {
+            '<leader>bb',
+            '<cmd>Neotree toggle=true reveal=true source=buffers<cr>',
+            desc = 'Open Neotree Buffers',
+        },
+        {
             '-',
             function ()
                 local reveal_file = vim.fn.expand('%:p')
