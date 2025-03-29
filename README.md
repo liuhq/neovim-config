@@ -14,7 +14,7 @@
 Editor
 
 - [lazy.nvim](https://github.com/folke/lazy.nvim) : plugins manager
-- [mini.starter](https://github.com/echasnovski/mini.starter) : starter
+- ~~[mini.starter](https://github.com/echasnovski/mini.starter) : starter~~
 - [mini.sessions](https://github.com/echasnovski/mini.sessions) : session manager
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) : LSP config
 - [mason.nvim](https://github.com/williamboman/mason.nvim) : LSP manager
