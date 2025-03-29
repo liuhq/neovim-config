@@ -11,6 +11,6 @@ return {
     virtual = true,
     keys = {
         { '<Home>', '<cmd>CursorToLineStart<cr>', mode = { 'i', 'n' }, desc = 'Jump to Line Start' },
-        { '0', '<cmd>CursorToLineStart<cr>', mode = 'n', desc = 'Jump to Line Start' },
+        { 'H', '<cmd>CursorToLineStart<cr>', mode = 'n', desc = 'Jump to Line Start' },
     },
 }

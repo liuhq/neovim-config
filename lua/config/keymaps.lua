@@ -22,16 +22,14 @@ keymap.set({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { desc = 'Cursor Down
 keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { desc = 'Cursor Up', expr = true, silent = true })
 
 -- better jump to line start/end
-keymap.set('n', 'H', '^', { desc = 'Cursor Start', remap = true, silent = true })
+-- "jump to start" handled by local-linestart-jump in normal mode
+-- keymap.set('n', 'H', '^', { desc = 'Cursor Start', remap = true, silent = true })
 keymap.set('n', 'L', '$', { desc = 'Cursor End', remap = true, silent = true })
 keymap.set('v', 'H', '^', { desc = 'Cursor Start', remap = true, silent = true })
 keymap.set('v', 'L', '$h', { desc = 'Cursor End', remap = true, silent = true })
 
 -- save file
-keymap.set({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save File' })
-
--- clear search with <esc>
--- keymap.set({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and Clear hlsearch' })
+keymap.set({ 'i', 'x', 'n', 's' }, '<leader><CR>', '<cmd>w<cr><esc>', { desc = 'Save File' })
 
 -- better indenting
 keymap.set('v', '<', '<gv')
@@ -65,7 +63,7 @@ keymap.set('n', '}', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 keymap.set('n', '<leader>bt', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
 keymap.set('n', '<leader>d', '<cmd>bdelete<cr>', { desc = 'Delete Buffer' })
 
-keymap.set('n', '<leader>ji', 'gi', { desc = 'Jump to Last Insert' })
+keymap.set('n', '<leader>jj', 'gi', { desc = 'Jump to Last Insert' })
 
 keymap.set('n', '<leader>ab', function ()
     vim.o.background = vim.o.background == 'light' and 'dark' or 'light'

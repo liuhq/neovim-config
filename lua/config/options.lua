@@ -3,7 +3,7 @@ local o = vim.o
 o.clipboard = 'unnamedplus'
 o.cursorline = true
 o.number = true
-o.relativenumber = true
+o.relativenumber = false
 o.numberwidth = 4
 
 o.autoindent = true

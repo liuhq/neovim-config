@@ -19,7 +19,6 @@ local on_attach_base = function (client, bufnr)
     vim.keymap.set('n', '<leader>zl', function ()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, { buffer = bufnr, desc = 'List Workspace Folders' })
-    ---- inc-rename instead
     vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { buffer = bufnr, desc = 'Rename' })
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { buffer = bufnr, desc = 'Code Action' })
     vim.keymap.set('n', '<leader>cF', function ()
@@ -61,7 +60,7 @@ return {
     keys = {
         { '[x', vim.diagnostic.goto_prev, desc = 'Prev Diagnostic' },
         { ']x', vim.diagnostic.goto_next, desc = 'Next Diagnostic' },
-        { '<leader>xi', vim.diagnostic.open_float, desc = 'Diagnostic Info' },
+        { '<leader>xx', vim.diagnostic.open_float, desc = 'Diagnostic Info' },
         { '<leader>xm', vim.diagnostic.setloclist, desc = 'Mark Diagnostic' },
         { '<leader>al', '<cmd>LspInfo<cr>', desc = 'LSP Info' },
         {

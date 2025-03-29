@@ -75,7 +75,6 @@ return {
                     --     },
                     -- },
 
-                    -- Disable for racket
                     racket = false,
                     bash = false,
                     zsh = false,

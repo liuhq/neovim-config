@@ -1,11 +1,10 @@
 vim.api.nvim_create_autocmd('VimEnter', {
     callback = function ()
         if vim.fn.argc() == 0 then
-            vim.cmd('cd $PWD')
-            vim.cmd('Neotree')
-            print('Open in ' .. vim.fn.getcwd())
+            require('mini.files').open(vim.fn.getcwd())
+            vim.notify('Open in ' .. vim.fn.getcwd(), vim.log.levels.INFO)
         end
-    end
+    end,
 })
 
 local cursor_group = vim.api.nvim_create_augroup('CursorGroup', { clear = true })

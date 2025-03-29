@@ -24,9 +24,7 @@ return {
         },
         win = {
             border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
-            --winblend = 20,
         },
-        -- sort = { "local", "order", "group", "alphanum", "mod" },
         sort = { "order", "group", "alphanum", "mod" },
     },
     config = function (_, opts)
@@ -34,7 +32,6 @@ return {
         wk.setup(opts)
         wk.add({
             { 'g', group = 'Goto', mode = { 'n', 'v' } },
-            { 'gs', group = 'Selection', mode = { 'n', 'v' } },
             { 'z', group = 'Fold', mode = { 'n', 'v' } },
             { '[', group = 'Prev', mode = { 'n', 'v' } },
             { ']', group = 'Next', mode = { 'n', 'v' } },

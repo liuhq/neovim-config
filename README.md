@@ -21,9 +21,9 @@ Editor
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) : treesitter support
 - [conform.nvim](https://github.com/stevearc/conform.nvim) : formatter config
 - [nvim-dap](https://github.com/mfussenegger/nvim-dap): DAP config
-- ~~[mini.files](https://github.com/echasnovski/mini.files) : file browser~~
+- [mini.files](https://github.com/echasnovski/mini.files) : file browser
 - ~~[yazi.nvim](https://github.com/mikavilpas/yazi.nvim) : file browser~~
-- [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) : file browser
+- ~~[neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) : file browser~~
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) : picker
 - [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) : markdown render
 
