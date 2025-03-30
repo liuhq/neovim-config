@@ -60,7 +60,7 @@ keymap.set('n', '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase W
 -- buffers
 keymap.set('n', '{', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 keymap.set('n', '}', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
-keymap.set('n', '<leader>bt', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
+keymap.set('n', '<leader>t', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
 keymap.set('n', '<leader>d', '<cmd>bdelete<cr>', { desc = 'Delete Buffer' })
 
 keymap.set('n', '<leader>jj', 'gi', { desc = 'Jump to Last Insert' })

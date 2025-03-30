@@ -10,7 +10,7 @@ return {
         { '<leader>cs', '<cmd>Telescope spell_suggest<cr>', desc = 'Spell Suggest' },
         { '<leader>l', '<cmd>Telescope quickfix<cr>', desc = 'Quickfix list' },
         -- find & file --
-        { '<leader>bb', '<cmd>Telescope buffers bufnr_width=4 select_current=true<cr>', desc = 'Buffers' },
+        { '<leader>b', '<cmd>Telescope buffers bufnr_width=4 select_current=true<cr>', desc = 'Buffers' },
         { '<leader>ff', '<cmd>Telescope find_files follow=true hidden=true no_ignore=true no_ignore_parent=true<cr>', desc = 'All Files' },
         { '<leader>ss', '<cmd>Telescope live_grep<cr>', desc = 'Grep' },
         { '<leader>so', '<cmd>Telescope live_grep grep_open_files=true<cr>', desc = 'Grep (Opened Files)' },
