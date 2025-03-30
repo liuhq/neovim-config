@@ -46,6 +46,15 @@ function M.setup(on_attach_base, handlers)
                         fileMatch = { '.eslintrc', '.eslintrc.json' },
                         url = 'https://json.schemastore.org/eslintrc.json',
                     },
+                    {
+                        fileMatch = {
+                            'dprint.json',
+                            'dprint.jsonc',
+                            '.dprint.json',
+                            '.dprint.jsonc',
+                        },
+                        url = 'https://dprint.dev/schemas/v0.json',
+                    },
                 },
             },
         },
