@@ -1,6 +1,6 @@
 snippet dpweb "dprint template - web"
     {
-      "lineWidth": 120,
+      "lineWidth": 80,
       "indentWidth": 4,
       "useTabs": false,
       "newLineKind": "lf",
@@ -21,11 +21,10 @@ snippet dpweb "dprint template - web"
       "json": {
         "indentWidth": 2,
         "useTabs": false,
-        "associations": [".prettierrc"]
       },
       "excludes": [
-        "**/*-lock.json",
-        "node_modules/"
+        "**/node_modules",
+        "**/*-lock.json"
       ]
       // dprint config add typescript
       // dprint config add g-plane/markup_fmt
@@ -36,7 +35,7 @@ snippet dpweb "dprint template - web"
 
 snippet dpjs "dprint template - js"
     {
-      "lineWidth": 120,
+      "lineWidth": 80,
       "indentWidth": 4,
       "useTabs": false,
       "newLineKind": "lf",
@@ -57,11 +56,10 @@ snippet dpjs "dprint template - js"
       "json": {
         "indentWidth": 2,
         "useTabs": false,
-        "associations": [".prettierrc"]
       },
       "excludes": [
-        "**/*-lock.json",
-        "node_modules/"
+        "**/node_modules",
+        "**/*-lock.json"
       ]
       // dprint config add typescript
       // dprint config add json
@@ -94,8 +92,8 @@ snippet dppr "dprint template - prettier"
         "css.tabWidth": 2
       },
       "excludes": [
-        "**/*-lock.json",
-        "node_modules/"
+        "**/node_modules",
+        "**/*-lock.json"
       ]
       // dprint config add prettier
     }
@@ -104,7 +102,7 @@ snippet dpex "dprint template - exec"
     {
       "exec": {
         "cwd": "${1:configDir}",
-        "lineWidth": 120,
+        "lineWidth": 80,
         "indentWidth": 4,
         "useTabs": false,
         "newLineKind": "lf",
@@ -116,8 +114,8 @@ snippet dpex "dprint template - exec"
         ]
       },
       "excludes": [
-        "**/*-lock.json",
-        "node_modules/"
+        "**/node_modules",
+        "**/*-lock.json"
       ]
       ${0}// dprint config add exec
     }
