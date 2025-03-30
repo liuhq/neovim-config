@@ -32,9 +32,9 @@ local on_attach_base = function (client, bufnr)
     -- vim.bo[bufnr].formatexpr = 'v:lua.vim.lsp.formatexpr()'
 
     ---- enable inlay hint
-    if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    end
+    -- if client.server_capabilities.inlayHintProvider then
+    --     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    -- end
 end
 
 local border = {
