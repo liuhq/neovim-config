@@ -23,6 +23,7 @@ local enable_pkg = {
     'tailwindcss-language-server',
     'taplo',
     'vtsls',
+    'yaml-language-server',
 
     --- DAP
     'codelldb',
@@ -31,6 +32,7 @@ local enable_pkg = {
     --- Formatter
     'dprint',
     'prettier',
+    'yamlfmt',
 }
 
 ---Auto Mason Install
@@ -52,7 +54,8 @@ local auto_install = function (list)
         local pkg_name, version = mp.Parse(server_name)
 
         if not mr.has_package(pkg_name) then
-            vim.notify(pkg_name .. ' is not a valid LSP package name', vim.log.levels.ERROR, { group = 'Mason AutoInstall' })
+            vim.notify(pkg_name .. ' is not a valid LSP package name', vim.log.levels.ERROR,
+                { group = 'Mason AutoInstall' })
             return
         end
         local pkg = mr.get_package(pkg_name)

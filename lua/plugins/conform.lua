@@ -30,7 +30,7 @@ return {
             css = { 'prettier', 'dprint', stop_after_first = true },
             json = { 'prettier', 'dprint', stop_after_first = true },
             jsonc = { 'prettier', 'dprint', stop_after_first = true },
-            yaml = { 'dprint' },
+            yaml = { 'dprint', 'yamlfmt', stop_after_first = true },
         },
         default_format_opts = {
             lsp_format = 'fallback',
