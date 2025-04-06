@@ -4,10 +4,6 @@ return {
     'akinsho/bufferline.nvim',
     version = '*',
     event = 'BufReadPost',
-    keys = {
-        { '<leader>bp', '<cmd>BufferLineTogglePin<cr>', desc = 'Pin Buffer' },
-        { '<leader>bo', '<cmd>BufferLineCloseOthers<cr>', desc = 'Delete Other Buffers' },
-    },
     config = function ()
         require('bufferline').setup({
             options = {
