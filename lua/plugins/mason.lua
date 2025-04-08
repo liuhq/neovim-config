@@ -19,6 +19,7 @@ local enable_pkg = {
     'marksman',
     -- rust_analyzer
     'rust-analyzer',
+    'systemd-language-server',
     -- tailwindcss
     'tailwindcss-language-server',
     'taplo',
