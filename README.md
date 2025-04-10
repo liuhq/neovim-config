@@ -31,7 +31,7 @@ UI
 
 - [catppuccin](https://github.com/catppuccin/nvim) : colorscheme
 - [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) : buffers are displayed like as the tabline
-- [nvim-navic](https://github.com/SmiteshP/nvim-navic) : show current code context
+- ~~[nvim-navic](https://github.com/SmiteshP/nvim-navic) : show current code context~~
 - [fidget.nvim](https://github.com/j-hui/fidget.nvim) : notifications and LSP progress messages
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) : git integration UI
 - [which-key.nvim](https://github.com/folke/which-key.nvim) : show keymap
