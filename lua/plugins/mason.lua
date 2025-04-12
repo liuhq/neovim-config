@@ -22,7 +22,7 @@ local enable_pkg = {
     -- tailwindcss
     'tailwindcss-language-server',
     'taplo',
-    'vtsls',
+    'typescript-language-server',
     'yaml-language-server',
 
     --- DAP
