@@ -11,38 +11,8 @@ return {
                 light = 'latte',
                 dark = 'mocha',
             },
-            -- color_overrides = {
-            --     mocha = {
-            --         rosewater = "#F5B8AB",
-            --         flamingo = "#F29D9D",
-            --         pink = "#AD6FF7",
-            --         mauve = "#FF8F40",
-            --         red = "#E66767",
-            --         maroon = "#EB788B",
-            --         peach = "#FAB770",
-            --         yellow = "#FACA64",
-            --         green = "#70CF67",
-            --         teal = "#4CD4BD",
-            --         sky = "#61BDFF",
-            --         sapphire = "#4BA8FA",
-            --         blue = "#00BFFF",
-            --         lavender = "#00BBCC",
-            --         text = "#C1C9E6",
-            --         subtext1 = "#A3AAC2",
-            --         subtext0 = "#8E94AB",
-            --         overlay2 = "#7D8296",
-            --         overlay1 = "#676B80",
-            --         overlay0 = "#464957",
-            --         surface2 = "#3A3D4A",
-            --         surface1 = "#2F313D",
-            --         surface0 = "#1D1E29",
-            --         base = "#0b0b12",
-            --         mantle = "#11111a",
-            --         crust = "#191926",
-            --     },
-            -- },
-            show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
-            term_colors = false,       -- sets terminal colors (e.g. `g:terminal_color_0`)
+            show_end_of_buffer = true,
+            term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
             custom_highlights = function (colors)
                 return {
                     CmpItemKindSnippet = { fg = colors.mauve, style = { 'italic' } },
@@ -73,6 +43,13 @@ return {
                     CmpItemKindCopilot = { fg = colors.teal, style = { 'italic' } },
                 }
             end,
+            highlight_overrides = {
+                mocha = function (colors)
+                    return {
+                        SnacksIndentScope = { fg = colors.overlay2 },
+                    }
+                end,
+            },
             default_integrations = true,
             integrations = {
                 cmp = true,
@@ -82,10 +59,7 @@ return {
                 gitsigns = true,
                 markdown = true,
                 mason = true,
-                mini = {
-                    enabled = true,
-                    indentscope_color = '',
-                },
+                mini = { enabled = true },
                 native_lsp = {
                     enabled = true,
                     virtual_text = {
@@ -106,15 +80,9 @@ return {
                         background = true,
                     },
                 },
-                navic = {
-                    enabled = true,
-                    custom_bg = 'NONE',
-                },
-                neotree = true,
-                noice = true,
-                notify = true,
                 nvim_surround = true,
                 render_markdown = true,
+                snacks = { enabled = true },
                 treesitter = true,
                 telescope = {
                     enabled = true,

@@ -15,7 +15,7 @@ Editor
 
 - [lazy.nvim](https://github.com/folke/lazy.nvim) : plugins manager
 - ~~[mini.starter](https://github.com/echasnovski/mini.starter) : starter~~
-- [mini.sessions](https://github.com/echasnovski/mini.sessions) : session manager
+- ~~[mini.sessions](https://github.com/echasnovski/mini.sessions) : session manager~~
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) : LSP config
 - [mason.nvim](https://github.com/williamboman/mason.nvim) : LSP manager
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) : treesitter support
@@ -26,6 +26,7 @@ Editor
 - ~~[neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) : file browser~~
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) : picker
 - [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) : markdown render
+- [snacks.nvim](https://github.com/folke/snacks.nvim) : a collection of plugins
 
 UI
 
@@ -35,7 +36,7 @@ UI
 - [fidget.nvim](https://github.com/j-hui/fidget.nvim) : notifications and LSP progress messages
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) : git integration UI
 - [which-key.nvim](https://github.com/folke/which-key.nvim) : show keymap
-- [mini.indentscope](https://github.com/echasnovski/mini.indentscope) : enhance indent display
+- ~~[mini.indentscope](https://github.com/echasnovski/mini.indentscope) : enhance indent display~~
 - [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) : icon support
 - [nui.nvim](https://github.com/echasnovski/mini.starter) : UI components backend
 

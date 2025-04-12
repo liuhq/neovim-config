@@ -61,10 +61,7 @@ keymap.set('n', '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase W
 keymap.set('n', '{', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 keymap.set('n', '}', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 keymap.set('n', '<leader>t', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
-keymap.set('n', '<leader>d', '<cmd>bdelete<cr>', { desc = 'Delete Buffer' })
+---- handled by Snacks.bufdelete
+-- keymap.set('n', '<leader>d', '<cmd>bdelete<cr>', { desc = 'Delete Buffer' })
 
 keymap.set('n', '<leader>jj', 'gi', { desc = 'Jump to Last Insert' })
-
-keymap.set('n', '<leader>ab', function ()
-    vim.o.background = vim.o.background == 'light' and 'dark' or 'light'
-end, { desc = 'Change Background' })
