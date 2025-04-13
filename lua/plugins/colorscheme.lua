@@ -22,6 +22,8 @@ return {
                 highlight_overrides = {
                     all = function (colors)
                         return {
+                            FloatBorder = { fg = colors.overlay0 },
+
                             CmpItemKindSnippet = { fg = colors.mauve, style = { 'italic' } },
                             CmpItemKindKeyword = { fg = colors.red, style = { 'italic' } },
                             CmpItemKindText = { fg = colors.teal, style = { 'italic' } },
