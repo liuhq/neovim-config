@@ -14,7 +14,7 @@ local keymap = vim.keymap
 
 -- without yank --
 keymap.set('v', 'd', '"_d', { remap = false, silent = true })
-keymap.set({ 'n', 'v' }, '<M-v>', '"0p', { remap = false, silent = true })
+keymap.set({ 'n', 'v' }, '<M-V>', '"0p', { remap = false, silent = true })
 keymap.set({ 'n', 'v' }, 'c', '"_c', { remap = false, silent = true })
 
 -- better up/down
@@ -29,7 +29,7 @@ keymap.set('v', 'H', '^', { desc = 'Cursor Start', remap = true, silent = true }
 keymap.set('v', 'L', '$h', { desc = 'Cursor End', remap = true, silent = true })
 
 -- save file
-keymap.set({ 'i', 'x', 'n', 's' }, '<leader><CR>', '<cmd>w<cr><esc>', { desc = 'Save File' })
+keymap.set({ 'i', 'x', 'n', 's' }, '<leader><cr>', '<cmd>w<cr><esc>', { desc = 'Save File' })
 
 -- better indenting
 keymap.set('v', '<', '<gv')
@@ -46,10 +46,10 @@ keymap.set('n', '<leader>ws', '<C-W>s', { desc = 'Split Window Below', remap = t
 keymap.set('n', '<leader>wv', '<C-W>v', { desc = 'Split Window Right', remap = true })
 
 -- move to window using the <ctrl> hjkl keys
-keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window', remap = true, silent = true })
-keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Go to Lower Window', remap = true, silent = true })
-keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Go to Upper Window', remap = true, silent = true })
-keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window', remap = true, silent = true })
+keymap.set('n', '<C-H>', '<C-W>h', { desc = 'Go to Left Window', remap = true, silent = true })
+keymap.set('n', '<C-J>', '<C-W>j', { desc = 'Go to Lower Window', remap = true, silent = true })
+keymap.set('n', '<C-K>', '<C-W>k', { desc = 'Go to Upper Window', remap = true, silent = true })
+keymap.set('n', '<C-L>', '<C-W>l', { desc = 'Go to Right Window', remap = true, silent = true })
 
 -- resize window using <ctrl> arrow keys
 keymap.set('n', '<C-Up>', '<cmd>resize +2<cr>', { desc = 'Increase Window Height' })
@@ -65,3 +65,5 @@ keymap.set('n', '<leader>t', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' }
 -- keymap.set('n', '<leader>d', '<cmd>bdelete<cr>', { desc = 'Delete Buffer' })
 
 keymap.set('n', '<leader>jj', 'gi', { desc = 'Jump to Last Insert' })
+
+keymap.set({ 'n', 'v' }, 'K', 'i<cr><esc>', { remap = false, silent = true })
