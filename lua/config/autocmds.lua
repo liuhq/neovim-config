@@ -1,7 +1,8 @@
 vim.api.nvim_create_autocmd('VimEnter', {
     callback = function ()
         if vim.fn.argc() == 0 then
-            require('mini.files').open(vim.fn.getcwd())
+            -- require('mini.files').open(vim.fn.getcwd())
+            require('yazi').yazi()
             vim.notify('Open in ' .. vim.fn.getcwd(), vim.log.levels.INFO)
         end
     end,
@@ -52,14 +53,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank({
             timeout = 100,
         })
-    end,
-})
-
--- Stop LSP client when leave nvim
-vim.api.nvim_create_autocmd('VimLeave', {
-    group = vim.api.nvim_create_augroup('lspconfig', { clear = false }),
-    callback = function ()
-        vim.lsp.stop_client(vim.lsp.get_clients())
     end,
 })
 
