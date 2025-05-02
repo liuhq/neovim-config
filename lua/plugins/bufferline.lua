@@ -27,11 +27,7 @@ return {
                     ---@diagnostic disable-next-line: undefined-field
                     return buf.name
                 end,
-                diagnostics = 'nvim_lsp',
-                diagnostics_indicator = function (_, level)
-                    local s = level:match('error') and icons.diagnostics.Error or ''
-                    return '' .. s
-                end,
+                diagnostics = false,
                 color_icons = true,
                 show_buffer_icons = true,
                 show_buffer_close_icons = false,

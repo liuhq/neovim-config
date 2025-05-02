@@ -3,7 +3,7 @@ return {
     dependencies = { 'nvim-treesitter', 'nvim-web-devicons' },
     cmd = 'RenderMarkdown',
     keys = {
-        { '<leader>mm', '<cmd>RenderMarkdown toggle<cr>', desc = 'Render Markdown' },
+        { '<leader>m', '<cmd>RenderMarkdown toggle<cr>', desc = 'Render Markdown' },
     },
     config = function ()
         require('render-markdown').setup({

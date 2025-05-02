@@ -2,112 +2,102 @@ local icons = require('util').icons
 
 return {
     dir = vim.fn.stdpath('config') .. '/lua/plugins/local-statusline',
+    name = 'statusline',
     virtual = true,
     event = 'BufReadPost',
     config = function ()
         _G.stl_comp = {}
 
-        local palette = require('catppuccin.palettes').get_palette()
-
-        local cp = {
-            ---- catppuccin
-            basebg = palette.crust,
-            basefg = palette.text,
-            modebg = {
-                ['n'] = palette.lavender,
-                ['no'] = palette.lavender,
-                ['i'] = palette.text,
-                ['ic'] = palette.text,
-                ['t'] = palette.text,
-                ['v'] = palette.flamingo,
-                ['V'] = palette.flamingo,
-                [''] = palette.flamingo,
-                ['R'] = palette.maroon,
-                ['Rv'] = palette.maroon,
-                ['s'] = palette.maroon,
-                ['S'] = palette.maroon,
-                [''] = palette.maroon,
-                ['c'] = palette.peach,
-                ['cv'] = palette.peach,
-                ['ce'] = palette.peach,
-                ['r'] = palette.teal,
-                ['rm'] = palette.teal,
-                ['r?'] = palette.mauve,
-                ['!'] = palette.green,
-            },
-            modefg = palette.crust,
-            lspfg = {
-                error = palette.red,
-                warning = palette.yellow,
-                info = palette.sky,
-                hint = palette.teal,
-            },
-            lspbg = palette.crust,
-            filestatusfg = palette.yellow,
-            posbg = palette.surface0,
-            posfg = palette.blue,
+        local modehl = {
+            ['n'] = 'StlCompModeNormal',
+            ['no'] = 'StlCompModeNormal',
+            ['i'] = 'StlCompModeInsert',
+            ['ic'] = 'StlCompModeInsert',
+            ['t'] = 'StlCompModeInsert',
+            ['v'] = 'StlCompModeVisual',
+            ['V'] = 'StlCompModeVisual',
+            [''] = 'StlCompModeVisual',
+            ['R'] = 'StlCompModeReplace',
+            ['Rv'] = 'StlCompModeReplace',
+            ['s'] = 'StlCompModeDefault',
+            ['S'] = 'StlCompModeDefault',
+            [''] = 'StlCompModeDefault',
+            ['c'] = 'StlCompModeCommand',
+            ['cv'] = 'StlCompModeCommand',
+            ['ce'] = 'StlCompModeCommand',
+            ['r'] = 'StlCompModeReplace',
+            ['rm'] = 'StlCompModeReplace',
+            ['r?'] = 'StlCompModeReplace',
+            ['!'] = 'StlCompModeDefault',
         }
 
-        vim.api.nvim_set_hl(0, 'StatusLine', { fg = cp.basefg, bg = cp.basebg })
-        vim.api.nvim_set_hl(0, 'StatusLineMode', { fg = cp.modefg, bg = cp.modebg['n'] })
-        vim.api.nvim_set_hl(0, 'StatusLineFileStatus', { fg = cp.filestatusfg })
-        vim.api.nvim_set_hl(0, 'StatusLinePosition', { fg = cp.posfg, bg = cp.posbg })
-
-
         -- Mode Color Change: start
-        local function mode_change(mode)
-            vim.api.nvim_set_hl(0, 'StatusLineMode', { fg = cp.modefg, bg = cp.modebg[mode], bold = true })
-            vim.api.nvim_set_hl(0, 'StatusLinePosition', { fg = cp.modebg[mode], bg = cp.posbg })
+        _G.stl_comp.mode = function ()
+            local mode = vim.api.nvim_get_mode().mode
+            if modehl[mode] then
+                return '%(%#' .. modehl[mode] .. '# ▌ %{v:lua.string.upper(mode(1))} %*%)'
+            else
+                return '%(%#StlCompModeDefault# ▌ %{v:lua.string.upper(mode(1))} %*%)'
+            end
         end
-
-        vim.api.nvim_create_autocmd('ModeChanged', {
-            callback = function (args)
-                local mode = string.match(args.match, ':(.*)')
-                if cp.modebg[mode] then
-                    mode_change(mode)
-                end
-            end,
-        })
         -- Mode Color Change: end
 
+        -- Search Count: start
+        _G.stl_comp.search_count = function ()
+            if vim.v.hlsearch == 1 then
+                local count = vim.fn.searchcount({ recompute = true })
+                --- buggy, `%{%v:lua.stl_comp.search_count()%}` is not effect. it's so weird
+                -- return '%(%#StlCompSecondary#  At ' .. count.current .. ' / ' .. count.total .. '  %*%)'
+                return '  At ' .. count.current .. ' / ' .. count.total .. '  '
+            else
+                return ''
+            end
+        end
+        -- Search Count: end
 
         -- LSP: start
         _G.stl_comp.lsp = function ()
+            local diag = {}
             local count = {}
-            local levels = {
-                errors = vim.diagnostic.severity.ERROR,
-                warnings = vim.diagnostic.severity.WARN,
-                hints = vim.diagnostic.severity.HINT,
-                info = vim.diagnostic.severity.INFO,
-            }
 
-            for k, level in pairs(levels) do
-                count[k] = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))
+            for level = 1, 4 do
+                count[level] = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))
             end
 
-            local errors = ''
-            local warnings = ''
-            local hints = ''
-            local info = ''
+            if count[vim.diagnostic.severity.ERROR] ~= 0 then
+                table.insert(diag, '%#StlCompDiagError#'
+                    .. icons.diagnostics.Error
+                    .. ' '
+                    .. count[vim.diagnostic.severity.ERROR]
+                    .. '%*'
+                )
+            end
+            if count[vim.diagnostic.severity.WARN] ~= 0 then
+                table.insert(diag, '%#StlCompDiagWarn#'
+                    .. icons.diagnostics.Warn
+                    .. ' '
+                    .. count[vim.diagnostic.severity.WARN]
+                    .. '%*'
+                )
+            end
+            if count[vim.diagnostic.severity.INFO] ~= 0 then
+                table.insert(diag, '%#StlCompDiagInfo#'
+                    .. icons.diagnostics.Info
+                    .. ' '
+                    .. count[vim.diagnostic.severity.INFO]
+                    .. '%*'
+                )
+            end
+            if count[vim.diagnostic.severity.HINT] ~= 0 then
+                table.insert(diag, '%#StlCompDiagHint#'
+                    .. icons.diagnostics.Hint
+                    .. ' '
+                    .. count[vim.diagnostic.severity.HINT]
+                    .. '%*'
+                )
+            end
 
-            if count['errors'] ~= 0 then
-                vim.api.nvim_set_hl(0, 'StatusLineLspError', { fg = cp.lspfg.error, bg = cp.lspbg })
-                errors = ' %#StatusLineLspError# ' .. icons.diagnostics.Error .. ' ' .. count['errors'] .. ' %*'
-            end
-            if count['warnings'] ~= 0 then
-                vim.api.nvim_set_hl(0, 'StatusLineLspWarn', { fg = cp.lspfg.warning, bg = cp.lspbg })
-                warnings = ' %#StatusLineLspWarn# ' .. icons.diagnostics.Warn .. ' ' .. count['warnings'] .. ' %*'
-            end
-            if count['info'] ~= 0 then
-                vim.api.nvim_set_hl(0, 'StatusLineLspInfo', { fg = cp.lspfg.info, bg = cp.lspbg })
-                info = ' %#StatusLineLspInfo# ' .. icons.diagnostics.Info .. ' ' .. count['info'] .. ' %*'
-            end
-            if count['hints'] ~= 0 then
-                vim.api.nvim_set_hl(0, 'StatusLineLspHint', { fg = cp.lspfg.hint, bg = cp.lspbg })
-                hints = ' %#StatusLineLspHint# ' .. icons.diagnostics.Hint .. ' ' .. count['hints'] .. ' %*'
-            end
-
-            return errors .. warnings .. info .. hints
+            return ' ' .. table.concat(diag, ' ') .. ' '
         end
         -- LSP: end
 
@@ -145,25 +135,34 @@ return {
         -- Filestatus: end
 
 
-        -- Filetype: start
-        _G.stl_comp.filetype = function ()
-            return string.format(' %s ', vim.bo.filetype):upper()
+        -- File Pos: start
+        _G.stl_comp.filepos = function ()
+            return '%(%#StlCompSecondary# %7(%c:%l%) - %-5(%p%%%) %*%)'
         end
-        -- Filetype: end
+        -- File Pos: end
 
+        -- File Meta: start
+        _G.stl_comp.filemeta = function ()
+            local mode = vim.api.nvim_get_mode().mode
+            if modehl[mode] then
+                return '%(%#' .. modehl[mode] .. '# %Y / %{toupper(&fileencoding)} / %{toupper(&fileformat)} ▐ %*%)'
+            else
+                return '%(%#StlCompModeDefault# %Y / %{toupper(&fileencoding)} / %{toupper(&fileformat)} ▐ %*%)'
+            end
+        end
+        -- File Meta: end
 
         vim.opt.statusline = table.concat({
-            '%#StatusLine#',
+            '%#StlCompBase#',
 
             -- mode
-            '%(',
-            '%#StatusLineMode#',
-            ' ▌',
-            ' %{v:lua.string.upper(mode(1))} ▐',
-            '%*',
-            '%)',
+            '%{%v:lua.stl_comp.mode()%}',
+            -- search count - buggy, `%{%v:lua.stl_comp.search_count()%}` is not effect here. it's so weird
+            '%(%#StlCompSecondary#',
+            '%{v:lua.stl_comp.search_count()}',
+            '%*%)',
             -- lsp
-            ' %{%v:lua.stl_comp.lsp()%} ',
+            '%{%v:lua.stl_comp.lsp()%}',
 
             ----------------------------------------
             '%=',
@@ -173,13 +172,13 @@ return {
             '%(',
             '%{%v:lua.stl_comp.filepath()%}',
             '%{%v:lua.stl_comp.filename()%}',
-            -- file status
+            -- file flags
             '%( : ',
-            '%#StatusLineFileStatus#',
+            '%#StlCompFlags#',
             '%{%v:lua.stl_comp.file_readonly()%}',
             '%{%v:lua.stl_comp.file_modified()%}',
             '%*',
-            '%) ',
+            '%)',
             -- gitsigns
             ' %{%get(b:, "gitsigns_status", "")%}',
             '%)',
@@ -189,18 +188,9 @@ return {
             ----------------------------------------
 
             -- file positions
-            '%#StatusLinePosition#',
-            '%(',
-            ' %7(%c:%l%) - %-5(%p%%%) ',
-            '%)',
-            '%*',
-
-            -- file data
-            '%(',
-            '%#StatusLineMode#',
-            '▌ %Y / %{toupper(&fileencoding)} / %{toupper(&fileformat)} ',
-            '▐ ',
-            '%)',
+            '%{%v:lua.stl_comp.filepos()%}',
+            -- meta
+            '%{%v:lua.stl_comp.filemeta()%}',
         })
     end,
 }

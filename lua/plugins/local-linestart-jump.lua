@@ -8,6 +8,7 @@ end, {})
 
 return {
     dir = vim.fn.stdpath('config') .. '/lua/plugins/local-linestart-jump',
+    name = 'linestart-jump',
     virtual = true,
     keys = {
         { '<Home>', '<cmd>CursorToLineStart<cr>', mode = { 'i', 'n' }, desc = 'Jump to Line Start' },
