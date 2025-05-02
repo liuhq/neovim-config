@@ -47,7 +47,16 @@ o.fileencoding = 'UTF-8'
 o.fileformat = 'unix'
 o.fileformats = 'unix,dos'
 
-vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
+--- default: l t T o O C F
+vim.opt.shortmess:append({
+    l = false,
+    W = true,
+    I = true,
+    c = true,
+    C = true,
+    S = true,
+    s = true,
+})
 
 o.undofile = true
 o.undolevels = 10000

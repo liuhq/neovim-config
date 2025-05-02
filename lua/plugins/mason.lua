@@ -3,8 +3,6 @@
 local enable_pkg = {
     -- lsp: bashls and formatter: shfmt
     'bash-language-server',
-    'shfmt',
-
     'clangd',
     -- cssls
     'css-lsp',
@@ -22,7 +20,9 @@ local enable_pkg = {
     -- tailwindcss
     'tailwindcss-language-server',
     'taplo',
+    -- ts_ls
     'typescript-language-server',
+    -- yamlls
     'yaml-language-server',
 
     --- DAP
@@ -32,6 +32,7 @@ local enable_pkg = {
     --- Formatter
     'dprint',
     'prettier',
+    'shfmt',
     'yamlfmt',
 }
 

@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Neovim `0.10+`
+- Neovim `0.11+`
 - a [Nerd Font](https://www.nerdfonts.com/) (currently using [Maple](https://github.com/subframe7536/maple-font))
 - [`git`](https://git-scm.com/) and [`nodejs`](https://nodejs.org/)
 - [`zig`](https://ziglang.org/) (be used as C compiler) for treesitter on Windows
@@ -16,7 +16,7 @@ Editor
 - [lazy.nvim](https://github.com/folke/lazy.nvim) : plugins manager
 - ~~[mini.starter](https://github.com/echasnovski/mini.starter) : starter~~
 - ~~[mini.sessions](https://github.com/echasnovski/mini.sessions) : session manager~~
-- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) : LSP config
+- ~~[nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) : LSP config~~
 - [mason.nvim](https://github.com/williamboman/mason.nvim) : LSP manager
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) : treesitter support
 - [conform.nvim](https://github.com/stevearc/conform.nvim) : formatter config
@@ -24,7 +24,8 @@ Editor
 - [mini.files](https://github.com/echasnovski/mini.files) : file browser
 - ~~[yazi.nvim](https://github.com/mikavilpas/yazi.nvim) : file browser~~
 - ~~[neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) : file browser~~
-- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) : picker
+- ~~[telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) : picker~~
+- [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) : markdown render
 - [snacks.nvim](https://github.com/folke/snacks.nvim) : a collection of plugins
 

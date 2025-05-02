@@ -21,7 +21,6 @@ return {
                 },
                 documentation = {
                     border = 'solid',
-                    -- winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu',
                 },
             },
             formatting = {
@@ -41,16 +40,57 @@ return {
                 end,
             },
             mapping = cmp.mapping.preset.insert({
-                ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-                ['<C-d>'] = cmp.mapping.scroll_docs(4),
-                ['<C-p>'] = cmp.mapping(function (_)
+                --- unset for binding to emacs keymap
+                ['<C-p>'] = cmp.mapping(function (fallback)
+                    fallback()
+                end, { 'i', 'c' }),
+                --- unset for binding to emacs keymap
+                ['<C-n>'] = cmp.mapping(function (fallback)
+                    fallback()
+                end, { 'i', 'c' }),
+
+                ['<C-u>'] = cmp.mapping(function (fallback)
+                    if cmp.visible_docs() then
+                        cmp.mapping.scroll_docs(-4)
+                    else
+                        fallback()
+                    end
+                end, { 'i', 'c' }),
+                ['<C-d>'] = cmp.mapping(function (fallback)
+                    if cmp.visible_docs() then
+                        cmp.mapping.scroll_docs(4)
+                    else
+                        fallback()
+                    end
+                end, { 'i', 'c' }),
+
+                ['<C-o>'] = cmp.mapping(function (_)
                     if cmp.visible() then
                         cmp.close()
                     else
                         cmp.complete()
                     end
-                end, { 'i', 's' }),
-                ['<tab>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+                end, { 'i', 'c' }),
+                -- ['<C-l>'] = cmp.mapping.confirm({ select = true }),
+                ['<C-l>'] = cmp.mapping(function (fallback)
+                    if cmp.visible() then
+                        cmp.confirm({ select = true })
+                    else
+                        fallback()
+                    end
+                end, { 'i', 'c' }),
+                ['<tab>'] = cmp.mapping(function (fallback)
+                    if cmp.visible() then
+                        if cmp.visible_docs() then
+                            cmp.close_docs()
+                        else
+                            cmp.open_docs()
+                        end
+                    else
+                        fallback()
+                    end
+                end, { 'i', 'c' }),
+
                 ['<C-j>'] = cmp.mapping(function (fallback)
                     if cmp.visible() then
                         cmp.select_next_item()
@@ -59,7 +99,7 @@ return {
                     else
                         fallback()
                     end
-                end, { 'i', 's', 'c' }),
+                end, { 'i', 'c' }),
                 ['<C-k>'] = cmp.mapping(function (fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()
@@ -68,14 +108,7 @@ return {
                     else
                         fallback()
                     end
-                end, { 'i', 's', 'c' }),
-                ['<C-h>'] = cmp.mapping(function ()
-                    if cmp.visible_docs() then
-                        cmp.close_docs()
-                    else
-                        cmp.open_docs()
-                    end
-                end, { 'i', 's', 'c' }),
+                end, { 'i', 'c' }),
             }),
             sources = {
                 {
