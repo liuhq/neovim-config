@@ -35,9 +35,9 @@ return {
         _G.stl_comp.mode = function ()
             local mode = vim.api.nvim_get_mode().mode
             if modehl[mode] then
-                return '%(%#' .. modehl[mode] .. '# ▌ %{v:lua.string.upper(mode(1))} %*%)'
+                return '%(%#' .. modehl[mode] .. '# ┃ %{v:lua.string.upper(mode(1))} %*%)'
             else
-                return '%(%#StlCompModeDefault# ▌ %{v:lua.string.upper(mode(1))} %*%)'
+                return '%(%#StlCompModeDefault# ┃ %{v:lua.string.upper(mode(1))} %*%)'
             end
         end
         -- Mode Color Change: end
@@ -145,9 +145,9 @@ return {
         _G.stl_comp.filemeta = function ()
             local mode = vim.api.nvim_get_mode().mode
             if modehl[mode] then
-                return '%(%#' .. modehl[mode] .. '# %Y / %{toupper(&fileencoding)} / %{toupper(&fileformat)} ▐ %*%)'
+                return '%(%#' .. modehl[mode] .. '# %Y / %{toupper(&fileencoding)} / %{toupper(&fileformat)} ┃ %*%)'
             else
-                return '%(%#StlCompModeDefault# %Y / %{toupper(&fileencoding)} / %{toupper(&fileformat)} ▐ %*%)'
+                return '%(%#StlCompModeDefault# %Y / %{toupper(&fileencoding)} / %{toupper(&fileformat)} ┃ %*%)'
             end
         end
         -- File Meta: end
