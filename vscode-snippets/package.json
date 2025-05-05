@@ -1,0 +1,19 @@
+{
+  "name": "vscode-snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "all"
+        ],
+        "path": "./global.json"
+      },
+      {
+        "language": [
+          "license"
+        ],
+        "path": "./license.json"
+      }
+    ]
+  }
+}

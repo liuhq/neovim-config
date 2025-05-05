@@ -7,8 +7,6 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-require('config.options')
-require('config.autocmds')
-require('config.keymaps')
-require('config.lsp')
-require('config.lazy')
+require('initd')
+require('plug-deps')
+require('plug-local')

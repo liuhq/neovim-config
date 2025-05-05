@@ -1,0 +1,5 @@
+require('initd.options')
+require('initd.keymaps')
+require('initd.autocmd')
+require('initd.util')
+require('initd.lsp')
