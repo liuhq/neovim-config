@@ -1,0 +1,50 @@
+{
+  "name": "vscode-snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "all"
+        ],
+        "path": "./global.json"
+      },
+      {
+        "language": [
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact"
+        ],
+        "path": "./javascript/javascript.json"
+      },
+      {
+        "language": [
+          "typescript",
+          "typescriptreact"
+        ],
+        "path": "./javascript/typescript.json"
+      },
+      {
+        "language": [
+          "html",
+          "javascriptreact",
+          "typescriptreact",
+          "astro"
+        ],
+        "path": "./html.json"
+      },
+      {
+        "language": [
+          "markdown"
+        ],
+        "path": "./markdown.json"
+      },
+      {
+        "language": [
+          "license"
+        ],
+        "path": "./license.json"
+      }
+    ]
+  }
+}

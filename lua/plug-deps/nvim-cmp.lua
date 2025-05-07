@@ -183,5 +183,5 @@ return function ()
     })
 
     -- LuaSnip snippets
-    require('luasnip.loaders.from_vscode').lazy_load({ paths = vim.fn.stdpath('config') .. '/vscode-snippets' })
+    require('luasnip.loaders.from_vscode').lazy_load({ paths = vim.fn.stdpath('config') .. '/snippets' })
 end

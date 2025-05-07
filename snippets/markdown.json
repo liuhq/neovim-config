@@ -1,0 +1,31 @@
+{
+  "YAML Header": {
+    "prefix": "---",
+    "body": [
+      "---",
+      "title: ${1:title}",
+      "date: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "---"
+    ]
+  },
+  "Insert Link": {
+    "prefix": "link",
+    "body": [
+      "[${1}](${2})"
+    ]
+  },
+  "Insert Picture": {
+    "prefix": "pic",
+    "body": [
+      "![${1}](${2})"
+    ]
+  },
+  "Insert Code Language": {
+    "prefix": "```",
+    "body": [
+      "```{${1:lang}}",
+      "${0}",
+      "```"
+    ]
+  }
+}
