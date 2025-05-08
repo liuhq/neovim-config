@@ -39,8 +39,9 @@ end
 -- Search Count: start
 _G.stl_comp.search_count = function ()
     if vim.v.hlsearch == 1 then
-        local count = vim.fn.searchcount({ recompute = true })
-        if not count or not count.total or count.total == 0 then
+        -- local count = vim.fn.searchcount({ recompute = true })
+        local ok, count = pcall(vim.fn.searchcount, { recompute = true })
+        if not ok or not count or not count.total or count.total == 0 then
             return ''
         end
         --- buggy, `%{%v:lua.stl_comp.search_count()%}` is not effect. it's so weird

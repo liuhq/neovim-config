@@ -41,6 +41,13 @@
       },
       {
         "language": [
+          "json",
+          "jsonc"
+        ],
+        "path": "./json.json"
+      },
+      {
+        "language": [
           "license"
         ],
         "path": "./license.json"
