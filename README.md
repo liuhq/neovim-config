@@ -7,20 +7,22 @@
 - [`git`](https://git-scm.com/) and [`nodejs`](https://nodejs.org/)
 - [`zig`](https://ziglang.org/) (be used as C compiler) for treesitter on Windows
 - [`fd`](https://github.com/sharkdp/fd) and [`ripgrep`](https://github.com/BurntSushi/ripgrep)
+- `unzip` for mason
 - [`yazi`](https://yazi-rs.github.io/) for file browsing and managing
 
 ## Plugins list
 
 Editor
 
-- [lazy.nvim](https://github.com/folke/lazy.nvim) : plugins manager
+- [mini.deps](https://github.com/echasnovski/mini.deps) : plugins manager
 - [mason.nvim](https://github.com/williamboman/mason.nvim) : LSP manager
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) : treesitter support
+- [yazi.nvim](https://github.com/mikavilpas/yazi.nvim) : file browser
 - [conform.nvim](https://github.com/stevearc/conform.nvim) : formatter config
 - [nvim-dap](https://github.com/mfussenegger/nvim-dap): DAP config
-- [yazi.nvim](https://github.com/mikavilpas/yazi.nvim) : file browser
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) : markdown render
+- [mini.bufremove](https://github.com/echasnovski/mini.bufremove) : enhance buffers & windows
 
 UI
 
@@ -43,3 +45,7 @@ Coding
 - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) : operate html tag by treesitter
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs) : enhance pairs
 - [nvim-surround](https://github.com/kylechui/nvim-surround) : operate surrounding delimiter pairs
+
+## License
+
+[BEERWARE](./LICENSE)

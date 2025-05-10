@@ -1,6 +1,6 @@
 {
   "MIT": {
-    "prefix": "mitl",
+    "prefix": "mit",
     "description": "MIT License",
     "body": [
       "The MIT License (MIT)",
@@ -27,7 +27,7 @@
     ]
   },
   "BEERWARE": {
-    "prefix": "BEERWARE",
+    "prefix": "beerware",
     "description": "BEERWARE License",
     "body": [
       "The BEERWARE License (BEERWARE)",
@@ -41,7 +41,7 @@
     ]
   },
   "ISC": {
-    "prefix": "ISCL",
+    "prefix": "isc",
     "description": "ISC License",
     "body": [
       "The ISC License (ISC)",
@@ -54,7 +54,7 @@
     ]
   },
   "EUPL": {
-    "prefix": "EUPL",
+    "prefix": "eupl",
     "description": "EUPL License",
     "body": [
       "The EUPL License (EUPL)",

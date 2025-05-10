@@ -48,6 +48,31 @@
       },
       {
         "language": [
+          "c"
+        ],
+        "path": "./c.json"
+      },
+      {
+        "language": [
+          "rust"
+        ],
+        "path": "./rust.json"
+      },
+      {
+        "language": [
+          "nix"
+        ],
+        "path": "./nix.json"
+      },
+      {
+        "language": [
+          "gitcommit",
+          "NeogitCommitMessage"
+        ],
+        "path": "./gitcommit.json"
+      },
+      {
+        "language": [
           "license"
         ],
         "path": "./license.json"

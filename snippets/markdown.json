@@ -27,5 +27,73 @@
       "${0}",
       "```"
     ]
+  },
+  "Readme Template": {
+    "prefix": "readme",
+    "body": [
+      "# ${1:Project}",
+      "",
+      "$0",
+      "",
+      "## Installation",
+      "",
+      "",
+      "",
+      "```",
+      "",
+      "```",
+      "",
+      "## Usage",
+      "",
+      "",
+      "",
+      "## Support",
+      "",
+      "",
+      "",
+      "## Contributing",
+      "",
+      "",
+      "",
+      "## Changelog",
+      "",
+      "You can check the [Changelog](./CHANGELOG.md) here.",
+      "",
+      "## License",
+      "",
+      "[$2](./LICENSE)"
+    ]
+  },
+  "Insert Thanks": {
+    "prefix": "thanks",
+    "body": [
+      "## Thanks",
+      "",
+      "- [$1]($2)$0"
+    ]
+  },
+  "Insert License": {
+    "prefix": "license",
+    "body": [
+      "## License",
+      "",
+      "[$1](./LICENSE)"
+    ]
+  },
+  "License BEERWARE": {
+    "prefix": "licb",
+    "body": "BEERWARE"
+  },
+  "License MIT": {
+    "prefix": "licm",
+    "body": "MIT"
+  },
+  "License ISC": {
+    "prefix": "lici",
+    "body": "ISC"
+  },
+  "License EUPL": {
+    "prefix": "lice",
+    "body": "EUPL"
   }
 }
