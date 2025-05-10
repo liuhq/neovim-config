@@ -17,5 +17,17 @@
     "prefix": "uuid",
     "body": "${UUID}",
     "description": "A Version 4 UUID"
+  },
+  "name": {
+    "prefix": "name",
+    "body": "Horace Liu"
+  },
+  "mail": {
+    "prefix": "mail",
+    "body": "im.liuhq@gmail.com"
+  },
+  "me": {
+    "prefix": "me",
+    "body": "Horace Liu <im.liuhq@gmail.com>"
   }
 }
