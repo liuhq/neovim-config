@@ -23,7 +23,7 @@
   "Insert Code Language": {
     "prefix": "```",
     "body": [
-      "```{${1:lang}}",
+      "```${1:lang}",
       "${0}",
       "```"
     ]

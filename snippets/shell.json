@@ -1,8 +1,24 @@
 {
-  "Shebang": {
+  "Sh": {
     "prefix": "sh",
     "body": [
       "#!/bin/sh -efu",
+      "",
+      "$0"
+    ]
+  },
+  "Bash": {
+    "prefix": "bash",
+    "body": [
+      "#!/bin/bash -efu",
+      "",
+      "$0"
+    ]
+  },
+  "Zsh": {
+    "prefix": "zsh",
+    "body": [
+      "#!/bin/zsh -efu",
       "",
       "$0"
     ]
