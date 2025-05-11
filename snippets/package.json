@@ -73,6 +73,14 @@
       },
       {
         "language": [
+          "sh",
+          "bash",
+          "zsh"
+        ],
+        "path": "./shell.json"
+      },
+      {
+        "language": [
           "license"
         ],
         "path": "./license.json"

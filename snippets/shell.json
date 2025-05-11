@@ -1,0 +1,10 @@
+{
+  "Shebang": {
+    "prefix": "sh",
+    "body": [
+      "#!/bin/sh -efu",
+      "",
+      "$0"
+    ]
+  }
+}
