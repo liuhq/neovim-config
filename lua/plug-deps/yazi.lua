@@ -27,7 +27,6 @@ return function ()
 
     vim.keymap.set('n', '<leader>e', '<cmd>Yazi<cr>', { desc = 'Open yazi (Current file)' })
     vim.keymap.set('n', '<leader>r', '<cmd>Yazi cwd<cr>', { desc = 'Open yazi (Root/cwd)' })
-    vim.keymap.set('n', '<leader>t', '<cmd>Yazi toggle<cr>', { desc = 'Toggle yazi (Resume)' })
 
     vim.api.nvim_create_autocmd('VimEnter', {
         callback = function ()

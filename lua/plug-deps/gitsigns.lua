@@ -70,10 +70,10 @@ return function ()
         on_attach = function (bufnr)
             local gs = require('gitsigns')
 
-            vim.keymap.set('n', '<leader>gk', function () gs.nav_hunk('prev') end,
-                { buffer = bufnr, desc = 'Jump to Prev Hunk' })
-            vim.keymap.set('n', '<leader>gj', function () gs.nav_hunk('next') end,
-                { buffer = bufnr, desc = 'Jump to Next Hunk' })
+            vim.keymap.set('n', '[g', function () gs.nav_hunk('prev') end,
+                { buffer = bufnr, desc = 'Prev Hunk' })
+            vim.keymap.set('n', ']g', function () gs.nav_hunk('next') end,
+                { buffer = bufnr, desc = 'Next Hunk' })
             vim.keymap.set('n', '<leader>gp', gs.preview_hunk, { buffer = bufnr, desc = 'Preview Hunk' })
             vim.keymap.set('n', '<leader>gb', function () gs.blame_line({ full = true }) end,
                 { buffer = bufnr, desc = 'Blame Line' })
