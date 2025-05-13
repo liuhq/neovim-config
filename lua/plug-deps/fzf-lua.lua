@@ -66,7 +66,11 @@ return function ()
     vim.keymap.set('n', '<leader>dw', function ()
         require('fzf-lua').diagnostics_workspace()
     end, { desc = 'Workspace Diagnostics' })
-    vim.keymap.set({ 'x', 'i' }, '<C-x><C-f>', function ()
-        require('fzf-lua').complete_path()
+    vim.keymap.set({ 'x', 'i' }, '<C-p>', function ()
+        local save_dir = vim.fn.chdir(vim.fn.expand('%:p:h'))
+        if save_dir ~= '' then
+            require('fzf-lua').complete_path()
+            vim.fn.chdir(save_dir)
+        end
     end, { desc = 'Fuzzy Complete Path' })
 end
