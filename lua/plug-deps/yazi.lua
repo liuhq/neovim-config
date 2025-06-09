@@ -30,6 +30,13 @@ return function ()
 
     vim.api.nvim_create_autocmd('VimEnter', {
         callback = function ()
+            local ft = vim.bo.filetype
+
+            if ft == 'man' then
+                vim.notify('Open: ' .. vim.fn.expand('%:p'), vim.log.levels.INFO)
+                return
+            end
+
             if vim.fn.argc() == 0 then
                 require('yazi').yazi()
                 vim.notify('Open in ' .. vim.fn.getcwd(), vim.log.levels.INFO)

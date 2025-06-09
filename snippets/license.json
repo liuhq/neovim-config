@@ -5,7 +5,7 @@
     "body": [
       "The MIT License (MIT)",
       "",
-      "Copyright (c) ${CURRENT_YEAR} ${0:Author}",
+      "Copyright (c) ${CURRENT_YEAR} Horace Liu <${1:mail}>",
       "",
       "Permission is hereby granted, free of charge, to any person obtaining a copy",
       "of this software and associated documentation files (the \"Software\"), to deal",
@@ -27,17 +27,16 @@
     ]
   },
   "BEERWARE": {
-    "prefix": "beerware",
-    "description": "BEERWARE License",
+    "prefix": "coffeeware",
+    "description": "COFFEEWARE License",
     "body": [
-      "The BEERWARE License (BEERWARE)",
+      "\t\tThe COFFEEWARE License (COFFEEWARE)",
       "",
-      "Copyright (c) ${CURRENT_YEAR} ${0:Author}. All rights reserved.",
+      "Copyright (c) ${CURRENT_YEAR} Horace Liu. All rights reserved.",
       "",
-      "Licensed under the \"THE BEER-WARE LICENSE\" (Revision 42):",
-      "$1 wrote this file. As long as you retain this notice you",
-      "can do whatever you want with this stuff. If we meet some day, and you think",
-      "this stuff is worth it, you can buy me a beer or coffee in return"
+      "Horace Liu <${1:mail}> wrote this code. As long as you retain this notice",
+      "you can do whatever you want with this code. If we meet some day, and you think",
+      "this code is worth it, you can buy me a coffee in return."
     ]
   },
   "ISC": {
@@ -46,7 +45,7 @@
     "body": [
       "The ISC License (ISC)",
       "",
-      "Copyright (c) ${CURRENT_YEAR} ${0:Author}. All rights reserved.",
+      "Copyright (c) ${CURRENT_YEAR} Horace Liu <${1:mail}>. All rights reserved.",
       "",
       "Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.",
       "",
@@ -59,7 +58,7 @@
     "body": [
       "The EUPL License (EUPL)",
       "",
-      "Copyright (c) ${CURRENT_YEAR} ${0:Author}",
+      "Copyright (c) ${CURRENT_YEAR} Horace Liu <${1:mail}>",
       "Licensed under the EUPL, Version 1.2 or – as soon they will be approved by the European Commission - subsequent versions of the EUPL (the ''Licence'');",
       "You may not use this work except in compliance with the Licence.",
       "You may obtain a copy of the Licence at:",
@@ -76,7 +75,7 @@
     "description": "SPDX-style license header",
     "body": [
       "SPDX-License-Identifier: ${1:Id}",
-      "SPDX-FileCopyrightText: ${CURRENT_YEAR} ${2:Author}"
+      "SPDX-FileCopyrightText: ${CURRENT_YEAR} Horace Liu <${2:mail}>"
     ]
   }
 }

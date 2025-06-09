@@ -37,6 +37,5 @@ later(require('plug-deps.mini-ai'))
 later(require('plug-deps.mini-indentscope'))
 later(require('plug-deps.nvim-autopairs'))
 later(require('plug-deps.surround'))
-later(require('plug-deps.render-markdown'))
 
 require('plug-deps.mason')
