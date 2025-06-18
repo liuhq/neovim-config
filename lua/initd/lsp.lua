@@ -155,6 +155,7 @@ vim.lsp.enable({
     'lua_ls',
     'marksman',
     -- 'nixd',
+    'racket_langserver',
     'rust_analyzer',
     'tailwindcss',
     'taplo',
