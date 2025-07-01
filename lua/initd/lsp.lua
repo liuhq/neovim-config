@@ -43,7 +43,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end
         if client:supports_method('textDocument/formatting') then
             vim.bo[args.buf].formatexpr = 'v:lua.vim.lsp.formatexpr(#{timeout_ms:250})'
-            vim.keymap.set('n', '<leader>cF', function ()
+            vim.keymap.set('n', 'g+', function ()
                 vim.lsp.buf.format({ async = true })
             end, { desc = 'Format (LSP)', buffer = args.buf })
         end
@@ -64,7 +64,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = 'References', buffer = args.buf })
         end
         if client:supports_method('textDocument/rename') then
-            vim.keymap.set('n', '<leader>cn', vim.lsp.buf.rename, { desc = 'Rename', buffer = args.buf })
+            vim.keymap.set('n', 'gn', vim.lsp.buf.rename, { desc = 'Rename', buffer = args.buf })
         end
         if client:supports_method('textDocument/signatureHelp') then
             -- <C-S> is also mapped in insert mode to vim.lsp.buf.signature_help()
