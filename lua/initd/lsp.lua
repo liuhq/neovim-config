@@ -43,7 +43,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end
         if client:supports_method('textDocument/formatting') then
             vim.bo[args.buf].formatexpr = 'v:lua.vim.lsp.formatexpr(#{timeout_ms:250})'
-            vim.keymap.set('n', 'g+', function ()
+            vim.keymap.set({ 'n', 'v' }, 'g+', function ()
                 vim.lsp.buf.format({ async = true })
             end, { desc = 'Format (LSP)', buffer = args.buf })
         end

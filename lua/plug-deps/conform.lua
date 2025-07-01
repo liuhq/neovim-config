@@ -66,7 +66,7 @@ return function ()
 
     vim.o.formatexpr = 'v:lua.require("conform").formatexpr()'
 
-    vim.keymap.set('n', 'g=', function ()
+    vim.keymap.set({ 'n', 'v' }, 'g=', function ()
         require('conform').format({ async = true }, function (err)
             if not err then
                 local mode = vim.api.nvim_get_mode().mode
