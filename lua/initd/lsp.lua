@@ -23,7 +23,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
         if client:supports_method('textDocument/codeAction') then
-            vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code Action', buffer = args.buf })
+            vim.keymap.set({ 'n', 'v' }, 'ga', vim.lsp.buf.code_action,
+                { desc = 'Code Action', buffer = args.buf })
         end
         if client:supports_method('textDocument/declaration') then
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Declaration', buffer = args.buf })
