@@ -19,7 +19,6 @@ Editor
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) : treesitter support
 - [yazi.nvim](https://github.com/mikavilpas/yazi.nvim) : file browser
 - [conform.nvim](https://github.com/stevearc/conform.nvim) : formatter config
-- [nvim-dap](https://github.com/mfussenegger/nvim-dap): DAP config
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) : markdown render
 - [mini.bufremove](https://github.com/echasnovski/mini.bufremove) : enhance buffers & windows
