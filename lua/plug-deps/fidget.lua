@@ -36,5 +36,5 @@ return function ()
 
     vim.keymap.set('n', '<leader>na', '<cmd>Fidget clear<cr>', { desc = 'Clear Active' })
     vim.keymap.set('n', '<leader>nc', '<cmd>Fidget clear_history<cr>', { desc = 'Clear Histories' })
-    vim.keymap.set('n', '<leader>nh', '<cmd>Fidget history<cr>', { desc = 'Show Histories' })
+    vim.keymap.set('n', '<leader>nn', '<cmd>Fidget history<cr>', { desc = 'Show Histories' })
 end

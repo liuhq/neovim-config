@@ -15,8 +15,6 @@ local enable_pkg = {
     -- lua_ls
     'lua-language-server',
     'marksman',
-    -- rust_analyzer
-    'rust-analyzer',
     -- tailwindcss
     'tailwindcss-language-server',
     'taplo',
@@ -24,10 +22,6 @@ local enable_pkg = {
     'typescript-language-server',
     -- yamlls
     'yaml-language-server',
-
-    --- DAP
-    'codelldb',
-    'js-debug-adapter',
 
     --- Formatter
     'dprint',
