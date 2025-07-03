@@ -154,7 +154,6 @@ vim.lsp.enable({
     'html',
     'jsonls',
     'lua_ls',
-    'marksman',
     -- 'nixd',
     'racket_langserver',
     'rust_analyzer',

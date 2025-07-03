@@ -23,12 +23,11 @@
 --- ```
 ---
 
-local cmd_path = vim.fn.exepath('vscode-html-language-server')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 return {
-    cmd = { cmd_path, '--stdio' },
+    cmd = { 'vscode-html-language-server', '--stdio' },
     filetypes = { 'html', 'templ' },
     root_markers = { 'package.json', '.git' },
     single_file_support = true,

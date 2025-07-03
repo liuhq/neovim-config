@@ -21,12 +21,11 @@
 --- ```
 ---
 
-local cmd_path = vim.fn.exepath('vscode-css-language-server')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 return {
-    cmd = { cmd_path, '--stdio' },
+    cmd = { 'vscode-css-language-server', '--stdio' },
     filetypes = { 'css', 'scss', 'less' },
     single_file_support = true,
     init_options = { provideFormatter = true }, -- needed to enable formatting capabilities

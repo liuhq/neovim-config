@@ -8,10 +8,8 @@
 --- ```
 ---
 
-local cmd_path = vim.fn.exepath('bash-language-server')
-
 return {
-    cmd = { cmd_path, 'start' },
+    cmd = { 'bash-language-server', 'start' },
     filetypes = { 'bash', 'sh', 'zsh' },
     root_markers = { '.git' },
     single_file_support = true,

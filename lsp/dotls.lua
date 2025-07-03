@@ -8,10 +8,8 @@
 --- ```
 ---
 
-local cmd_path = vim.fn.exepath('dot-language-server')
-
 return {
-    cmd = { cmd_path, '--stdio' },
+    cmd = { 'dot-language-server', '--stdio' },
     filetypes = { 'dot' },
     root_markers = { '.git' },
     single_file_support = true,

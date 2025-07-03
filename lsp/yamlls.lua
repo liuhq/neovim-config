@@ -60,10 +60,8 @@
 --- ```
 ---
 
-local cmd_path = vim.fn.exepath('yaml-language-server')
-
 return {
-    cmd = { cmd_path, '--stdio' },
+    cmd = { 'yaml-language-server', '--stdio' },
     filetypes = { 'yaml', 'yaml.docker-compose', 'yaml.gitlab' },
     root_markers = { '.git' },
     single_file_support = true,

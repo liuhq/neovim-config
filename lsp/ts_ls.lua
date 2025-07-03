@@ -15,12 +15,9 @@
 --- - remove unused code
 ---
 
-
-local cmd_path = vim.fn.exepath('typescript-language-server')
-
 return {
     init_options = { hostInfo = 'neovim' },
-    cmd = { cmd_path, '--stdio' },
+    cmd = { 'typescript-language-server', '--stdio' },
     filetypes = {
         'javascript',
         'javascriptreact',

@@ -22,12 +22,11 @@
 --- ```
 ---
 
-local cmd_path = vim.fn.exepath('vscode-json-language-server')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 return {
-    cmd = { cmd_path, '--stdio' },
+    cmd = { 'vscode-json-language-server', '--stdio' },
     filetypes = { 'json', 'jsonc' },
     root_markers = { '.git' },
     single_file_support = true,

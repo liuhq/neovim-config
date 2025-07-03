@@ -60,10 +60,8 @@ local function symbol_info()
     end, bufnr) ---@diagnostic disable-line: param-type-mismatch
 end
 
-local cmd_path = vim.fn.exepath('clangd')
-
 return {
-    cmd = { cmd_path },
+    cmd = { 'clangd' },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
     root_markers = {
         '.clangd',

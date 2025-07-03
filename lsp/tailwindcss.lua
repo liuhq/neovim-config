@@ -6,10 +6,8 @@
 --- npm install -g @tailwindcss/language-server
 ---
 
-local cmd_path = vim.fn.exepath('tailwindcss-language-server')
-
 return {
-    cmd = { cmd_path, '--stdio' },
+    cmd = { 'tailwindcss-language-server', '--stdio' },
     -- filetypes copied and adjusted from tailwindcss-intellisense
     filetypes = {
         -- html

@@ -9,11 +9,8 @@
 --- * [Lua.workspace.library](https://luals.github.io/wiki/settings/#workspacelibrary)
 ---
 
-local cmd_path = vim.fn.exepath('lua-language-server')
--- local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 return {
-    cmd = { cmd_path },
+    cmd = { 'lua-language-server' },
     filetypes = { 'lua' },
     root_markers = {
         '.luarc.json',
@@ -48,7 +45,7 @@ return {
                 --     vim.env.VIMRUNTIME,
                 -- },
                 -- or pull in all of 'runtimepath'. NOTE: this is a lot slower and will cause issues when working on your own configuration (see https://github.com/neovim/nvim-lspconfig/issues/3189)
-                library = vim.api.nvim_get_runtime_file("", true)
+                library = vim.api.nvim_get_runtime_file('', true),
             },
         })
     end,

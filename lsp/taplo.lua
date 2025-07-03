@@ -10,10 +10,8 @@
 --- ```
 ---
 
-local cmd_path = vim.fn.exepath('taplo')
-
 return {
-    cmd = { cmd_path, 'lsp', 'stdio' },
+    cmd = { 'taplo', 'lsp', 'stdio' },
     filetypes = { 'toml' },
     root_markers = { '.git' },
     single_file_support = true,
