@@ -155,7 +155,6 @@ vim.lsp.enable({
     'jsonls',
     'lua_ls',
     -- 'nixd',
-    'racket_langserver',
     'rust_analyzer',
     'tailwindcss',
     'taplo',

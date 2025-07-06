@@ -93,16 +93,11 @@
     ],
     "description": "#[derive(…)]"
   },
-  "enum": {
-    "prefix": "enum",
+  "derive-debug": {
+    "prefix": "derive-debug",
     "body": [
-      "#[derive(Debug)]",
-      "enum ${1:Name} {",
-      "    ${2:Variant1},",
-      "    ${3:Variant2},",
-      "}"
-    ],
-    "description": "enum … { … }"
+      "#[derive(Debug)]"
+    ]
   },
   "extern-fn": {
     "prefix": "extern-fn",
@@ -129,52 +124,34 @@
       "    ${5:todo!();}",
       "}"
     ],
-    "description": "pub fn …(…) { … }"
+    "description": "pub fn …(…) -> … { … }"
   },
-  "fn": {
-    "prefix": "fn",
+  "let-if": {
+    "prefix": "let-if",
     "body": [
-      "fn ${1:name}(${2:arg}: ${3:Type}) -> ${4:RetType} {",
-      "    ${5:todo!();}",
-      "}"
-    ],
-    "description": "fn …(…) { … }"
-  },
-  "for": {
-    "prefix": "for",
-    "body": [
-      "for ${1:pat} in ${2:expr} {",
-      "    ${3:todo!();}",
-      "}"
-    ],
-    "description": "for … in … { … }"
-  },
-  "if-let": {
-    "prefix": "if-let",
-    "body": [
-      "if let ${1:Some(pat)} = ${2:expr} {",
+      "let ${1} = if ${2:expr} {",
       "    ${0:todo!();}",
       "}"
     ],
-    "description": "if let … = … { … }"
+    "description": "let … = if … { … }"
   },
-  "if": {
-    "prefix": "if",
+  "let-else": {
+    "prefix": "let-else",
     "body": [
-      "if ${1:condition} {",
-      "    ${2:todo!();}",
+      "let ${1} = ${2} else {",
+      "    ${0:todo!();}",
       "}"
     ],
-    "description": "if … { … }"
+    "description": "let … = … else { … }"
   },
-  "impl-trait": {
-    "prefix": "impl-trait",
+  "let-match": {
+    "prefix": "let-match",
     "body": [
-      "impl ${1:Trait} for ${2:Type} {",
-      "    ${3:// add code here}",
+      "let {$1} = match ${2:expr} {",
+      "    ${0}",
       "}"
     ],
-    "description": "impl … for … { … }"
+    "description": "let … = match … { … }"
   },
   "inline-fn": {
     "prefix": "inline-fn",
@@ -185,40 +162,6 @@
       "}"
     ],
     "description": "inlined function"
-  },
-  "macro_rules": {
-    "prefix": "macro_rules",
-    "body": [
-      "macro_rules! ${1:name} {",
-      "    (${2}) => (${3})",
-      "}"
-    ],
-    "description": "macro_rules! … { … }"
-  },
-  "main": {
-    "prefix": "main",
-    "body": [
-      "fn main() {",
-      "    ${1:todo!();}",
-      "}"
-    ],
-    "description": "fn main() { … }"
-  },
-  "match": {
-    "prefix": "match",
-    "body": [
-      "match ${1:expr} {}"
-    ],
-    "description": "match … { … }"
-  },
-  "mod-block": {
-    "prefix": "mod-block",
-    "body": [
-      "mod ${1:name} {",
-      "    ${2:// add code here}",
-      "}"
-    ],
-    "description": "mod … { … }"
   },
   "static": {
     "prefix": "static",
@@ -240,16 +183,6 @@
       "struct ${1:Name};"
     ],
     "description": "struct …;"
-  },
-  "struct": {
-    "prefix": "struct",
-    "body": [
-      "#[derive(Debug)]",
-      "struct ${1:Name} {",
-      "    ${2:field}: ${3:Type}",
-      "}"
-    ],
-    "description": "struct … { … }"
   },
   "modtest": {
     "prefix": "modtest",
@@ -273,41 +206,6 @@
       "}"
     ],
     "description": "#[test]"
-  },
-  "trait": {
-    "prefix": "trait",
-    "body": [
-      "trait ${1:Name} {",
-      "    ${2:// add code here}",
-      "}",
-      ""
-    ],
-    "description": "trait … { … }"
-  },
-  "type": {
-    "prefix": "type",
-    "body": [
-      "type ${1:Alias} = ${2:Type};"
-    ],
-    "description": "type … = …;"
-  },
-  "while-let": {
-    "prefix": "while-let",
-    "body": [
-      "while let ${1:Some(pat)} = ${2:expr} {",
-      "    ${0:todo!();}",
-      "}"
-    ],
-    "description": "while let … = … { … }"
-  },
-  "while": {
-    "prefix": "while",
-    "body": [
-      "while ${1:condition} {",
-      "    ${2:todo!();}",
-      "}"
-    ],
-    "description": "while … { … }"
   },
   "pafn": {
     "prefix": "pafn",

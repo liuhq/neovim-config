@@ -11,13 +11,16 @@ return function ()
     npairs.setup({
         disable_filetype = { 'FZF' },
         ignored_next_char = [=[[%w%%%'%[%"%.%`%$]]=],
-        enable_check_bracket_line = false,
+        enable_check_bracket_line = true,
         check_ts = false,
     })
 
     -- remove add single quote on filetype scheme or lisp
     npairs.get_rules("'")[1].not_filetypes = { 'scheme', 'lisp' }
     npairs.get_rules("'")[1]:with_pair(npairs_cond.not_after_text('['))
+
+    -- rust closures ||
+    npairs.add_rule(npairs_rule('|', '|', { 'rust', 'markdown' }):with_pair(npairs_cond.before_text('(')))
 
     -- markdown
     npairs.add_rule(npairs_rule('*', '*', { 'markdown' }):with_pair(npairs_cond.not_after_text('**')))
@@ -76,7 +79,7 @@ return function ()
                 --     },
                 -- },
 
-                racket = false,
+                lisp = false,
                 bash = false,
                 zsh = false,
             },
