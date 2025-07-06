@@ -1,11 +1,11 @@
 {
   "MIT": {
-    "prefix": "mit",
+    "prefix": "MIT",
     "description": "MIT License",
     "body": [
-      "The MIT License (MIT)",
+      "MIT License",
       "",
-      "Copyright (c) ${CURRENT_YEAR} Horace Liu <${1:mail}>",
+      "Copyright (c) ${CURRENT_YEAR} Horace Liu",
       "",
       "Permission is hereby granted, free of charge, to any person obtaining a copy",
       "of this software and associated documentation files (the \"Software\"), to deal",
@@ -27,29 +27,37 @@
     ]
   },
   "BEERWARE": {
-    "prefix": "coffeeware",
+    "prefix": "COFFEEWARE",
     "description": "COFFEEWARE License",
     "body": [
-      "\t\tThe COFFEEWARE License (COFFEEWARE)",
+      "\t\tCOFFEEWARE License (COFFEEWARE)",
       "",
-      "Copyright (c) ${CURRENT_YEAR} Horace Liu. All rights reserved.",
+      "Copyright (c) ${CURRENT_YEAR} Horace Liu",
       "",
-      "Horace Liu <${1:mail}> wrote this code. As long as you retain this notice",
-      "you can do whatever you want with this code. If we meet some day, and you think",
-      "this code is worth it, you can buy me a coffee in return."
+      "Horace Liu wrote this code. As long as you retain this notice you can do",
+      "whatever you want with this code. If we meet some day, and you think this",
+      "code is worth it, you can buy me a coffee in return."
     ]
   },
   "ISC": {
-    "prefix": "isc",
+    "prefix": "ISC",
     "description": "ISC License",
     "body": [
-      "The ISC License (ISC)",
+      "ISC License",
       "",
-      "Copyright (c) ${CURRENT_YEAR} Horace Liu <${1:mail}>. All rights reserved.",
+      "Copyright (c) ${CURRENT_YEAR} Horace Liu",
       "",
-      "Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.",
+      "Permission to use, copy, modify, and/or distribute this software for any",
+      "purpose with or without fee is hereby granted, provided that the above",
+      "copyright notice and this permission notice appear in all copies.",
       "",
-      "THE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE."
+      "THE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH",
+      "REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY",
+      "AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,",
+      "INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM",
+      "LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR",
+      "OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR",
+      "PERFORMANCE OF THIS SOFTWARE."
     ]
   },
   "EUPL": {
