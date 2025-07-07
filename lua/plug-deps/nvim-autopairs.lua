@@ -11,7 +11,7 @@ return function ()
     npairs.setup({
         disable_filetype = { 'FZF' },
         ignored_next_char = [=[[%w%%%'%[%"%.%`%$]]=],
-        enable_check_bracket_line = true,
+        enable_check_bracket_line = false,
         check_ts = false,
     })
 
