@@ -2,7 +2,8 @@
   "Sh": {
     "prefix": "sh",
     "body": [
-      "#!/bin/sh -efu",
+      "#!/bin/sh",
+      "set -efu",
       "",
       "$0"
     ]
@@ -10,7 +11,8 @@
   "Bash": {
     "prefix": "bash",
     "body": [
-      "#!/bin/bash -efu",
+      "#!/bin/bash",
+      "set -efu",
       "",
       "$0"
     ]
@@ -18,7 +20,8 @@
   "Zsh": {
     "prefix": "zsh",
     "body": [
-      "#!/bin/zsh -efu",
+      "#!/bin/zsh",
+      "set -efu",
       "",
       "$0"
     ]
