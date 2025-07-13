@@ -64,7 +64,7 @@ end
 ---@field offsetEncoding? string
 
 return {
-    cmd = { 'clangd' },
+    cmd = { 'clangd', '-j=8', '--background-index', '--pch-storage=memory', '--malloc-trim' },
     filetypes = { 'c', 'cpp', 'cuda', 'proto' },
     root_markers = {
         '.clangd',
