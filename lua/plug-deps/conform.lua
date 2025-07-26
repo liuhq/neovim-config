@@ -6,6 +6,7 @@ return function ()
     require('conform').setup({
         formatters_by_ft = {
             sh = { 'shfmt' },
+            zsh = { 'shfmt' },
             rust = { 'rustfmt' },
             javascript = { 'prettier', 'dprint', stop_after_first = true },
             javascriptreact = { 'prettier', 'dprint', stop_after_first = true },
