@@ -26,6 +26,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
             vim.keymap.set({ 'n', 'v' }, 'ga', vim.lsp.buf.code_action,
                 { desc = 'Code Action', buffer = args.buf })
         end
+        --- source action that apply to the whole file
+        if client.server_capabilities.codeActionProvider ~= nil
+            and client.server_capabilities.codeActionProvider.codeActionKinds ~= nil
+        then
+            local source_actions = vim.tbl_filter(function (action)
+                return vim.startswith(action, 'source.')
+            end, client.server_capabilities.codeActionProvider.codeActionKinds)
+            if not vim.tbl_isempty(source_actions) then
+                vim.keymap.set('n', '<leader>cs', function ()
+                    vim.lsp.buf.code_action({
+                        ---@diagnostic disable-next-line: missing-fields
+                        context = {
+                            only = source_actions,
+                        },
+                    })
+                end, { desc = 'Source Action', buffer = args.buf })
+            end
+        end
         if client:supports_method('textDocument/declaration') then
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Declaration', buffer = args.buf })
         end
@@ -57,7 +75,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end
         if client:supports_method('textDocument/inlayHint') then
             vim.keymap.set('n', '<leader>ch', function ()
-                vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+                vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf }), { bufnr = args.buf })
             end, { desc = 'Toggle InlayHint', buffer = args.buf })
         end
         if client:supports_method('textDocument/references') then
@@ -118,12 +136,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
             vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, { desc = 'Diagnostic Info', buffer = args.buf })
             vim.keymap.set('n', '<leader>dh', function ()
-                vim.notify(vim.diagnostic.is_enabled({ bufnr = 0 })
+                vim.notify(vim.diagnostic.is_enabled({ bufnr = args.buf })
                     and 'Diagnostic: disabled'
                     or 'Diagnostic: enabled',
                     vim.log.levels.INFO,
                     { group = 'Diagnostic Show', skip_history = true })
-                vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+                vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = args.buf }), { bufnr = args.buf })
             end, { desc = 'Toggle Diagnostic', buffer = args.buf })
         end
 
@@ -140,8 +158,6 @@ vim.api.nvim_create_autocmd('VimLeave', {
     end,
 })
 
---- wait for lsp command: https://github.com/neovim/nvim-lspconfig/pull/3734
-
 vim.lsp.config('*', {
     root_markers = { '.git' },
 })
@@ -151,6 +167,7 @@ vim.lsp.enable({
     'clangd',
     'cssls',
     'dotls',
+    'eslint',
     'html',
     'jsonls',
     'lua_ls',

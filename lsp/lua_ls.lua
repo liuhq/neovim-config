@@ -1,34 +1,12 @@
----@brief
----
---- https://github.com/luals/lua-language-server
----
---- Lua language server.
----
---- See `lua-language-server`'s [documentation](https://luals.github.io/wiki/settings/) for an explanation of the above fields:
---- * [Lua.runtime.path](https://luals.github.io/wiki/settings/#runtimepath)
---- * [Lua.workspace.library](https://luals.github.io/wiki/settings/#workspacelibrary)
----
-
 return {
-    cmd = { 'lua-language-server' },
-    filetypes = { 'lua' },
-    root_markers = {
-        '.luarc.json',
-        '.luarc.jsonc',
-        '.luacheckrc',
-        '.stylua.toml',
-        'stylua.toml',
-        'selene.toml',
-        'selene.yml',
-        '.git',
-    },
-    single_file_support = true,
-    -- capabilities = capabilities,
     on_init = function (client)
         if client.workspace_folders then
             local path = client.workspace_folders[1].name
-            ---@diagnostic disable-next-line: undefined-field
-            if path ~= vim.fn.stdpath('config') and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then
+            if
+                path ~= vim.fn.stdpath('config')
+                ---@diagnostic disable-next-line: undefined-field
+                and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+            then
                 return
             end
         end
@@ -36,7 +14,10 @@ return {
         client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
             runtime = {
                 version = 'LuaJIT',
-                path = vim.split(package.path, ';'),
+                path = {
+                    'lua/?.lua',
+                    'lua/?/init.lua',
+                },
             },
             -- Make the server aware of Neovim runtime files
             workspace = {

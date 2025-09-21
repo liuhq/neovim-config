@@ -3,7 +3,7 @@ local mini_deps_path = path_package .. 'pack/deps/start/mini.deps'
 local mini_deps_repo = 'https://github.com/echasnovski/mini.deps'
 
 ---@diagnostic disable-next-line: undefined-field
-if not (vim.uv or vim.loop).fs_stat(mini_deps_path) then
+if not vim.uv.fs_stat(mini_deps_path) then
     vim.cmd('echo "Installing `mini.deps`" | redraw')
     local clone_cmd = { 'git', 'clone', '--filter=blob:none', mini_deps_repo, mini_deps_path }
     vim.fn.system(clone_cmd)
@@ -19,6 +19,7 @@ vim.keymap.set('n', '<leader>aa', '<cmd>DepsShowLog<cr>', { desc = 'MiniDeps Log
 local now, later = MiniDeps.now, MiniDeps.later
 
 now(require('plug-deps.catppuccin'))
+now(require('plug-deps.lspconfig'))
 now(require('plug-deps.fidget'))
 now(require('plug-deps.yazi'))
 now(require('plug-deps.treesitter'))
