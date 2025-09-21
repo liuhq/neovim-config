@@ -28,6 +28,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end
         --- source action that apply to the whole file
         if client.server_capabilities.codeActionProvider ~= nil
+            and type(client.server_capabilities.codeActionProvider) ~= 'boolean'
             and client.server_capabilities.codeActionProvider.codeActionKinds ~= nil
         then
             local source_actions = vim.tbl_filter(function (action)
