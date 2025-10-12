@@ -21,7 +21,11 @@ return function ()
 
     -- rust closures ||
     npairs.add_rule(npairs_rule('|', '|', { 'rust', 'markdown' }):with_pair(npairs_cond.before_text('(')))
-    npairs.add_rule(npairs_rule("'", "'", { 'rust', 'markdown' }):with_pair(npairs_cond.not_before_text('<')))
+    npairs.add_rule(
+        npairs_rule("'", "'", { 'rust', 'markdown' })
+        :with_pair(npairs_cond.not_before_text('<'))
+        :with_pair(npairs_cond.not_before_text('&'))
+    )
 
     -- markdown
     npairs.add_rule(npairs_rule('*', '*', { 'markdown' }):with_pair(npairs_cond.not_after_text('**')))
