@@ -1,5 +1,7 @@
 local o = vim.o
 
+o.exrc = true
+
 o.clipboard = 'unnamedplus'
 o.cursorline = true
 o.number = true
