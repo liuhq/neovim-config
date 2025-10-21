@@ -149,33 +149,9 @@ return function ()
             flash = true,
             fzf = true,
             gitsigns = true,
-            markdown = true,
-            mason = true,
             mini = { enabled = true },
-            native_lsp = {
-                enabled = true,
-                virtual_text = {
-                    errors = { 'italic' },
-                    hints = { 'italic' },
-                    warnings = { 'italic' },
-                    information = { 'italic' },
-                    ok = { 'italic' },
-                },
-                underlines = {
-                    errors = { 'undercurl' },
-                    hints = { 'underline' },
-                    warnings = { 'underline' },
-                    information = { 'underline' },
-                    ok = { 'underline' },
-                },
-                inlay_hints = {
-                    background = true,
-                },
-            },
             nvim_surround = true,
-            render_markdown = true,
             snacks = { enabled = true },
-            treesitter = true,
             which_key = true,
         },
     })
