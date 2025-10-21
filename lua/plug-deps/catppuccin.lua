@@ -143,15 +143,13 @@ return function ()
         },
         default_integrations = true,
         integrations = {
-            cmp = true,
-            dap = true,
+            blink_cmp = true,
             fidget = true,
             flash = true,
             fzf = true,
             gitsigns = true,
             mini = { enabled = true },
             nvim_surround = true,
-            snacks = { enabled = true },
             which_key = true,
         },
     })
