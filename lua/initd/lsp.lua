@@ -22,6 +22,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = function (args)
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
+        client.config.capabilities = require('blink.cmp').get_lsp_capabilities()
+
         if client:supports_method('textDocument/codeAction') then
             vim.keymap.set({ 'n', 'v' }, 'ga', vim.lsp.buf.code_action,
                 { desc = 'Code Action', buffer = args.buf })
@@ -159,9 +161,12 @@ vim.api.nvim_create_autocmd('VimLeave', {
     end,
 })
 
-vim.lsp.config('*', {
+---@type vim.lsp.Config
+local base_config = {
     root_markers = { '.git' },
-})
+}
+
+vim.lsp.config('*', base_config)
 
 vim.lsp.enable({
     'bashls',

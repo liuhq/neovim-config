@@ -19,12 +19,12 @@ vim.keymap.set('n', '<leader>aa', '<cmd>DepsShowLog<cr>', { desc = 'MiniDeps Log
 local now, later = MiniDeps.now, MiniDeps.later
 
 now(require('plug-deps.catppuccin'))
+now(require('plug-deps.blink-cmp'))
 now(require('plug-deps.lspconfig'))
 now(require('plug-deps.fidget'))
 now(require('plug-deps.yazi'))
 now(require('plug-deps.treesitter'))
 now(require('plug-deps.nui'))
-now(require('plug-deps.nvim-cmp'))
 now(require('plug-deps.which-key'))
 
 later(require('plug-deps.bufferline'))

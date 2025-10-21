@@ -5,7 +5,6 @@
 - Neovim `0.11+`
 - a [Nerd Font](https://www.nerdfonts.com/) (currently using [Maple](https://github.com/subframe7536/maple-font))
 - [`git`](https://git-scm.com/) and [`nodejs`](https://nodejs.org/)
-- [`zig`](https://ziglang.org/) (be used as C compiler) for treesitter on Windows
 - [`fd`](https://github.com/sharkdp/fd) and [`ripgrep`](https://github.com/BurntSushi/ripgrep)
 - `unzip` for mason
 - [`yazi`](https://yazi-rs.github.io/) for file browsing and managing
@@ -15,12 +14,11 @@
 Editor
 
 - [mini.deps](https://github.com/echasnovski/mini.deps) : plugins manager
-- [mason.nvim](https://github.com/williamboman/mason.nvim) : LSP manager
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) : treesitter support
 - [yazi.nvim](https://github.com/mikavilpas/yazi.nvim) : file browser
 - [conform.nvim](https://github.com/stevearc/conform.nvim) : formatter config
-- [fzf-lua](https://github.com/ibhagwan/fzf-lua)
-- [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) : markdown render
+- [fzf-lua](https://github.com/ibhagwan/fzf-lua) : fzf bridge
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) : LSP config collection
 - [mini.bufremove](https://github.com/echasnovski/mini.bufremove) : enhance buffers & windows
 
 UI
@@ -36,9 +34,8 @@ UI
 
 Coding
 
+- [blink.cmp](https://github.com/saghen/blink.cmp) : enhance completion
 - [flash.nvim](https://github.com/folke/flash.nvim) : navigate code
-- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) : enhance completion
-- [LuaSnip](https://github.com/L3MON4D3/LuaSnip) : snippet engine
 - [mini.ai](https://github.com/echasnovski/mini.ai) : enhance `a` / `i` textobjects
 - [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) : enhance treesitter textobjects
 - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) : operate html tag by treesitter

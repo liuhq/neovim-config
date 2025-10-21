@@ -17,6 +17,8 @@ return {
                 path = {
                     'lua/?.lua',
                     'lua/?/init.lua',
+                    '?.lua',
+                    '?/init.lua',
                 },
             },
             -- Make the server aware of Neovim runtime files
