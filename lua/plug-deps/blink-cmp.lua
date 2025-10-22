@@ -1,11 +1,19 @@
 return function ()
     MiniDeps.add({
         source = 'saghen/blink.cmp',
-        -- depends = { 'rafamadriz/friendly-snippets' },
         checkout = 'v1.7.0',
     })
 
     require('blink.cmp').setup({
+        completion = {
+            menu = {
+                ---@type blink.cmp.Draw
+                draw = {
+                    columns = { { 'label', 'label_description', gap = 1 }, { 'kind', 'kind_icon', gap = 1 } },
+                },
+            },
+
+        },
         signature = {
             enabled = true,
         },
@@ -30,4 +38,9 @@ return function ()
             },
         },
     })
+
+    for _, kind in ipairs(require('blink.cmp.types').CompletionItemKind) do
+        local current = vim.api.nvim_get_hl(0, { name = 'BlinkCmpKind' .. kind })
+        vim.api.nvim_set_hl(0, 'BlinkCmpKind' .. kind, { fg = current.fg, italic = true })
+    end
 end
