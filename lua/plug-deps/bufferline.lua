@@ -38,6 +38,6 @@ return function ()
             separator_style = 'thin',
             always_show_bufferline = false,
         },
-        highlights = require('catppuccin.special.bufferline').get_theme(),
+        -- highlights = require('catppuccin.special.bufferline').get_theme(),
     })
 end

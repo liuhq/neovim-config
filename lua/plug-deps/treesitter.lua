@@ -105,4 +105,7 @@ return function ()
             enable_close_on_slash = true,
         },
     })
+
+    vim.keymap.set('n', '<leader>ci', '<cmd>Inspect<cr>', { desc = 'Inspect Token' })
+    vim.keymap.set('n', '<leader>ct', '<cmd>InspectTree<cr>', { desc = 'Inspect Token' })
 end

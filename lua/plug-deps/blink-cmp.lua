@@ -15,7 +15,7 @@ return function ()
 
         },
         signature = {
-            enabled = true,
+            enabled = false,
         },
         keymap = {
             preset = 'none',
@@ -27,7 +27,7 @@ return function ()
             ['<tab>'] = { 'hide_documentation', 'show_documentation', 'fallback' },
             ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
             ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
-            ['<C-s>'] = { 'hide_signature', 'show_signature' },
+            -- ['<C-s>'] = { 'hide_signature', 'show_signature' },
         },
         cmdline = {
             keymap = { preset = 'inherit' },

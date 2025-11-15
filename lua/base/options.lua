@@ -28,6 +28,7 @@ o.incsearch = true
 o.splitbelow = true
 o.splitright = true
 
+o.winblend = 10
 o.wildmenu = true
 o.wildoptions = 'fuzzy,pum,tagfile'
 o.wildmode = 'noselect:full'
