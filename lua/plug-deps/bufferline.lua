@@ -6,7 +6,8 @@ return function ()
 
     local icons = ConfigUtil.icons
 
-    require('bufferline').setup({
+    local bufferline = require('bufferline')
+    bufferline.setup({
         options = {
             mode = 'buffers',
             themable = true,
@@ -18,8 +19,8 @@ return function ()
                 style = 'underline',
             },
             modified_icon = icons.file_status.modified,
-            left_trunc_marker = '',
-            right_trunc_marker = '',
+            left_trunc_marker = '',
+            right_trunc_marker = '',
             name_formatter = function (buf)
                 ---@diagnostic disable-next-line: undefined-field
                 if vim.bo[buf.bufnr].filetype == 'qf' then
@@ -28,7 +29,7 @@ return function ()
                 ---@diagnostic disable-next-line: undefined-field
                 return buf.name
             end,
-            diagnostics = false,
+            diagnostics = 'nvim_lsp',
             color_icons = true,
             show_buffer_icons = true,
             show_buffer_close_icons = false,
@@ -37,7 +38,11 @@ return function ()
             show_duplicate_prefix = true,
             separator_style = 'thin',
             always_show_bufferline = false,
+            style_preset = {
+                bufferline.style_preset.no_bold,
+                bufferline.style_preset.no_italic,
+            },
         },
-        -- highlights = require('catppuccin.special.bufferline').get_theme(),
+        highlights = require('nordust.higroups._bufferline').get(),
     })
 end

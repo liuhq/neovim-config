@@ -3,26 +3,26 @@ local icons = ConfigUtil.icons
 _G.stl_comp = {}
 
 local modehl = {
-    ['n'] = 'StlCompModeNormal',
-    ['no'] = 'StlCompModeNormal',
-    ['i'] = 'StlCompModeInsert',
-    ['ic'] = 'StlCompModeInsert',
-    ['t'] = 'StlCompModeInsert',
-    ['v'] = 'StlCompModeVisual',
-    ['V'] = 'StlCompModeVisual',
-    [''] = 'StlCompModeVisual',
-    ['R'] = 'StlCompModeReplace',
-    ['Rv'] = 'StlCompModeReplace',
-    ['s'] = 'StlCompModeDefault',
-    ['S'] = 'StlCompModeDefault',
-    [''] = 'StlCompModeDefault',
-    ['c'] = 'StlCompModeCommand',
-    ['cv'] = 'StlCompModeCommand',
-    ['ce'] = 'StlCompModeCommand',
-    ['r'] = 'StlCompModeReplace',
-    ['rm'] = 'StlCompModeReplace',
-    ['r?'] = 'StlCompModeReplace',
-    ['!'] = 'StlCompModeDefault',
+    ['n'] = 'StatusLineModeNormal',
+    ['no'] = 'StatusLineModeNormal',
+    ['i'] = 'StatusLineModeInsert',
+    ['ic'] = 'StatusLineModeInsert',
+    ['t'] = 'StatusLineModeInsert',
+    ['v'] = 'StatusLineModeVisual',
+    ['V'] = 'StatusLineModeVisual',
+    [''] = 'StatusLineModeVisual',
+    ['R'] = 'StatusLineReplace',
+    ['Rv'] = 'StatusLineReplace',
+    ['s'] = 'StatusLineModeDefault',
+    ['S'] = 'StatusLineModeDefault',
+    [''] = 'StatusLineModeDefault',
+    ['c'] = 'StatusLineModeCommand',
+    ['cv'] = 'StatusLineModeCommand',
+    ['ce'] = 'StatusLineModeCommand',
+    ['r'] = 'StatusLineReplace',
+    ['rm'] = 'StatusLineReplace',
+    ['r?'] = 'StatusLineReplace',
+    ['!'] = 'StatusLineModeDefault',
 }
 
 -- Mode Color Change: start
@@ -31,7 +31,7 @@ _G.stl_comp.mode = function ()
     if modehl[mode] then
         return '%(%#' .. modehl[mode] .. '# ┃ %{v:lua.string.upper(mode(1))} %*%)'
     else
-        return '%(%#StlCompModeDefault# ┃ %{v:lua.string.upper(mode(1))} %*%)'
+        return '%(%#StatusLineModeDefault# ┃ %{v:lua.string.upper(mode(1))} %*%)'
     end
 end
 -- Mode Color Change: end
@@ -45,7 +45,7 @@ _G.stl_comp.search_count = function ()
             return ''
         end
         --- buggy, `%{%v:lua.stl_comp.search_count()%}` is not effect. it's so weird
-        -- return '%(%#StlCompSecondary#  At ' .. count.current .. ' / ' .. count.total .. '  %*%)'
+        -- return '%(%#StatusLineSecondary#  At ' .. count.current .. ' / ' .. count.total .. '  %*%)'
         return '  At ' .. count.current .. ' / ' .. count.total .. '  '
     end
     return ''
@@ -62,7 +62,7 @@ _G.stl_comp.lsp = function ()
     end
 
     if count[vim.diagnostic.severity.ERROR] ~= 0 then
-        table.insert(diag, '%#StlCompDiagError#'
+        table.insert(diag, '%#StatusLineDiagError#'
             .. icons.diagnostics.Error
             .. ' '
             .. count[vim.diagnostic.severity.ERROR]
@@ -70,7 +70,7 @@ _G.stl_comp.lsp = function ()
         )
     end
     if count[vim.diagnostic.severity.WARN] ~= 0 then
-        table.insert(diag, '%#StlCompDiagWarn#'
+        table.insert(diag, '%#StatusLineDiagWarn#'
             .. icons.diagnostics.Warn
             .. ' '
             .. count[vim.diagnostic.severity.WARN]
@@ -78,7 +78,7 @@ _G.stl_comp.lsp = function ()
         )
     end
     if count[vim.diagnostic.severity.INFO] ~= 0 then
-        table.insert(diag, '%#StlCompDiagInfo#'
+        table.insert(diag, '%#StatusLineDiagInfo#'
             .. icons.diagnostics.Info
             .. ' '
             .. count[vim.diagnostic.severity.INFO]
@@ -86,7 +86,7 @@ _G.stl_comp.lsp = function ()
         )
     end
     if count[vim.diagnostic.severity.HINT] ~= 0 then
-        table.insert(diag, '%#StlCompDiagHint#'
+        table.insert(diag, '%#StatusLineDiagHint#'
             .. icons.diagnostics.Hint
             .. ' '
             .. count[vim.diagnostic.severity.HINT]
@@ -134,7 +134,7 @@ end
 
 -- File Pos: start
 _G.stl_comp.filepos = function ()
-    return '%(%#StlCompSecondary# %7(%c:%l%) - %-5(%p%%%) %*%)'
+    return '%(%#StatusLineSecondary# %7(%c:%l%) - %-5(%p%%%) %*%)'
 end
 -- File Pos: end
 
@@ -142,20 +142,20 @@ end
 _G.stl_comp.filemeta = function ()
     local mode = vim.api.nvim_get_mode().mode
     if modehl[mode] then
-        return '%(%#' .. modehl[mode] .. '# %Y / %{toupper(&fileencoding)} / %{toupper(&fileformat)} ┃ %*%)'
+        return '%(%#' .. modehl[mode] .. '#%( %Y /%)%( %{toupper(&fileencoding)} %)%(/ %{toupper(&fileformat)} %)┃ %*%)'
     else
-        return '%(%#StlCompModeDefault# %Y / %{toupper(&fileencoding)} / %{toupper(&fileformat)} ┃ %*%)'
+        return '%(%#StatusLineModeDefault#%( %Y /%)%( %{toupper(&fileencoding)} %)%(/ %{toupper(&fileformat)} %)┃ %*%)'
     end
 end
 -- File Meta: end
 
 vim.opt.statusline = table.concat({
-    '%#StlCompBase#',
+    '%#StatusLine#',
 
     -- mode
     '%{%v:lua.stl_comp.mode()%}',
     -- search count - buggy, `%{%v:lua.stl_comp.search_count()%}` is not effect here. it's so weird
-    '%(%#StlCompSecondary#',
+    '%(%#StatusLineSecondary#',
     '%{v:lua.stl_comp.search_count()}',
     '%*%)',
     -- lsp
@@ -171,7 +171,7 @@ vim.opt.statusline = table.concat({
     '%{%v:lua.stl_comp.filename()%}',
     -- file flags
     '%( : ',
-    '%#StlCompFlags#',
+    '%#StatusLineFlags#',
     '%{%v:lua.stl_comp.file_readonly()%}',
     '%{%v:lua.stl_comp.file_modified()%}',
     '%*',

@@ -8,19 +8,11 @@ return function ()
         progress = {
             display = {
                 done_icon = '',
+                done_style = 'Comment',
+                icon_style = 'DiagnosticInfo',
                 overrides = {
                     lua_ls = { name = 'lua ls' },
-                    rust_analyzer = {
-                        name = 'rust analyzer',
-                        -- icon = fidget.progress.display.for_icon(fidget.spinner.animate('dots', 2.5), '🦀'),
-                        -- update_hook = function (item)
-                        --     require('fidget.notification').set_content_key(item)
-                        --     if item.hidden == nil and string.match(item.annote, 'clippy') then
-                        --         -- Hide clippy-related notifications
-                        --         item.hidden = true
-                        --     end
-                        -- end,
-                    },
+                    rust_analyzer = { name = 'rust analyzer' },
                 },
             },
         },

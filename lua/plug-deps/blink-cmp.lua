@@ -12,6 +12,10 @@ return function ()
                     columns = { { 'label', 'label_description', gap = 1 }, { 'kind', 'kind_icon', gap = 1 } },
                 },
             },
+            documentation = {
+                auto_show = true,
+                auto_show_delay_ms = 50,
+            },
 
         },
         signature = {
@@ -38,9 +42,4 @@ return function ()
             },
         },
     })
-
-    for _, kind in ipairs(require('blink.cmp.types').CompletionItemKind) do
-        local current = vim.api.nvim_get_hl(0, { name = 'BlinkCmpKind' .. kind })
-        vim.api.nvim_set_hl(0, 'BlinkCmpKind' .. kind, { fg = current.fg, italic = true })
-    end
 end
