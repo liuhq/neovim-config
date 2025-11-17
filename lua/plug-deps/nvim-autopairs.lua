@@ -1,8 +1,5 @@
 return function ()
-    MiniDeps.add({
-        source = 'windwp/nvim-autopairs',
-        depends = { 'hrsh7th/nvim-cmp' },
-    })
+    MiniDeps.add({ source = 'windwp/nvim-autopairs' })
 
     local npairs = require('nvim-autopairs')
     local npairs_rule = require('nvim-autopairs.rule')
@@ -47,47 +44,4 @@ return function ()
     ):with_move(function (opts)
         return opts.char == '>'
     end))
-
-    -- insert `(` after select function or method item
-    local npairs_cmp = require('nvim-autopairs.completion.cmp')
-    local npairs_handlers = require('nvim-autopairs.completion.handlers')
-    local cmp = require('cmp')
-    cmp.event:on(
-        'confirm_done',
-        npairs_cmp.on_confirm_done({
-            filetypes = {
-                -- all filetypes
-                ['*'] = {
-                    ['('] = {
-                        kind = {
-                            cmp.lsp.CompletionItemKind.Function,
-                            cmp.lsp.CompletionItemKind.Method,
-                        },
-                        handler = npairs_handlers['*'],
-                    },
-                },
-
-                -- lua = {
-                --     ['('] = {
-                --         kind = {
-                --             cmp.lsp.CompletionItemKind.Function,
-                --             cmp.lsp.CompletionItemKind.Method,
-                --         },
-                --         ---@param char string
-                --         ---@param item table item completion
-                --         ---@param bufnr number buffer number
-                --         ---@param rules table
-                --         ---@param commit_character table<string>
-                --         handler = function (char, item, bufnr, rules, commit_character)
-                --             -- Your handler function. Inspect with print(vim.inspect{char, item, bufnr, rules, commit_character})
-                --         end,
-                --     },
-                -- },
-
-                lisp = false,
-                bash = false,
-                zsh = false,
-            },
-        })
-    )
 end

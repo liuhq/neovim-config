@@ -13,7 +13,8 @@ return function ()
             rules = false,
         },
         win = {
-            border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+            border = false,
+            padding = { 1, 2 },
         },
         sort = { 'order', 'group', 'alphanum', 'mod' },
     })
