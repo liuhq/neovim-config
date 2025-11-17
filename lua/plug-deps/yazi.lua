@@ -6,9 +6,17 @@ return function ()
 
     require('yazi').setup({
         open_for_directories = true,
+        open_multiple_tabs = true,
         highlight_groups = {
-            hovered_buffer = { bg = '#313244' },
+            hovered_buffer = {
+                link = 'NormalFloat',
+            },
+            hovered_buffer_in_same_directory = {
+                link = 'Normal',
+            },
         },
+        floating_window_scaling_factor = 1,
+        yazi_floating_window_border = 'none',
         keymaps = {
             show_help = '<f1>',
             open_file_in_vertical_split = '<c-v>',
@@ -21,8 +29,6 @@ return function ()
             send_to_quickfix_list = '<c-q>',
             change_working_directory = '<c-g>',
         },
-        floating_window_scaling_factor = 1,
-        yazi_floating_window_border = 'single',
     })
 
     vim.keymap.set('n', '<leader>e', '<cmd>Yazi<cr>', { desc = 'Open yazi (Current file)' })
