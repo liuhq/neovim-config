@@ -176,7 +176,7 @@ vim.lsp.enable({
     'html',
     'jsonls',
     'lua_ls',
-    -- 'nixd',
+    'nixd',
     'rust_analyzer',
     'tailwindcss',
     'taplo',
