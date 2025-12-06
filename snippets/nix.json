@@ -3,9 +3,7 @@
     "prefix": "module",
     "body": [
       "{ config, pkgs, ... }:",
-      "{",
-      "    $0",
-      "}"
+      "{$0}"
     ]
   },
   "ifelse": {
