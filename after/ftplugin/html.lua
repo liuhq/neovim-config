@@ -1,7 +1,3 @@
-if vim.g.vscode then
-    return
-end
-
 local bo = vim.bo
 
 bo.matchpairs = bo.matchpairs .. ',<:>'
