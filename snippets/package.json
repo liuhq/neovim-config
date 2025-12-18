@@ -84,6 +84,12 @@
           "license"
         ],
         "path": "./license.json"
+      },
+      {
+        "language": [
+          "just"
+        ],
+        "path": "./just.json"
       }
     ]
   }
