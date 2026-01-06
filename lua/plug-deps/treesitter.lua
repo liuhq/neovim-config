@@ -14,6 +14,7 @@ return function ()
         'c',
         'caddy',
         'commonlisp',
+        'corn',
         'cpp',
         'css',
         'diff',

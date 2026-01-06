@@ -171,6 +171,7 @@ vim.lsp.enable({
     'bashls',
     'clangd',
     'cssls',
+    'denols',
     'dotls',
     'eslint',
     'html',
