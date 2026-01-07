@@ -3,19 +3,22 @@ return function ()
         source = 'stevearc/conform.nvim',
     })
 
+    local js_fmt_config = { 'prettier', 'dprint', 'deno_fmt', stop_after_first = true }
+    local nojs_fmt_config = { 'prettier', 'dprint', 'deno_fmt_nojs', stop_after_first = true }
+
     require('conform').setup({
         formatters_by_ft = {
             sh = { 'shfmt' },
             zsh = { 'shfmt' },
             rust = { 'rustfmt' },
-            javascript = { 'prettier', 'dprint', stop_after_first = true },
-            javascriptreact = { 'prettier', 'dprint', stop_after_first = true },
-            typescript = { 'prettier', 'dprint', stop_after_first = true },
-            typescriptreact = { 'prettier', 'dprint', stop_after_first = true },
-            html = { 'prettier', 'dprint', stop_after_first = true },
-            css = { 'prettier', 'dprint', stop_after_first = true },
-            json = { 'prettier', 'dprint', stop_after_first = true },
-            jsonc = { 'prettier', 'dprint', stop_after_first = true },
+            javascript = js_fmt_config,
+            javascriptreact = js_fmt_config,
+            typescript = js_fmt_config,
+            typescriptreact = js_fmt_config,
+            html = nojs_fmt_config,
+            css = nojs_fmt_config,
+            json = nojs_fmt_config,
+            jsonc = nojs_fmt_config,
             yaml = { 'dprint', 'yamlfmt', stop_after_first = true },
         },
         default_format_opts = {
@@ -61,6 +64,12 @@ return function ()
                         },
                         { path = ctx.filename, upward = true, type = 'file' })[1]
                 end,
+            },
+            deno_fmt = {
+                append_args = { '--indent-width', '4', '--no-semicolons', '--single-quote' },
+            },
+            deno_fmt_nojs = {
+                append_args = { '--indent-width', '2', '--no-semicolons', '--single-quote' },
             },
         },
     })
