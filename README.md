@@ -1,4 +1,4 @@
-# My neovim config
+# ARCHIVE ~My neovim config~
 
 ## Requirements
 
