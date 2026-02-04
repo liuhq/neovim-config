@@ -97,6 +97,33 @@
     ],
     "description": "Nixpkgs' minimal meta attribute set"
   },
+  "imports": {
+    "prefix": "imports",
+    "body": [
+      "imports = [",
+      "  $0",
+      "];"
+    ],
+    "description": "import modules"
+  },
+  "options": {
+    "prefix": "options",
+    "body": [
+      "options.${1:mymod} = {",
+      "  $0",
+      "};"
+    ],
+    "description": "define module options"
+  },
+  "config": {
+    "prefix": "config",
+    "body": [
+      "config = {",
+      "  $0",
+      "};"
+    ],
+    "description": "config module"
+  },
   "with": {
     "prefix": "with",
     "body": [
