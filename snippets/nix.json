@@ -1,9 +1,35 @@
 {
   "module": {
+    "prefix": "mod",
+    "body": [
+      "{ config, pkgs, lib, ... }:",
+      "{$0}"
+    ]
+  },
+  "cfg": {
+    "prefix": "cfg",
+    "body": [
+      "cfg = config.${1:mymod}.$0"
+    ]
+  },
+  "full-module": {
     "prefix": "module",
     "body": [
-      "{ config, pkgs, ... }:",
-      "{$0}"
+      "{ config, pkgs, lib, ... }:",
+      "let",
+      "  cfg = config.${1:mymod}.$2",
+      "in",
+      "{",
+      "  imports = [ ]",
+      "",
+      "  options.${1:mymod} = {",
+      "    $2",
+      "  };",
+      "",
+      "  config = {",
+      "    $0",
+      "  };",
+      "}"
     ]
   },
   "ifelse": {
