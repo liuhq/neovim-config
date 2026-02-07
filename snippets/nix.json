@@ -20,7 +20,7 @@
       "  cfg = config.${1:mymod}.$2",
       "in",
       "{",
-      "  imports = [ ]",
+      "  imports = [ ];",
       "",
       "  options.${1:mymod} = {",
       "    $2",
