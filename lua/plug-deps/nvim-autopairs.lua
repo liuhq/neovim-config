@@ -13,13 +13,13 @@ return function ()
     })
 
     -- remove add single quote on filetype scheme, lisp and rust lifetime annotations
-    npairs.get_rules("'")[1].not_filetypes = { 'scheme', 'lisp', 'rust' }
+    npairs.get_rules("'")[1].not_filetypes = { 'scheme', 'lisp', 'rust', 'nix' }
     npairs.get_rules("'")[1]:with_pair(npairs_cond.not_after_text('['))
 
     -- rust closures ||
-    npairs.add_rule(npairs_rule('|', '|', { 'rust', 'markdown' }):with_pair(npairs_cond.before_text('(')))
+    npairs.add_rule(npairs_rule('|', '|', { 'rust' }):with_pair(npairs_cond.before_text('(')))
     npairs.add_rule(
-        npairs_rule("'", "'", { 'rust', 'markdown' })
+        npairs_rule("'", "'", { 'rust' })
         :with_pair(npairs_cond.not_before_text('<'))
         :with_pair(npairs_cond.not_before_text('&'))
     )

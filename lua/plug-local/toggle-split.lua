@@ -1,4 +1,4 @@
-vim.keymap.set('n', '<leader>wt', function ()
+vim.keymap.set('n', '<C-W>t', function ()
     local wins = vim.api.nvim_tabpage_list_wins(0)
     if #wins < 2 then
         vim.notify('Toggle only works with exactly 2 windows', vim.log.levels.INFO)

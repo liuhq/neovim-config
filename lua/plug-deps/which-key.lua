@@ -39,6 +39,5 @@ return function ()
         { '<leader>n', group = 'Notification' },
         { '<leader>s', group = 'Search' },
         { '<leader>v', group = 'Dap' },
-        { '<leader>w', group = 'Window' },
     })
 end

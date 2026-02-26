@@ -47,9 +47,9 @@ keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { desc = 'Cursor Up',
 -- better jump to line start/end
 -- "jump to start" handled by local-linestart-jump in normal mode
 -- keymap.set('n', 'H', '^', { desc = 'Cursor Start', remap = true, silent = true })
-keymap.set('n', 'L', '$', { desc = 'Cursor End', remap = true, silent = true })
-keymap.set('x', 'H', '^', { desc = 'Cursor Start', remap = true, silent = true })
-keymap.set('x', 'L', '$h', { desc = 'Cursor End', remap = true, silent = true })
+keymap.set('n', 'gl', '$', { desc = 'Cursor End', remap = true, silent = true })
+keymap.set('x', 'gh', '^', { desc = 'Cursor Start', remap = true, silent = true })
+keymap.set('x', 'gl', '$h', { desc = 'Cursor End', remap = true, silent = true })
 
 -- save file
 keymap.set('n', '<leader><cr>', '<cmd>w<cr><esc>', { desc = 'Save File' })
@@ -59,14 +59,10 @@ keymap.set('x', '<', '<gv')
 keymap.set('x', '>', '>gv')
 
 -- quit
-keymap.set('n', '<leader>q', '<cmd>qa<cr>', { desc = 'Quit' })
+keymap.set('n', '<C-Q>', '<cmd>qa<cr>', { desc = 'Quit' })
 
 -- windows
-keymap.set('n', '<leader>wd', '<cmd>close<cr>', { desc = 'Close Window' })
-keymap.set('n', '<leader>ws', '<cmd>split<cr>', { desc = 'Split Window Below' })
-keymap.set('n', '<leader>wv', '<cmd>vsplit<cr>', { desc = 'Split Window Right' })
-keymap.set('n', '<leader>ww', '<cmd>vertical ball 2<cr>', { desc = 'Vertical Split 2 Buffers' })
-keymap.set('n', '<leader>wr', '<cmd>wincmd r<cr>', { desc = 'Swap Window' })
+keymap.set('n', '<C-W>b', '<cmd>vertical ball 2<cr>', { desc = 'Vertical Split 2 Buffers' })
 
 -- move to window using the <ctrl> hjkl keys
 keymap.set('n', '<C-H>', '<cmd>wincmd h<cr>', { desc = 'Go to Left Window' })
@@ -83,7 +79,7 @@ keymap.set('n', '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase W
 --- handled by mini.bufremove
 -- keymap.set('n', '<leader>x', '<cmd>bdelete<cr>', { desc = 'Delete Buffer' })
 
-keymap.set('n', '<leader>j', 'gi', { desc = 'Jump to Last Insert' })
+keymap.set('n', 'g.', 'gi', { desc = 'Jump to Last Insert' })
 
 keymap.set({ 'n', 'x' }, 'K', 'i<cr><esc>', { remap = false, silent = true })
 

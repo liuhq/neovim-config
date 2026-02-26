@@ -7,4 +7,4 @@ vim.api.nvim_create_user_command('CursorToLineStart', function ()
 end, {})
 
 vim.keymap.set({ 'n', 'i' }, '<Home>', '<cmd>CursorToLineStart<cr>', { desc = 'Jump to Line Start' })
-vim.keymap.set('n', 'H', '<cmd>CursorToLineStart<cr>', { desc = 'Jump to Line Start' })
+vim.keymap.set('n', 'gh', '<cmd>CursorToLineStart<cr>', { desc = 'Jump to Line Start' })

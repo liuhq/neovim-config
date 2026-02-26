@@ -67,7 +67,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             end, { desc = 'Format (LSP)', buffer = args.buf })
         end
         if client:supports_method('textDocument/hover') then
-            vim.keymap.set('n', 'gh', function ()
+            vim.keymap.set('n', '<leader>k', function ()
                 vim.lsp.buf.hover({ border = borders })
             end, { desc = 'LSP Help', buffer = args.buf })
         end
@@ -95,7 +95,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             end, { desc = 'Signature Help', buffer = args.buf })
         end
         if client:supports_method('textDocument/typeDefinition*') then
-            vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { desc = 'Type Definition', buffer = args.buf })
+            vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, { desc = 'Type Definition', buffer = args.buf })
         end
 
         if client:supports_method('workspace/workspaceFolders') then
