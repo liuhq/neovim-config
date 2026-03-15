@@ -128,10 +128,12 @@ return function ()
             end
 
             local spaces = opts.line:match('=(%s*)$')
-            if #spaces > 0 then
-                return string.rep('<bs>', #spaces) .. opts.rule.end_pair
-            elseif #spaces == 0 then
-                return '<bs> ' .. opts.rule.end_pair
+            if spaces ~= nil then
+                if #spaces > 0 then
+                    return string.rep('<bs>', #spaces) .. opts.rule.end_pair
+                elseif #spaces == 0 then
+                    return '<bs> ' .. opts.rule.end_pair
+                end
             end
 
             return ' ;'

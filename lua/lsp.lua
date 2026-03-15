@@ -83,7 +83,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = 'References', buffer = args.buf })
         end
         if client:supports_method('textDocument/rename') then
-            vim.keymap.set('n', 'gn', vim.lsp.buf.rename, { desc = 'Rename', buffer = args.buf })
+            vim.keymap.set('n', 'cn', vim.lsp.buf.rename, { desc = 'Rename', buffer = args.buf })
         end
         if client:supports_method('textDocument/signatureHelp') then
             -- <C-S> is also mapped in insert mode to vim.lsp.buf.signature_help()
