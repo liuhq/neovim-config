@@ -1,7 +1,7 @@
 return function ()
     MiniDeps.add({
         source = 'saghen/blink.cmp',
-        checkout = 'v1.9.1',
+        checkout = 'v1.10.1',
     })
 
     require('blink.cmp').setup({

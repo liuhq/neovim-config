@@ -81,7 +81,7 @@ keymap.set('n', '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase W
 keymap.set('n', 'gn', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 keymap.set('n', 'gp', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 
-keymap.set('n', 'g.', 'gi', { desc = 'Jump to Last Insert' })
+keymap.set('n', '<leader>j', 'gi', { desc = 'Jump to Last Insert' })
 
 keymap.set({ 'n', 'x' }, 'K', 'i<cr><esc>', { remap = false, silent = true })
 

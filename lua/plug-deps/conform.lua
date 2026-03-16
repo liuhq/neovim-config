@@ -4,7 +4,6 @@ return function ()
     })
 
     local js_fmt_config = { 'prettier', 'dprint', 'deno_fmt', stop_after_first = true }
-    local nojs_fmt_config = { 'prettier', 'dprint', 'deno_fmt_nojs', stop_after_first = true }
 
     require('conform').setup({
         formatters_by_ft = {
@@ -15,10 +14,10 @@ return function ()
             javascriptreact = js_fmt_config,
             typescript = js_fmt_config,
             typescriptreact = js_fmt_config,
-            html = nojs_fmt_config,
-            css = nojs_fmt_config,
-            json = nojs_fmt_config,
-            jsonc = nojs_fmt_config,
+            html = js_fmt_config,
+            css = js_fmt_config,
+            json = js_fmt_config,
+            jsonc = js_fmt_config,
             yaml = { 'dprint', 'yamlfmt', stop_after_first = true },
         },
         default_format_opts = {
@@ -50,7 +49,7 @@ return function ()
                             'prettier.config.cts',
                             '.prettierrc.toml',
                         },
-                        { path = ctx.filename, upward = true, type = 'file' })[1]
+                        { path = ctx.filename, upward = true, type = 'file' })[1] ~= nil
                 end,
             },
             dprint = {
@@ -62,13 +61,10 @@ return function ()
                             'dprint.jsonc',
                             '.dprint.jsonc',
                         },
-                        { path = ctx.filename, upward = true, type = 'file' })[1]
+                        { path = ctx.filename, upward = true, type = 'file' })[1] ~= nil
                 end,
             },
             deno_fmt = {
-                append_args = { '--indent-width', '4', '--no-semicolons', '--single-quote' },
-            },
-            deno_fmt_nojs = {
                 append_args = { '--indent-width', '2', '--no-semicolons', '--single-quote' },
             },
         },

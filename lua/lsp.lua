@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
         if client:supports_method('textDocument/codeAction') then
-            vim.keymap.set({ 'n', 'v' }, 'ga', vim.lsp.buf.code_action,
+            vim.keymap.set({ 'n', 'v' }, 'g.', vim.lsp.buf.code_action,
                 { desc = 'Code Action', buffer = args.buf })
         end
         --- source action that apply to the whole file
@@ -161,7 +161,6 @@ vim.api.nvim_create_autocmd('VimLeave', {
 
 ---@type vim.lsp.Config
 local base_config = {
-    root_markers = { '.git' },
     capabilities = require('blink.cmp').get_lsp_capabilities(),
 }
 
