@@ -21,7 +21,7 @@ local now, later = MiniDeps.now, MiniDeps.later
 now(require('plug-deps.blink-cmp'))
 now(require('plug-deps.lspconfig'))
 now(require('plug-deps.fidget'))
-now(require('plug-deps.yazi'))
+now(require('plug-deps.oil'))
 now(require('plug-deps.treesitter'))
 now(require('plug-deps.nui'))
 now(require('plug-deps.which-key'))
