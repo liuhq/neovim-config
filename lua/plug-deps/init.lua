@@ -13,8 +13,8 @@ end
 
 require('mini.deps').setup({ path = { package = path_package } })
 
-vim.keymap.set('n', '<leader>au', '<cmd>DepsUpdate<cr>', { desc = 'MiniDeps Update' })
-vim.keymap.set('n', '<leader>aa', '<cmd>DepsShowLog<cr>', { desc = 'MiniDeps Log' })
+vim.keymap.set('n', '<leader>au', '<cmd>DepsUpdate<cr>', { desc = 'MiniDeps update' })
+vim.keymap.set('n', '<leader>aa', '<cmd>DepsShowLog<cr>', { desc = 'MiniDeps log' })
 
 local now, later = MiniDeps.now, MiniDeps.later
 
@@ -25,6 +25,7 @@ now(require('plug-deps.oil'))
 now(require('plug-deps.treesitter'))
 now(require('plug-deps.nui'))
 now(require('plug-deps.which-key'))
+now(require('plug-deps.rustaceanvim'))
 
 later(require('plug-deps.bufferline'))
 later(require('plug-deps.mini-bufremove'))

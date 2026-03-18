@@ -107,6 +107,6 @@ return function ()
         },
     })
 
-    vim.keymap.set('n', '<leader>ci', '<cmd>Inspect<cr>', { desc = 'Inspect Token' })
-    vim.keymap.set('n', '<leader>ct', '<cmd>InspectTree<cr>', { desc = 'Inspect Token' })
+    vim.keymap.set('n', '<leader>ai', '<cmd>Inspect<cr>', { desc = 'Inspect token' })
+    vim.keymap.set('n', '<leader>at', '<cmd>InspectTree<cr>', { desc = 'Inspect token tree' })
 end

@@ -12,5 +12,5 @@ return function ()
     end, { desc = 'Flash' })
     vim.keymap.set({ 'n', 'x', 'o' }, '<S-CR>', function ()
         require('flash').treesitter()
-    end, { desc = 'Flash Treesitter' })
+    end, { desc = 'Flash treesitter' })
 end
