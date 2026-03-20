@@ -31,6 +31,7 @@ return function ()
                 ['Info'] = { text = icons.diagnostics.Info },
             },
         },
+        ui_select = true,
     })
 
     vim.keymap.set('n', '<leader><space>', function ()
