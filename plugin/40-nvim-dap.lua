@@ -1,6 +1,6 @@
 vim.pack.add({
   'https://codeberg.org/mfussenegger/nvim-dap',
-  'https://github.com/igorlfs/nvim-dap-view/',
+  'https://github.com/igorlfs/nvim-dap-view',
 })
 
 local dap = require('dap')
